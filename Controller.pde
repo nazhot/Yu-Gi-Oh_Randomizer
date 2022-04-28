@@ -29,6 +29,13 @@ class Controller  {
     return this.currentScreen;
   }
   
+  Screen getScreen(String name){
+    for (Screen screen : this.screens){
+      if (screen.getName().equals(name)) return screen;
+    }
+    return null;
+  }
+  
   String getCurrentScreenName(){
     return this.currentScreen.getName();
   }
