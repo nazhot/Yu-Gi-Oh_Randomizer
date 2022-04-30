@@ -1,0 +1,14 @@
+{
+  "Component": "Button",
+  "X" : 1,
+  "Y" : 129,
+  "Width" : 30,
+  "Height" : 10,
+  "Name" : "viewAllCards",
+  "Label" : "View All Cards",
+  "TextSize" : 30,
+  "Rounding" : 10,
+  "FillColor" : #fde68a,
+  "HoverColor" : #ff8b53,
+  "StrokeWeight" : 1
+}

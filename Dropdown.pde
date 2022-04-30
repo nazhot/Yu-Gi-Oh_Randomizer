@@ -1,26 +1,12 @@
-class DropDown extends Interactable {
-  String TYPE = "DropDown";
-  String title;
-  String name;
+class DropDown extends Component<DropDown> {
   ArrayList<String> entries;
   ArrayList<Boolean> selected;
   float entryHeight;
   float entryWidth;
-  float x;
-  float y;
-  float w;
-  float h;
-  int drawOrder;
   boolean multiSelect;
   boolean isOpen;
-  color fillColor;
-  color textColor;
-  color strokeColor;
   color selectedColor;
   color hoverColor;
-  float strokeWeight;
-  float rounding;
-  float textSize;
   boolean alwaysOpen;
   boolean isVertical;
   String direction;
@@ -30,16 +16,9 @@ class DropDown extends Interactable {
   float entryVsTitleOrientationPercent;
   boolean titleStroke;
 
-
-
   DropDown(float x_, float y_, float w_, float h_) {
-    this.x = x_;
-    this.y = y_;
-    this.w = w_;
-    this.h = h_;
-
-    this.title = "";
-    this.name = "";
+    super(x_, y_, w_, h_);
+    this.TYPE = "DropDown";
     this.entries = new ArrayList<String>();
     this.selected = new ArrayList<Boolean>();
     this.entryHeight = h_;
@@ -47,15 +26,8 @@ class DropDown extends Interactable {
     this.multiSelect = false;
     this.isOpen = false;
     this.alwaysOpen = false;
-    this.drawOrder = 0;
-    this.rounding = 0;
-    this.fillColor = #fde68a;
-    this.textColor = color(0);
-    this.strokeColor = color(0);
     this.selectedColor = #ff8b53;
     this.hoverColor = #ffa57a;
-    this.strokeWeight = 1;
-    this.textSize = 30;
     this.isVertical = true;
     this.direction = "DOWN";
     this.selectAll = false;
@@ -78,7 +50,7 @@ class DropDown extends Interactable {
     fill(this.textColor);
 
     textSize(this.textSize);
-    String tempTitle = this.title;
+    String tempTitle = this.label;
     if (!this.isOpen && !this.alwaysOpen) {
       boolean moreThanOne = false;
       for (int i = 0; i < this.selected.size(); i++) {
@@ -202,20 +174,7 @@ class DropDown extends Interactable {
     this.isOpen = false;
   }
 
-  DropDown setTitle(String t_) {
-    this.title = t_;
-    return this;
-  }
 
-  DropDown setName(String n_) {
-    this.name = n_;
-    return this;
-  }
-
-  DropDown setTextSize(float t_) {
-    this.textSize = t_;
-    return this;
-  }
 
   DropDown setMultiSelect(boolean m_) {
     this.multiSelect = m_;
@@ -238,10 +197,6 @@ class DropDown extends Interactable {
     return this;
   }
 
-  DropDown setRounding(int r_) {
-    this.rounding = r_;
-    return this;
-  }
 
   DropDown setEntryHeight(float e_) {
     this.entryHeight = e_;
@@ -250,11 +205,6 @@ class DropDown extends Interactable {
 
   DropDown setEntryWidth(float e_) {
     this.entryWidth = e_;
-    return this;
-  }
-
-  DropDown setDrawOrder(int d_) {
-    this.drawOrder = d_;
     return this;
   }
 
@@ -311,14 +261,6 @@ class DropDown extends Interactable {
     return this;
   }
 
-  String getName() {
-    return this.name;
-  }
-
-  int getDrawOrder() {
-    return this.drawOrder;
-  }
-
   String getValue() {
     String val = "";
     for (int i = 0; i < this.selected.size(); i++) {
@@ -332,7 +274,14 @@ class DropDown extends Interactable {
     return val;
   }
 
-  String getType() {
-    return this.TYPE;
+  DropDown setMultipliers(float colMultiplier, float rowMultiplier) {
+    this.x *= colMultiplier;
+    this.w *= colMultiplier;
+    this.y *= rowMultiplier;
+    this.h *= rowMultiplier;
+    this.entryWidth *= colMultiplier;
+    this.entryHeight *= rowMultiplier;
+    this.textSize *= colMultiplier;
+    return this;
   }
 }

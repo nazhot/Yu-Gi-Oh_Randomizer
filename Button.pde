@@ -1,44 +1,17 @@
-class Button extends Interactable {
-  String TYPE = "Button";
-  float x;
-  float y;
-  float w;
-  float h;
-  float rounding;
-  String name;
-  String label;
-  int drawOrder;
+class Button extends Component<Button> {
   String shape; //circle, rectangle
   int shapeMode;
-  color fillColor;
   color hoverColor;
-  color strokeColor;
-  color textColor;
-  int strokeWeight;
-  float textSize;
   boolean asLabel;
 
   Button(float x_, float y_, float w_, float h_) {
-    this.x = x_;
-    this.y = y_;
-    this.w = w_;
-    this.h = h_;
-    this.rounding = 0;
-    this.name = "";
-    this.label = "";
-    this.drawOrder = 0;
+    super(x_, y_, w_, h_);
+    this.TYPE = "Button";
     this.shape = "rectangle";
     this.shapeMode = CORNER;
-    this.fillColor = color(220);
     this.hoverColor = color(140);
-    this.strokeColor = color(0);
-    this.textColor = color(0);
-    this.strokeWeight = 0;
-    this.textSize = 12;
     this.asLabel = false;
   }
-
-
 
   void display() {
     float textX;
@@ -120,88 +93,12 @@ class Button extends Interactable {
     return false;
   }
 
-  float getX() {
-    return this.x;
-  }
-
-  float getY() {
-    return this.y;
-  }
-
-  float getWidth() {
-    return this.w;
-  }
-
-  float getHeight() {
-    return this.h;
-  }
-
-  float getRounding() {
-    return this.rounding;
-  }
-
-  String getName() {
-    return this.name;
-  }
-
-  String getLabel() {
-    return this.label;
-  }
-
-  int getDrawOrder() {
-    return this.drawOrder;
-  }
-
   String getShape() {
     return this.shape;
   }
   
-  String getType(){
-    return this.TYPE;
-  }
-
-  Button setX(float x_) {
-    this.x = x_;
-    return this;
-  }
-
-  Button setY(float y_) {
-    this.y = y_;
-    return this;
-  }
-
-  Button setWidth(float w_) {
-    this.w = w_;
-    return this;
-  }
-
-  Button setHeight(float h_) {
-    this.h = h_;
-    return this;
-  }
-
-  Button setRounding(float r_) {
-    this.rounding = r_;
-    return this;
-  }
-
-  Button setName(String n_) {
-    this.name = n_;
-    return this;
-  }
-
-  Button setLabel(String l_) {
-    this.label = l_;
-    return this;
-  }
-
   Button setShape(String s_) {
     this.shape = s_;
-    return this;
-  }
-
-  Button setDrawOrder(int d_) {
-    this.drawOrder = d_;
     return this;
   }
 
@@ -210,28 +107,8 @@ class Button extends Interactable {
     return this;
   }
 
-  Button setFillColor(color f_) {
-    this.fillColor = f_;
-    return this;
-  }
-
   Button setHoverColor(color h_) {
     this.hoverColor = h_;
-    return this;
-  }
-
-  Button setStrokeColor(color s_) {
-    this.strokeColor = s_;
-    return this;
-  }
-
-  Button setStrokeWeight(int s_) {
-    this.strokeWeight = s_;
-    return this;
-  }
-
-  Button setTextSize(float t_) {
-    this.textSize = t_;
     return this;
   }
 
@@ -239,4 +116,5 @@ class Button extends Interactable {
     this.asLabel = a_;
     return this;
   }
+  
 }

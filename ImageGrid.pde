@@ -1,16 +1,6 @@
-class ImageGrid extends Interactable {
-  String TYPE = "ImageGrid";
-  float x;
-  float y;
-  float w;
-  float h;
-  //ArrayList<PImage> images;
+class ImageGrid extends Component<ImageGrid> {
   ArrayList<Card> cards;
-  //ArrayList<String> imageNames;
-  color backgroundColor;
-  color strokeColor;
   color cardHoverColor;
-  int strokeWeight;
   int cardHoverStrokeWeight;
   int numCols;
   float imageWidth;
@@ -21,15 +11,8 @@ class ImageGrid extends Interactable {
   float verticalGap;
   float widthHeightRatio;
   float totalGridHeight;
-  int drawOrder;
   int hoveredCardIndex;
-  float scrollBarX;
-  float scrollBarY;
-  float scrollBarW;
-  float scrollBarH;
-  float scrollBarOffset;
   PGraphics tempCanvas;
-  PImage currentCanvas;
   int currentScreen;
   int numCardsOnScreen;
   int numRows;
@@ -38,17 +21,10 @@ class ImageGrid extends Interactable {
 
 
   ImageGrid(float x_, float y_, float w_, float h_) {
-    this.x = x_;
-    this.y = y_;
-    this.w = w_;
-    this.h = h_;
-    //this.images = new ArrayList<PImage>();
+    super(x_, y_, w_, h_);
+    this.TYPE = "ImageGrid";
     this.cards = new ArrayList<Card>();
-    //this.imageNames = new ArrayList<String>();
-    this.backgroundColor = color(0);
-    this.strokeColor = color(255);
     this.cardHoverColor = color(71, 85, 214);
-    this.strokeWeight = 1;
     this.cardHoverStrokeWeight = 3;
     this.numCols = 1;
     this.horizontalMargin = 5;
@@ -56,19 +32,17 @@ class ImageGrid extends Interactable {
     this.verticalMargin = 5;
     this.verticalGap = 5;
     this.widthHeightRatio = 1;
-    this.drawOrder = 1;
     this.hoveredCardIndex = -1;
     this.refreshImageDimensions();
     this.currentScreen = 0;
     this.tempCanvas = null;
-    this.currentCanvas = null;
     this.allScreens = new ArrayList<PImage>();
   }
 
   void display() {
     rectMode(CORNER);
     this.hoveredCardIndex = this.mouseOverEntry();
-    fill(this.backgroundColor);
+    fill(this.fillColor);
     if (this.strokeWeight == 0) {
       noStroke();
     } else {
@@ -76,19 +50,9 @@ class ImageGrid extends Interactable {
       strokeWeight(this.strokeWeight);
     }
     rect(this.x, this.y, this.w, this.h);
-    //image(this.currentCanvas, this.x, this.y);
-    //image(this.currentCanvas, this.x, this.y);
     if (this.allScreens.size() > 0 ) {
       image(this.allScreens.get(this.currentScreen), this.x, this.y);
     }
-
-    //for (int i = 0; i < this.cards.size(); i++) {
-    //  float imageX = this.getImageX(i);
-    //  float imageY = this.getImageY(i);
-    //  if (this.cards.get(i).getImage() != null) {
-    //    image(this.cards.get(i).getImage(), imageX, imageY, this.imageWidth, this.imageHeight);
-    //  }
-    //}
 
     if (this.hoveredCardIndex > -1) {
       rectMode(CORNER);
@@ -105,7 +69,6 @@ class ImageGrid extends Interactable {
 
   int mouseOverEntry() {
     int hoveredOverEntry = -1;
-
     for (int i = 0; i < this.cards.size(); i++) {
       float imageX = this.getImageX(i);
       float imageY = this.getImageY(i);
@@ -113,63 +76,39 @@ class ImageGrid extends Interactable {
         return i;
       }
     }
-
     return hoveredOverEntry;
   }
 
   boolean mouseOver(boolean calledByScreen) {
     boolean mouseOver = (mouseX >= this.x && mouseX <= this.x + this.w && mouseY >= this.y && mouseY <= this.y + this.h);
-    //if (mouseOver) {
-    //  this.hoveredCardIndex = this.mouseOverEntry();
-    //}
     return mouseOver;
   }
-  void clearScreen(){
+  
+  void clearScreen() {
     this.currentScreen = 0;
+    for (int i = 0; i < this.allScreens.size(); i++) {
+      g.removeCache(this.allScreens.get(i));
+    }
     this.allScreens = new ArrayList<PImage>();
     this.cards = new ArrayList<Card>();
   }
-  void makeScreen() {
-    g.removeCache(this.currentCanvas);
-    g.removeCache(this.tempCanvas);
-    this.tempCanvas = createGraphics(int(this.x + this.w), int(this.y + this.h));
-    tempCanvas.beginDraw();
-    this.currentCanvas = createImage(int(this.x + this.w), int(this.y + this.h), RGB);
-    int startCard = this.currentScreen * this.numCardsOnScreen;
-    int endCard = min(this.cards.size(), (this.currentScreen + 1) * this.numCardsOnScreen);
-    for (int i = startCard; i < endCard; i++) {
-      //float topLeftX = ((i - startCard) % this.numCols) * (this.imageWidth + this.horizontalGap) + this.horizontalMargin ;
-      //float topLeftY = floor((i - startCard) / this.numCols) * (this.imageHeight + this.verticalGap) + this.verticalMargin;
-      float topLeftX = this.getImageX((i - startCard) % this.numCardsOnScreen) - this.x;
-      float topLeftY = this.getImageY((i - startCard) % this.numCardsOnScreen) - this.y;
-      tempCanvas.image(loadImage(imageFolder + this.cards.get(i).getId() + imageExtension), topLeftX, topLeftY, this.imageWidth, this.imageHeight);
-    }
-    tempCanvas.endDraw();
-    currentCanvas = tempCanvas.get();
-  }
-
+  
   void makeScreens() {
     for (int screen = 0; screen < this.numScreens; screen++) {
-      //g.removeCache(this.currentCanvas);
       g.removeCache(this.tempCanvas);
       this.tempCanvas = createGraphics(int(this.x + this.w), int(this.y + this.h));
       tempCanvas.beginDraw();
-      //this.currentCanvas = createImage(int(this.x + this.w), int(this.y + this.h), RGB);
       int startCard = screen * this.numCardsOnScreen;
       int endCard = min(this.cards.size(), (screen + 1) * this.numCardsOnScreen);
       for (int i = startCard; i < endCard; i++) {
-        //float topLeftX = ((i - startCard) % this.numCols) * (this.imageWidth + this.horizontalGap) + this.horizontalMargin ;
-        //float topLeftY = floor((i - startCard) / this.numCols) * (this.imageHeight + this.verticalGap) + this.verticalMargin;
         float topLeftX = this.getImageX((i - startCard) % this.numCardsOnScreen) - this.x;
         float topLeftY = this.getImageY((i - startCard) % this.numCardsOnScreen) - this.y;
         PImage tempImage = loadImage(imageFolder + this.cards.get(i).getId() + imageExtension);
         if (tempImage != null) {
-          //tempCanvas.image(loadImage("data/CardImages/" + this.cards.get(i).getId() + ".png"), topLeftX, topLeftY, this.imageWidth, this.imageHeight);
           tempCanvas.image(tempImage, topLeftX, topLeftY, this.imageWidth, this.imageHeight);
         }
       }
       tempCanvas.endDraw();
-      //currentCanvas = tempCanvas.get();
       this.allScreens.add(tempCanvas.get());
     }
   }
@@ -184,7 +123,6 @@ class ImageGrid extends Interactable {
       this.currentScreen++;
       this.currentScreen = min(this.numScreens - 1, this.currentScreen);
     }
-    //this.makeScreens();
   }
 
   void refreshImageDimensions() {
@@ -195,10 +133,6 @@ class ImageGrid extends Interactable {
     this.totalGridHeight = this.verticalMargin + this.imageHeight * (numRows) + this.verticalGap * (numRows - 1);
     this.numScreens = ceil(1.0 * this.cards.size() / this.numCardsOnScreen);
   }
-
-  //String getShownIndexes(){
-
-  //}
 
   float getImageX(int cardIndex) {
     int columnNumber = cardIndex % this.numCols;
@@ -217,14 +151,7 @@ class ImageGrid extends Interactable {
     return null;
   }
 
-  ImageGrid setName(String n_) {
-    this.name = n_;
-    return this;
-  }
-
-
   ImageGrid addCard(Card c_) {
-    //c_.addImage();
     this.cards.add(c_);
     this.refreshImageDimensions();
     return this;
@@ -266,23 +193,13 @@ class ImageGrid extends Interactable {
     return this;
   }
 
-  ImageGrid setStrokeColor(color s_) {
-    this.strokeColor = s_;
-    return this;
-  }
 
-  ImageGrid setBackgroundColor(color f_) {
-    this.backgroundColor = f_;
-    return this;
-  }
-
-  ImageGrid setStrokeWeight(int s_) {
-    this.strokeWeight = s_;
-    return this;
-  }
-
-  ImageGrid setDrawOrder(int d_) {
-    this.drawOrder = d_;
+  ImageGrid setMultipliers(float colMultiplier, float rowMultiplier) {
+    this.x *= colMultiplier;
+    this.w *= colMultiplier;
+    this.y *= rowMultiplier;
+    this.h *= rowMultiplier;
+    this.refreshImageDimensions();
     return this;
   }
 }

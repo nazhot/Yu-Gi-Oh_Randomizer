@@ -1,15 +1,7 @@
-class Slider extends Interactable {
-  String TYPE = "Slider";
-  String name;
-  String title;
+class Slider extends Component<Slider> {
   float min;
   float max;
-  float x;
-  float y;
-  float w;
-  float r;
   float slidePosition;
-  color textColor;
   color lineColor;
   color tickColor;
   color slideFillColor;
@@ -18,24 +10,19 @@ class Slider extends Interactable {
   float tickWeight;
   float slideStrokeWeight;
   boolean slideMoving;
-  float slideValue;
+  float value;
   String titlePosition; //"TOP", "LEFT", "RIGHT", "BOTTOM"
   boolean isDefinedJumps;
   float jumpAmount;
   int numJumps;
 
 
-  Slider(float x_, float y_, float w_, float r_) {
-    this.name = "";
-    this.title = "";
+  Slider(float x_, float y_, float w_, float h_) {
+    super(x_, y_, w_, h_);
+    this.TYPE = "Slider";
     this.min = 0;
     this.max = 1;
-    this.x = x_;
-    this.y = y_;
-    this.w = w_;
-    this.r = r_;
     this.slidePosition = x_;
-    this.textColor = #bc5a84;
     this.lineColor = #bc5a84;
     this.tickColor = #bc5a84;
     this.slideFillColor = #bc5a84;
@@ -44,7 +31,7 @@ class Slider extends Interactable {
     this.tickWeight = 2;
     this.slideStrokeWeight = 3;
     this.slideMoving = false;
-    this.slideValue = 0;
+    this.value = 0;
     this.titlePosition = "LEFT";
     this.isDefinedJumps = false;
     this.jumpAmount = 0;
@@ -55,9 +42,6 @@ class Slider extends Interactable {
     if (!mousePressed) {
       this.slideMoving = false;
     }
-    //if (this.mouseOver(false) && mousePressed) {
-    //  this.slideMoving = true;
-    //}
     ellipseMode(RADIUS);
     stroke(this.lineColor);
     strokeWeight(this.lineWeight);
@@ -65,56 +49,47 @@ class Slider extends Interactable {
     stroke(this.slideStrokeColor);
     strokeWeight(this.slideStrokeWeight);
     fill(this.slideFillColor);
-    ellipse(this.slidePosition, this.y, this.r, this.r);
+    ellipse(this.slidePosition, this.y, this.h, this.h);
     if (this.slideMoving) {
       this.slidePosition = constrain(mouseX, this.x, this.x + this.w);
     }
-    this.slideValue = map(this.slidePosition, this.x, this.x + this.w, this.min, this.max);
+    this.value = map(this.slidePosition, this.x, this.x + this.w, this.min, this.max);
     fill(this.textColor);
+    textSize(this.textSize);
     textAlign(CENTER, BOTTOM);
-    text(nf(this.slideValue, 0, 2), this.x + this.w / 2.0, this.y - this.r);
+    text(nf(this.value, 0, 2), this.x + this.w / 2.0, this.y - this.h);
     switch(this.titlePosition) {
     case "LEFT":
       textAlign(RIGHT, CENTER);
-      text(this.title, this.x - this.r, this.y - textAscent() * gTextScalar);
+      text(this.label, this.x - this.h, this.y - textAscent() * gTextScalar);
       break;
     case "RIGHT":
       textAlign(LEFT, CENTER);
-      text(this.title, this.x + this.w + this.r, this.y - textAscent() * gTextScalar);
+      text(this.label, this.x + this.w + this.h, this.y - textAscent() * gTextScalar);
       break;
     case "TOP":
       textAlign(CENTER, BOTTOM);
-      text(this.title, this.x + this.w / 2.0, this.y - this.r - textAscent() - textDescent());
+      text(this.label, this.x + this.w / 2.0, this.y - this.h - textAscent() - textDescent());
       break;
     case "BOTTOM":
       textAlign(CENTER, TOP);
-      text(this.title, this.x + this.w / 2.0, this.y + this.r);
+      text(this.label, this.x + this.w / 2.0, this.y + this.h);
       break;
     default:
       textAlign(RIGHT, CENTER);
-      text(this.title, this.x - this.r, this.y);
+      text(this.label, this.x - this.h, this.y);
       break;
     }
   }
 
   boolean mouseOver(boolean calledByScreen) {
-    boolean mouseOver = (dist(mouseX, mouseY, this.slidePosition, this.y) <= this.r);
+    boolean mouseOver = (dist(mouseX, mouseY, this.slidePosition, this.y) <= this.h);
     if (calledByScreen) {
       if (mouseOver) {
         this.slideMoving = true;
       }
     }
-    return (dist(mouseX, mouseY, this.slidePosition, this.y) <= this.r);
-  }
-
-  Slider setName(String n_) {
-    this.name = n_;
-    return this;
-  }
-
-  Slider setTitle(String t_) {
-    this.title = t_;
-    return this;
+    return (dist(mouseX, mouseY, this.slidePosition, this.y) <= this.h);
   }
 
   Slider setMin(float m_) {
@@ -137,23 +112,13 @@ class Slider extends Interactable {
     return this;
   }
 
-  Slider setDrawOrder(int d_) {
-    this.drawOrder = d_;
+  Slider setMultipliers(float colMultiplier, float rowMultiplier) {
+    this.x *= colMultiplier;
+    this.w *= colMultiplier;
+    this.y *= rowMultiplier;
+    this.h *= rowMultiplier;
+    this.slidePosition *= colMultiplier;
+    this.textSize *= colMultiplier;
     return this;
-  }
-
-  String getName() {
-    return this.name;
-  }
-  int getDrawOrder() {
-    return this.drawOrder;
-  }
-
-  String getValue() {
-    return str(this.slideValue);
-  }
-
-  String getType() {
-    return this.TYPE;
   }
 }

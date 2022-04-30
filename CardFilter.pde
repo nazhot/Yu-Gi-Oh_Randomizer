@@ -8,16 +8,18 @@ ArrayList<Deck> generateDecks() {
 ArrayList<Card> getFormatCards() {
   Screen currentScreen = controller.getCurrentScreen();
   ArrayList<Card> cardListForFormat = generateCardList(allCards, currentScreen.getInteractable("format").getValue());
-  println("First filter: " + cardListForFormat.size());
+  println("Format filter: " + cardListForFormat.size());
   cardListForFormat = trimCardListByStats(cardListForFormat,
     currentScreen.getInteractable("atkCompare").getValue(),
     currentScreen.getInteractable("atkValue").getValue(),
     currentScreen.getInteractable("defCompare").getValue(),
     currentScreen.getInteractable("defValue").getValue()
     );
-  println("Second filter: " + cardListForFormat.size());
-  cardListForFormat = trimCardListByRace(cardListForFormat, currentScreen.getInteractable("monsterType").getValue());
-  println("Third filer: " + cardListForFormat.size());
+  println("Stats filter: " + cardListForFormat.size());
+  cardListForFormat = trimCardListByRaceOrAttribute(cardListForFormat, currentScreen.getInteractable("monsterType").getValue(), "Race");
+  println("Race filter: " + cardListForFormat.size());
+  cardListForFormat = trimCardListByRaceOrAttribute(cardListForFormat, currentScreen.getInteractable("monsterAttribute").getValue(), "Attribute");
+  println("Attribute filer: " + cardListForFormat.size());
   return cardListForFormat;
 }
 
@@ -40,9 +42,7 @@ Deck makeDeck() {
   float multRitualCards = float(currentScreen.getInteractable("multRitual").getValue());
   float multFusionCards = float(currentScreen.getInteractable("multFusion").getValue());
   
-  
   int maxCards = maxTrapCards + maxSpellCards + maxNormalCards + maxEffectCards + maxFusionCards + maxRitualCards;
-  //int maxNumberOfCards =
   
   Deck deck = new Deck(maxCards);
   deck.setMultValues(multTrapCards, multSpellCards, multNormalCards, multEffectCards, multRitualCards, multFusionCards);
@@ -58,16 +58,7 @@ Deck makeDeck() {
   while (deck.addCards(cardListForFormat, banListJSON) && numTrys < 100) {
     numTrys++;
   }
-  //println("All cards: " + allCards.size());
-  //println("Format cards: " + cardListForFormat.size());
-  //for (Card card : cardListForFormat) {
-  //  //cardScreen.getInteractable("cards").addImage(loadImage("data/CardImages/" + card.getId() + ".png"));
-  //  imageTest.addCard(card);
-  //}
-  //imageTest.makeScreens();
-
-
-
+  
   return deck;
 }
 
@@ -88,12 +79,12 @@ ArrayList<Card> trimCardListByStats(ArrayList<Card> tempList, String defCompare,
   return cardList;
 }
 
-ArrayList<Card> trimCardListByRace(ArrayList<Card> tempList, String races) {
-  if (races.equals("")) return tempList;
-  String[] racesArray = races.split(",");
+ArrayList<Card> trimCardListByRaceOrAttribute(ArrayList<Card> tempList, String list, String compareWhat) {
+  if (list.equals("")) return tempList;
+  String[] array = list.split(",");
   ArrayList<Card> cardList = new ArrayList<Card>();
   for (Card card : tempList) {
-    if (card.compareRace(racesArray)) cardList.add(card);
+    if (card.compareRaceOrAttribute(array, compareWhat)) cardList.add(card);
   }
 
   return cardList;

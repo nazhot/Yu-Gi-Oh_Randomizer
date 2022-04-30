@@ -20,9 +20,6 @@ class Card {
   String treatedAs;
   ArrayList<String> formats;
 
-
-
-
   Card(JSONObject cardInfo) {
     this.name = cardInfo.getString("name");
     this.race = cardInfo.getString("race");
@@ -30,7 +27,7 @@ class Card {
     this.archetype = cardInfo.getString("archetype");
     this.id = cardInfo.getInt("id");
     this.type = cardInfo.getString("type");
-    this.type = cardInfo.getString("type");
+    this.attribute = cardInfo.isNull("attribute") ? "" : cardInfo.getString("attribute");
     this.atk = cardInfo.isNull("atk") ? -1 : cardInfo.getInt("atk");
     this.def = cardInfo.isNull("def") ? -1 : cardInfo.getInt("def");
     JSONObject misc = cardInfo.getJSONArray("misc_info").getJSONObject(0);
@@ -111,19 +108,19 @@ class Card {
   boolean getHasEffect(){
     return this.hasEffect;
   }
-  
-  boolean compareRace(String[] races){
-    if (races.length == 0) return false;
+    
+  boolean compareRaceOrAttribute(String[] list, String compareWhat){
+    if (list.length == 0) return false;
     if (this.type.equals("Spell Card") || this.type.equals("Trap Card")) return true;
-    for (String race : races){
-      if (race.equals(this.race)) return true;
+    String cardProperty = "";
+    if (compareWhat.equals("Race")) cardProperty = this.race;
+    else if (compareWhat.equals("Attribute")) cardProperty = this.attribute;
+    for (String listItem : list){
+      if (listItem.equals(cardProperty)) return true;
     }
     return false;
   }
-  
-  //void addImage(){
-  //  this.cardImage = loadImage("data/CardImages/" + this.id + ".png");
-  //}
+
   PImage getImage(){
     return this.cardImage;
   }

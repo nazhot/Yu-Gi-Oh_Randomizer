@@ -17,7 +17,7 @@ String[] monsterAttributes = {"DARK", "DIVINE", "EARTH", "FIRE", "LIGHT", "WATER
 ArrayList<String> formats;  //formats available, based on "formats" list attached to each card in allCardsJSON
 ArrayList<String> banLists; //ban lists available, based on files in the /data/BanLists folder
 
-String[] setCards = {"Set Cards 1", "Draw Cards", "Staples"}; //TODO: needs to be updated in V2 to actually do things, both pulling files and having it effect 
+String[] setCards = {"Set Cards 1", "Draw Cards", "Staples"}; //TODO: needs to be updated in V2 to actually do things, both pulling files and having it effect
 
 String[] comparisons = {"<", "<=", "=", ">=", ">"}; //all of the different comparisons that can be done to atk and def
 
@@ -39,42 +39,47 @@ int rowThreeCount = 6;
 int rowThreeY = 200;
 float rowThreeLabelPercent = 0.8;
 int drawOrder = 100;
-String imageFolder;
-String imageExtension;
 
+String imageFolder; //where the images are stored
+String imageExtension; //what the extension is for the images
+int gridRows; //421
+int gridCols; //421
 
 void setup() {
-  size(1050, 700);
+  size(1200, 700);
 
   textFont(createFont("Yu-Gi-Oh! Matrix Small Caps 2", 30)); // 8
+
   imageFolder = dataPath("") + "/CardImagesJPG/";
   imageExtension = ".jpg";
-  //textFont(createFont("FreeMono", 30));
+
   allCardsJSON = loadJSONArray("data/allCards.json");
   banLists = new ArrayList<String>();
-  loadBanLists();
-
   formats = new ArrayList<String>();
   allCards = new ArrayList<Card>();
-  ArrayList<String> cardTypes = new ArrayList<String>();
-  for (int i = 0; i < allCardsJSON.size(); i++) {
-    JSONObject object = allCardsJSON.getJSONObject(i);
-    allCards.add(new Card(object));
-    if (!cardTypes.contains(allCards.get(allCards.size() - 1).getType())) {
-      cardTypes.add(allCards.get(allCards.size() - 1).getType());
-    }
-    for (String format : allCards.get(allCards.size() - 1).getFormats()) {
-      if (!formats.contains(format)) {
-        formats.add(format);
-      }
-    }
-  }
-  //for (String s : cardTypes) {
-  //  println(s);
-  //}
   controller = new Controller();
   mainScreen = new Screen();
+  cardScreen = new Screen();
   viewAllCardsScreen = new Screen();
+
+
+  mainScreen.setName("main");
+  cardScreen.setName("card");
+
+
+
+  loadBanLists();
+
+  for (int i = 0; i < allCardsJSON.size(); i++) { //make every Card object, and add it to the allCards arrayList, get the formats
+    JSONObject object = allCardsJSON.getJSONObject(i);
+    Card newCard = new Card(object);
+    allCards.add(newCard);
+    for (String format : newCard.getFormats()) {
+      if (!formats.contains(format)) formats.add(format);
+    }
+  }
+
+  //Every single component added to all of the screens, working on making this into imports from JSON files instead, to make editing/readability quite a bit easier
 
   mainScreen.addComponent(new Button(width - 120, height - 55, 115, 50)
     .setDrawOrder(drawOrder--)
@@ -100,9 +105,10 @@ void setup() {
 
   float rowOneWidth = (width - horizontalMargin * 2 - (rowOneCount - 1) * horizontalGap) / rowOneCount;
   int buttonColumn = 0;
+  println(rowOneWidth);
 
   mainScreen.addComponent(new DropDown(horizontalMargin + (rowOneWidth + horizontalGap) * buttonColumn, rowOneY, rowOneWidth, rowOneHeight)
-    .setTitle("Monster Type(s): ")
+    .setLabel("Monster Type(s): ")
     .setName("monsterType")
     .setDrawOrder(drawOrder--)
     .setRounding(5)
@@ -118,7 +124,7 @@ void setup() {
 
   buttonColumn++;
   mainScreen.addComponent(new DropDown(horizontalMargin + (rowOneWidth + horizontalGap) * buttonColumn, rowOneY, rowOneWidth, rowOneHeight)
-    .setTitle("Monster Attribute(s): ")
+    .setLabel("Monster Attribute(s): ")
     .setName("monsterAttribute")
     .setDrawOrder(drawOrder--)
     .setRounding(5)
@@ -133,7 +139,7 @@ void setup() {
 
   buttonColumn++;
   mainScreen.addComponent(new DropDown(horizontalMargin + (rowOneWidth + horizontalGap) * buttonColumn, rowOneY, rowOneWidth, rowOneHeight)
-    .setTitle("Format: ")
+    .setLabel("Format: ")
     .setName("format")
     .setDrawOrder(drawOrder--)
     .setRounding(5)
@@ -146,7 +152,7 @@ void setup() {
 
   buttonColumn++;
   mainScreen.addComponent(new DropDown(horizontalMargin + (rowOneWidth + horizontalGap) * buttonColumn, rowOneY, rowOneWidth, rowOneHeight)
-    .setTitle("Ban List: ")
+    .setLabel("Ban List: ")
     .setName("banList")
     .setDrawOrder(drawOrder--)
     .setRounding(5)
@@ -159,7 +165,7 @@ void setup() {
 
   buttonColumn++;
   mainScreen.addComponent(new DropDown(horizontalMargin + (rowOneWidth + horizontalGap) * buttonColumn, rowOneY, rowOneWidth, rowOneHeight)
-    .setTitle("Set Cards: ")
+    .setLabel("Set Cards: ")
     .setName("setCards")
     .setDrawOrder(drawOrder--)
     .setRounding(5)
@@ -175,66 +181,73 @@ void setup() {
 
   mainScreen.addComponent(new Slider(rowTwoHorizontalMargin + buttonColumn * (rowTwoWidth + rowTwoHorizontalGap), rowTwoY, rowTwoWidth, sliderRadius)
     .setName("multTrap")
-    .setTitle("Mult. Trap")
+    .setLabel("Mult. Trap")
     .setTitlePosition("TOP")
     .setDrawOrder(drawOrder--)
     .setLineColor(#fde68a)
+    .setTextSize(25)
     );
 
   buttonColumn++;
 
   mainScreen.addComponent(new Slider(rowTwoHorizontalMargin + buttonColumn * (rowTwoWidth + rowTwoHorizontalGap), rowTwoY, rowTwoWidth, sliderRadius)
     .setName("multSpell")
-    .setTitle("Mult. Spell")
+    .setLabel("Mult. Spell")
     .setTitlePosition("TOP")
     .setDrawOrder(drawOrder--)
     .setLineColor(#fde68a)
+    .setTextSize(25)
     );
 
   buttonColumn++;
 
   mainScreen.addComponent(new Slider(rowTwoHorizontalMargin + buttonColumn * (rowTwoWidth + rowTwoHorizontalGap), rowTwoY, rowTwoWidth, sliderRadius)
     .setName("multNormal")
-    .setTitle("Mult. Normal")
+    .setLabel("Mult. Normal")
     .setTitlePosition("TOP")
     .setDrawOrder(drawOrder--)
     .setLineColor(#fde68a)
+    .setTextSize(25)
     );
 
   buttonColumn++;
 
   mainScreen.addComponent(new Slider(rowTwoHorizontalMargin + buttonColumn * (rowTwoWidth + rowTwoHorizontalGap), rowTwoY, rowTwoWidth, sliderRadius)
     .setName("multEffect")
-    .setTitle("Mult. Effect")
+    .setLabel("Mult. Effect")
     .setTitlePosition("TOP")
     .setDrawOrder(drawOrder--)
     .setLineColor(#fde68a)
+    .setTextSize(25)
     );
 
   buttonColumn++;
 
   mainScreen.addComponent(new Slider(rowTwoHorizontalMargin + buttonColumn * (rowTwoWidth + rowTwoHorizontalGap), rowTwoY, rowTwoWidth, sliderRadius)
     .setName("multFusion")
-    .setTitle("Mult. Fusion")
+    .setLabel("Mult. Fusion")
     .setTitlePosition("TOP")
     .setDrawOrder(drawOrder--)
     .setLineColor(#fde68a)
+    .setTextSize(25)
     );
 
   buttonColumn++;
 
   mainScreen.addComponent(new Slider(rowTwoHorizontalMargin + buttonColumn * (rowTwoWidth + rowTwoHorizontalGap), rowTwoY, rowTwoWidth, sliderRadius)
     .setName("multRitual")
-    .setTitle("Mult. Ritual")
+    .setLabel("Mult. Ritual")
     .setTitlePosition("TOP")
     .setDrawOrder(drawOrder--)
     .setLineColor(#fde68a)
+    .setTextSize(25)
     );
 
   float rowThreeWidth = (width - horizontalMargin * 2 - (rowThreeCount - 1) * horizontalGap) / rowThreeCount;
   float labelWidth = rowThreeWidth * rowThreeLabelPercent;
   float textBoxWidth = rowThreeWidth - labelWidth;
   buttonColumn = 0;
+
   mainScreen.addComponent(new Button(horizontalMargin + buttonColumn * (rowThreeWidth + horizontalGap), rowThreeY, labelWidth, 30)
     .setName("trapCount")
     .setLabel("Trap Count:")
@@ -247,7 +260,7 @@ void setup() {
 
   mainScreen.addComponent(new TextBox(horizontalMargin + labelWidth + buttonColumn * (rowThreeWidth + horizontalGap), rowThreeY, textBoxWidth, 30)
     .setName("trapCountValue")
-    .setTextField("")
+    .setValue("")
     .setRounding(5)
     .setFillColor(#fde68a)
     .setHoverColor(#ff8b53)
@@ -271,7 +284,7 @@ void setup() {
 
   mainScreen.addComponent(new TextBox(horizontalMargin + labelWidth + buttonColumn * (rowThreeWidth + horizontalGap), rowThreeY, textBoxWidth, 30)
     .setName("spellCountValue")
-    .setTextField("")
+    .setValue("")
     .setRounding(5)
     .setFillColor(#fde68a)
     .setHoverColor(#ff8b53)
@@ -295,7 +308,7 @@ void setup() {
 
   mainScreen.addComponent(new TextBox(horizontalMargin + labelWidth + buttonColumn * (rowThreeWidth + horizontalGap), rowThreeY, textBoxWidth, 30)
     .setName("normalCountValue")
-    .setTextField("")
+    .setValue("")
     .setRounding(5)
     .setFillColor(#fde68a)
     .setHoverColor(#ff8b53)
@@ -319,7 +332,7 @@ void setup() {
 
   mainScreen.addComponent(new TextBox(horizontalMargin + labelWidth + buttonColumn * (rowThreeWidth + horizontalGap), rowThreeY, textBoxWidth, 30)
     .setName("effectCountValue")
-    .setTextField("")
+    .setValue("")
     .setRounding(5)
     .setFillColor(#fde68a)
     .setHoverColor(#ff8b53)
@@ -343,7 +356,7 @@ void setup() {
 
   mainScreen.addComponent(new TextBox(horizontalMargin + labelWidth + buttonColumn * (rowThreeWidth + horizontalGap), rowThreeY, textBoxWidth, 30)
     .setName("fusionCountValue")
-    .setTextField("")
+    .setValue("")
     .setRounding(5)
     .setFillColor(#fde68a)
     .setHoverColor(#ff8b53)
@@ -367,7 +380,7 @@ void setup() {
 
   mainScreen.addComponent(new TextBox(horizontalMargin + labelWidth + buttonColumn * (rowThreeWidth + horizontalGap), rowThreeY, textBoxWidth, 30)
     .setName("ritualCountValue")
-    .setTextField("")
+    .setValue("")
     .setRounding(5)
     .setFillColor(#fde68a)
     .setHoverColor(#ff8b53)
@@ -390,7 +403,6 @@ void setup() {
 
   mainScreen.addComponent(new DropDown(75, 280, 70, 30)
     .setName("atkCompare")
-    .setTitle("")
     .addEntries(comparisons)
     .setRounding(5)
     .setDrawOrder(drawOrder--)
@@ -407,7 +419,7 @@ void setup() {
     .setFillColor(#fde68a)
     .setHoverColor(#ff8b53)
     .setRounding(5)
-    .setTextField("1000")
+    .setValue("1000")
     .setTextSize(30)
     .setHorizontalOrientation(CENTER)
     );
@@ -424,7 +436,6 @@ void setup() {
 
   mainScreen.addComponent(new DropDown(340, 280, 70, 30)
     .setName("defCompare")
-    .setTitle("")
     .addEntries(comparisons)
     .setRounding(5)
     .setDrawOrder(drawOrder--)
@@ -441,17 +452,14 @@ void setup() {
     .setFillColor(#fde68a)
     .setHoverColor(#ff8b53)
     .setRounding(5)
-    .setTextField("1000")
+    .setValue("1000")
     .setTextSize(30)
     .setHorizontalOrientation(CENTER)
     );
 
 
 
-  mainScreen.setName("main");
 
-
-  cardScreen = new Screen();
 
   cardScreen.addComponent(new Button(5, 5, 15, 15)
     .setDrawOrder(30)
@@ -462,20 +470,21 @@ void setup() {
     .setFillColor(#fde68a)
     .setHoverColor(#ff8b53)
     );
-  cardScreen.setName("card");
+
 
   cardScreen.addComponent(new ImageGrid(22, 0, width * 0.80, height - 1)
-  .setDrawOrder(20)
-  .setNumCols(10)
-  .setHorizontalGap(0)
-  .setName("cards")
-  );
+    .setDrawOrder(20)
+    .setNumCols(10)
+    .setHorizontalGap(0)
+    .setName("cards")
+    );
 
   viewAllCardsScreen.addComponent(new ImageGrid(22, 0, width * 0.80, height - 1)
     .setDrawOrder(20)
     .setNumCols(10)
     .setHorizontalGap(0)
-    .setName("cards"));
+    .setName("cards")
+    );
   viewAllCardsScreen.addComponent(new Button(5, 5, 15, 15)
     .setDrawOrder(30)
     .setName("Back")
@@ -486,8 +495,31 @@ void setup() {
     .setHoverColor(#ff8b53)
     );
 
-  viewAllCardsScreen.setName("viewAllCards");
+  viewAllCardsScreen.addComponent(new Image(22 + width * 0.80, 0, width - (22 + width * 0.80), (width - (22 + width * 0.80)) * 1.5)
+    .setDrawOrder(40)
+    .setName("hoveredCard")
+    );
 
+  cardScreen.addComponent(new Image(22 + width * 0.80, 0, width - (22 + width * 0.80), (width - (22 + width * 0.80)) * 1.5)
+    .setDrawOrder(40)
+    .setName("hoveredCard")
+    );
+
+  viewAllCardsScreen.addComponent(new Text(24 + width * 0.80, (width - (22 + width * 0.80)) * 1.5, width - (26 + width * 0.80), height - (width - (22 + width * 0.80)) * 1.5)
+    .setDrawOrder(50)
+    .setName("cardDescription")
+    .setTextColor(color(255))
+    .setTextSize(16)
+    );
+
+  cardScreen.addComponent(new Text(24 + width * 0.80, (width - (22 + width * 0.80)) * 1.5, width - (26 + width * 0.80), height - (width - (22 + width * 0.80)) * 1.5)
+    .setDrawOrder(50)
+    .setName("cardDescription")
+    .setTextColor(color(255))
+    .setTextSize(17)
+    );
+
+  viewAllCardsScreen.setName("viewAllCards");
   controller.addScreen(mainScreen);
   controller.addScreen(cardScreen);
   controller.addScreen(viewAllCardsScreen);
@@ -499,25 +531,21 @@ void draw() {
   background(35);
   controller.display();
   String screenName = controller.getCurrentScreenName();
-  if (screenName.equals("card") || screenName.equals("viewAllCards")) {
+  if (screenName.equals("card") || screenName.equals("viewAllCards")) { //check if the screen is either of the two that shows cards, and if so set the image/description for the side pane
     ImageGrid tempGrid = (ImageGrid) controller.getCurrentScreen().getInteractable("cards");
     Card largeCard = tempGrid.getHoveredCard();
     if (largeCard != null) {
-      PImage largeCardImage = loadImage(imageFolder + largeCard.getId() + imageExtension);
-      if (largeCardImage != null) {
-        image(largeCardImage, 22 + width * 0.80, 0, width - (22 + width * 0.80), (width - (22 + width * 0.80)) * 1.5);
-        textAlign(LEFT, TOP);
-        fill(255);
-        textSize(20);
-        text(largeCard.getDescription(), 24 + width * 0.80, (width - (22 + width * 0.80)) * 1.5, width - (26 + width * 0.80), height - (width - (22 + width * 0.80)) * 1.5);
-      }
+      Image tempImage = (Image) controller.getCurrentScreen().getInteractable("hoveredCard");
+      tempImage.setImageFileName(imageFolder + largeCard.getId() + imageExtension);
+      Text tempText = (Text) controller.getCurrentScreen().getInteractable("cardDescription");
+      tempText.setLabel(largeCard.getDescription());
     }
   }
 }
 
 
 void loadBanLists() {
-  File banListFolder = new File(dataPath("") + "/BanLists");
+  File banListFolder = new File(dataPath("") + "/BanLists"); //get the names of the files that are in the ban list folder, which are used to both load the ban list, and also to set the name of the banlist
   for (String banListFile : banListFolder.list()) {
     banLists.add(banListFile);
   }
