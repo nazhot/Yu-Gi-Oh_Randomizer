@@ -121,9 +121,7 @@ class Deck {
     ydkFile.println("!side");
     ydkFile.println("!extra");
     ydkFile.flush();
-    ydkFile.close();
-    
-    
+    ydkFile.close();   
   }
   
 }

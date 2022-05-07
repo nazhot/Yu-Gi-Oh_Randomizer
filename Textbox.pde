@@ -88,5 +88,9 @@ class TextBox extends Component<TextBox> {
     this.horizontalOrientation = h_;
     return this;
   }
+  
+  void reset(){
+    this.value = "";
+  }
 
 }

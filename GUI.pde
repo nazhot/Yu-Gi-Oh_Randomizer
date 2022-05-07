@@ -92,6 +92,18 @@ void setup() {
     .setStrokeWeight(1)
     );
 
+  mainScreen.addComponent(new Button(width / 2.0, height - 30, 115, 50)
+    .setDrawOrder(drawOrder--)
+    .setName("clearAll")
+    .setShapeMode(CENTER)
+    .setLabel("Clear All")
+    .setTextSize(30)
+    .setRounding(10)
+    .setFillColor(#fde68a)
+    .setHoverColor(#ff8b53)
+    .setStrokeWeight(1)
+    );
+
   mainScreen.addComponent(new Button(5, height - 55, 150, 50)
     .setDrawOrder(drawOrder--)
     .setName("viewAllCards")
@@ -119,7 +131,7 @@ void setup() {
     .setMultiSelect(true)
     .addSelectAll()
     .setEntryHorizontalOrientation(CENTER)
-    .setEntryVsTitleOrientationPercent(0.5)
+    .setEntryVsTitleOrientationPercent(0.0)
     );
 
   buttonColumn++;
@@ -186,6 +198,7 @@ void setup() {
     .setDrawOrder(drawOrder--)
     .setLineColor(#fde68a)
     .setTextSize(25)
+    .setTextColor(#bc5a84)
     );
 
   buttonColumn++;
@@ -197,6 +210,7 @@ void setup() {
     .setDrawOrder(drawOrder--)
     .setLineColor(#fde68a)
     .setTextSize(25)
+    .setTextColor(#bc5a84)
     );
 
   buttonColumn++;
@@ -208,6 +222,7 @@ void setup() {
     .setDrawOrder(drawOrder--)
     .setLineColor(#fde68a)
     .setTextSize(25)
+    .setTextColor(#bc5a84)
     );
 
   buttonColumn++;
@@ -219,6 +234,7 @@ void setup() {
     .setDrawOrder(drawOrder--)
     .setLineColor(#fde68a)
     .setTextSize(25)
+    .setTextColor(#bc5a84)
     );
 
   buttonColumn++;
@@ -230,6 +246,7 @@ void setup() {
     .setDrawOrder(drawOrder--)
     .setLineColor(#fde68a)
     .setTextSize(25)
+    .setTextColor(#bc5a84)
     );
 
   buttonColumn++;
@@ -241,6 +258,7 @@ void setup() {
     .setDrawOrder(drawOrder--)
     .setLineColor(#fde68a)
     .setTextSize(25)
+    .setTextColor(#bc5a84)
     );
 
   float rowThreeWidth = (width - horizontalMargin * 2 - (rowThreeCount - 1) * horizontalGap) / rowThreeCount;
@@ -477,6 +495,7 @@ void setup() {
     .setNumCols(10)
     .setHorizontalGap(0)
     .setName("cards")
+    .setFillColor(0)
     );
 
   viewAllCardsScreen.addComponent(new ImageGrid(22, 0, width * 0.80, height - 1)
@@ -484,6 +503,7 @@ void setup() {
     .setNumCols(10)
     .setHorizontalGap(0)
     .setName("cards")
+    .setFillColor(0)
     );
   viewAllCardsScreen.addComponent(new Button(5, 5, 15, 15)
     .setDrawOrder(30)
@@ -509,7 +529,7 @@ void setup() {
     .setDrawOrder(50)
     .setName("cardDescription")
     .setTextColor(color(255))
-    .setTextSize(16)
+    .setTextSize(17)
     );
 
   cardScreen.addComponent(new Text(24 + width * 0.80, (width - (22 + width * 0.80)) * 1.5, width - (26 + width * 0.80), height - (width - (22 + width * 0.80)) * 1.5)
@@ -586,6 +606,8 @@ void mousePressed() {
       }
       gridTemp.makeScreens();
       controller.setCurrentScreen("viewAllCards");
+    } else if (test.equals("main:Button:clearAll")){
+      controller.getCurrentScreen().reset();
     }
   }
 }

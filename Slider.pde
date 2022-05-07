@@ -10,7 +10,6 @@ class Slider extends Component<Slider> {
   float tickWeight;
   float slideStrokeWeight;
   boolean slideMoving;
-  float value;
   String titlePosition; //"TOP", "LEFT", "RIGHT", "BOTTOM"
   boolean isDefinedJumps;
   float jumpAmount;
@@ -31,7 +30,6 @@ class Slider extends Component<Slider> {
     this.tickWeight = 2;
     this.slideStrokeWeight = 3;
     this.slideMoving = false;
-    this.value = 0;
     this.titlePosition = "LEFT";
     this.isDefinedJumps = false;
     this.jumpAmount = 0;
@@ -53,11 +51,11 @@ class Slider extends Component<Slider> {
     if (this.slideMoving) {
       this.slidePosition = constrain(mouseX, this.x, this.x + this.w);
     }
-    this.value = map(this.slidePosition, this.x, this.x + this.w, this.min, this.max);
+    this.value = str(map(this.slidePosition, this.x, this.x + this.w, this.min, this.max));
     fill(this.textColor);
     textSize(this.textSize);
     textAlign(CENTER, BOTTOM);
-    text(nf(this.value, 0, 2), this.x + this.w / 2.0, this.y - this.h);
+    text(nf(float(this.value), 0, 2), this.x + this.w / 2.0, this.y - this.h);
     switch(this.titlePosition) {
     case "LEFT":
       textAlign(RIGHT, CENTER);
@@ -111,6 +109,11 @@ class Slider extends Component<Slider> {
     this.lineColor = l_;
     return this;
   }
+  
+  Slider setTextColor(color t_){
+    this.textColor = t_;
+    return this;
+  }
 
   Slider setMultipliers(float colMultiplier, float rowMultiplier) {
     this.x *= colMultiplier;
@@ -121,4 +124,9 @@ class Slider extends Component<Slider> {
     this.textSize *= colMultiplier;
     return this;
   }
+  
+  void reset(){
+    this.slidePosition = this.x;
+  }
+  
 }

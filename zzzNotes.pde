@@ -10,29 +10,4 @@
  //makeFormatFile(dataPath("") + "/GXCheck", "GX");
  //compareFiles(dataPath("") + "/GX", dataPath("") + "/GXCheck");
  
- 
- Traits shared by Components:
- String TYPE
- float  x
- float  y
- float  w
- float  h
- String name
- String label
- String value
- int    drawOrder
- color  fillColor
- float  fillAlphaValue
- color  strokeColor
- float  strokeAlphaValue
- color  textColor
- float  textAlphaValue
- int    strokeWeight
- float  rounding
- float  textSize
- 
- 
- 
- 
- 
  */
