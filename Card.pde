@@ -53,8 +53,8 @@ class Card {
   }
 
   boolean compareStat(String statName, String comparison, String statValue) {
-    if (comparison.equals("") || statValue.equals("")) return true;
-    int stat;
+    if (comparison.equals("") || statValue.equals("")) return true; //currently blank just means all is allowed
+    int stat = 0;
     switch(statName) {
     case "atk":
       stat = this.atk;
@@ -62,10 +62,8 @@ class Card {
     case "def":
       stat = this.def;
       break;
-    default:
-      stat = 0;
     }
-    if (stat == -1) return true;
+    if (stat == -1) return true; //-1 means that the card does not have a stat value (trap/spell cards)
     switch(comparison){
       case ">":
         return stat > int(statValue);

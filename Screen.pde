@@ -82,6 +82,24 @@ class Screen {
     if (!isAdded) this.components.add(c_);
     println("Added " + c_.getName() + " with no issue");
   }
+  
+  void removeComponent(String c_){
+    for (Component c : this.components){
+      if (c.getName().equals(c_)){
+        this.components.remove(c);
+        break;
+      }
+    }
+  }
+  
+  void removeComponents(String c_){
+    Iterator<Component> allComponents = this.components.iterator();
+    while(allComponents.hasNext()){
+      if (allComponents.next().getName().contains(c_)){
+        allComponents.remove();
+      }
+    }
+  }
 
   Screen setName(String n_) {
     this.name = n_;

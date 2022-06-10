@@ -45,6 +45,8 @@ String imageExtension; //what the extension is for the images
 int gridRows; //421
 int gridCols; //421
 
+ArrayList<Deck> randomDecks;
+
 void setup() {
   size(1200, 700);
 
@@ -57,10 +59,12 @@ void setup() {
   banLists = new ArrayList<String>();
   formats = new ArrayList<String>();
   allCards = new ArrayList<Card>();
+  randomDecks = new ArrayList<Deck>();
   controller = new Controller();
   mainScreen = new Screen();
   cardScreen = new Screen();
   viewAllCardsScreen = new Screen();
+
 
 
   mainScreen.setName("main");
@@ -427,7 +431,7 @@ void setup() {
     .setTitleHorizontalOrientation(CENTER)
     .setEntryHorizontalOrientation(CENTER)
     .setTextSize(35)
-    .setTitleStroke(false)
+    .setTitleStroke(true)
     );
 
   mainScreen.addComponent(new TextBox(145, 280, 120, 30)
@@ -460,7 +464,7 @@ void setup() {
     .setTitleHorizontalOrientation(CENTER)
     .setEntryHorizontalOrientation(CENTER)
     .setTextSize(35)
-    .setTitleStroke(false)
+    .setTitleStroke(true)
     );
 
   mainScreen.addComponent(new TextBox(410, 280, 120, 30)
@@ -475,7 +479,28 @@ void setup() {
     .setHorizontalOrientation(CENTER)
     );
 
+  mainScreen.addComponent(new Button(535, 280, 120, 30)
+    .setName("numDecks")
+    .setLabel("Num. Decks:")
+    .setRounding(5)
+    .setDrawOrder(drawOrder--)
+    .setFillColor(#fde68a)
+    .setAsLabel(true)
+    .setTextSize(25)
+    );
 
+  mainScreen.addComponent(new TextBox(655, 280, 40, 30)
+    .setName("numDecksValue")
+    .setRounding(5)
+    .setDrawOrder(drawOrder--)
+    .setFillColor(#fde68a)
+    .setHoverColor(#ff8b53)
+    .setRounding(5)
+    .setValue("1")
+    .setTextSize(30)
+    .setHorizontalOrientation(CENTER)
+
+    );
 
 
 
@@ -490,18 +515,14 @@ void setup() {
     );
 
 
-  cardScreen.addComponent(new ImageGrid(22, 0, width * 0.80, height - 1)
+  cardScreen.addComponent(new ImageGridCollection(22, 0, width * 0.80, height - 1)
     .setDrawOrder(20)
-    .setNumCols(10)
-    .setHorizontalGap(0)
     .setName("cards")
     .setFillColor(0)
     );
 
-  viewAllCardsScreen.addComponent(new ImageGrid(22, 0, width * 0.80, height - 1)
+  viewAllCardsScreen.addComponent(new ImageGridCollection(22, 0, width * 0.80, height - 1)
     .setDrawOrder(20)
-    .setNumCols(10)
-    .setHorizontalGap(0)
     .setName("cards")
     .setFillColor(0)
     );
@@ -576,51 +597,68 @@ void mousePressed() {
   String test = controller.checkClick();
   if (test.length() > 0) {
     println(test);
-    if (test.equals("main:Button:Randomize")) {
-      //controller.getCurrentScreen().reset();
+    if (test.equals("main:Button:Randomize")) { //MAKE DECKS SETUP
       ArrayList<String> randomValues = controller.getValues();
+      Screen cardScreen = controller.getScreen("card");
       for (String value : randomValues) {
         println(value);
       }
-      ImageGrid gridTemp = (ImageGrid) controller.getScreen("card").getInteractable("cards");
+      ImageGridCollection gridTemp = (ImageGridCollection) cardScreen.getInteractable("cards");
+      cardScreen.removeComponents("deck");
       gridTemp.clearScreen();
-      Deck deck = makeDeck();
-      ArrayList<Card> validCards = deck.getCards();
-      deck.makeYDK("tester");
+      gridTemp.setIndex(0);
+      randomDecks.clear();
+      int numDecks = 1;
+      try {
+        numDecks = Integer.parseInt(controller.getCurrentScreen().getInteractable("numDecksValue").getValue());
+      } catch(NumberFormatException e){
+        println("Error with number of decks input: defaulting to 1");
+      }
+      ArrayList<Card> validCards = new ArrayList<Card>();
+      for (int i = 0; i < numDecks; i++){
+        Deck deck = makeDeck();
+        randomDecks.add(deck);
+        validCards.addAll(deck.getCards());
+        deck.makeYDK("random" + str(i + 1));
+        cardScreen.addComponent(new Button(0, 40 + i * 22, 20, 20)
+        .setLabel(str(i + 1))
+        .setName("deck" + str(i))
+        );
+      }
       for (Card card : validCards) {
         gridTemp.addCard(card);
       }
-      gridTemp.makeScreens();
+      String banListName = controller.getCurrentScreen().getInteractable("banList").getValue();
+      JSONObject banListJSON = loadBanList(banListName);
+      gridTemp.makeScreens(banListJSON);
       controller.setCurrentScreen("card");
     } else if (test.equals("card:Button:Back")) {
       controller.setCurrentScreen("main");
     } else if (test.equals("viewAllCards:Button:Back")) {
       controller.setCurrentScreen("main");
-    } else if (test.equals("main:Button:viewAllCards")) {
-      ImageGrid gridTemp = (ImageGrid) controller.getScreen("viewAllCards").getInteractable("cards");
+    } else if (test.equals("main:Button:viewAllCards")) { //VIEW ALL CARDS SETUP
+      ImageGridCollection gridTemp = (ImageGridCollection) controller.getScreen("viewAllCards").getInteractable("cards");
       gridTemp.clearScreen();
+      gridTemp.setIndex(0);
       ArrayList<Card> formatCards = getFormatCards();
       println(formatCards.size());
       for (Card card : formatCards) {
         gridTemp.addCard(card);
       }
-      gridTemp.makeScreens();
+      String banListName = controller.getCurrentScreen().getInteractable("banList").getValue();
+      JSONObject banListJSON = loadBanList(banListName);
+      gridTemp.makeScreens(banListJSON);
       controller.setCurrentScreen("viewAllCards");
-    } else if (test.equals("main:Button:clearAll")){
+    } else if (test.equals("main:Button:clearAll")) { //CLEAR ALL
       controller.getCurrentScreen().reset();
     }
   }
 }
 
 void keyPressed() {
-  if (controller.getCurrentScreenName().equals("card")) {
+  if (controller.getCurrentScreenName().equals("card") || controller.getCurrentScreenName().equals("viewAllCards")) {
     if (key == CODED) {
-      ImageGrid tempGrid = (ImageGrid) controller.getCurrentScreen().getInteractable("cards");
-      tempGrid.incrementScreen(keyCode);
-    }
-  } else if (controller.getCurrentScreenName().equals("viewAllCards")) {
-    if (key == CODED) {
-      ImageGrid tempGrid = (ImageGrid) controller.getCurrentScreen().getInteractable("cards");
+      ImageGridCollection tempGrid = (ImageGridCollection) controller.getCurrentScreen().getInteractable("cards");
       tempGrid.incrementScreen(keyCode);
     }
   }

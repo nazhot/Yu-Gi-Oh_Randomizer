@@ -83,7 +83,7 @@ class ImageGrid extends Component<ImageGrid> {
     boolean mouseOver = (mouseX >= this.x && mouseX <= this.x + this.w && mouseY >= this.y && mouseY <= this.y + this.h);
     return mouseOver;
   }
-  
+
   void clearScreen() {
     this.currentScreen = 0;
     for (int i = 0; i < this.allScreens.size(); i++) {
@@ -92,20 +92,35 @@ class ImageGrid extends Component<ImageGrid> {
     this.allScreens = new ArrayList<PImage>();
     this.cards = new ArrayList<Card>();
   }
-  
-  void makeScreens() {
+
+  void makeScreens(JSONObject banlist) {
     for (int screen = 0; screen < this.numScreens; screen++) {
       g.removeCache(this.tempCanvas);
       this.tempCanvas = createGraphics(int(this.x + this.w), int(this.y + this.h));
       tempCanvas.beginDraw();
       int startCard = screen * this.numCardsOnScreen;
       int endCard = min(this.cards.size(), (screen + 1) * this.numCardsOnScreen);
+      tempCanvas.textAlign(CENTER, CENTER);
+      tempCanvas.textSize(20);
       for (int i = startCard; i < endCard; i++) {
         float topLeftX = this.getImageX((i - startCard) % this.numCardsOnScreen) - this.x;
         float topLeftY = this.getImageY((i - startCard) % this.numCardsOnScreen) - this.y;
         PImage tempImage = loadImage(imageFolder + this.cards.get(i).getId() + imageExtension);
+
         if (tempImage != null) {
           tempCanvas.image(tempImage, topLeftX, topLeftY, this.imageWidth, this.imageHeight);
+          if (banlist.size() == 0) continue;
+          if (banlist.hasKey(str(this.cards.get(i).getId()))) {
+            int banNum = banlist.getInt(str(this.cards.get(i).getId()));
+            if (banNum < 3) {
+              tempCanvas.image(loadImage(dataPath("") + "/Images/" + str(banNum) + ".png"), topLeftX + this.imageWidth - 20, topLeftY, 20, 20);
+            }
+          } else if (banlist.hasKey(this.cards.get(i).getName())) {
+            int banNum = banlist.getInt(this.cards.get(i).getName());
+            if (banNum < 3) {
+              tempCanvas.image(loadImage(dataPath("") + "/Images/" + str(banNum) + ".png"), topLeftX + this.imageWidth - 20, topLeftY, 20, 20);
+            }
+          }
         }
       }
       tempCanvas.endDraw();
@@ -117,11 +132,9 @@ class ImageGrid extends Component<ImageGrid> {
 
   void incrementScreen(int code) {
     if (code == LEFT) {
-      this.currentScreen--;
-      this.currentScreen = max(0, this.currentScreen);
+      this.currentScreen = max(0, --this.currentScreen);
     } else if (code == RIGHT) {
-      this.currentScreen++;
-      this.currentScreen = min(this.numScreens - 1, this.currentScreen);
+      this.currentScreen = min(this.numScreens - 1, ++this.currentScreen);
     }
   }
 

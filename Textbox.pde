@@ -1,16 +1,9 @@
 class TextBox extends Component<TextBox> {
-  //String TYPE = "TextBox";
-  //String name;
-  //String value;
-  //float x;
-  //float y;
-  //float w;
-  //float h;
-  //color fillColor;
   color hoverColor;
   int horizontalOrientation;
   boolean isSelected;
   boolean keyReleased;
+  String defaultValue;
 
 
   TextBox(float x_, float y_, float w_, float h_) {
@@ -20,6 +13,7 @@ class TextBox extends Component<TextBox> {
     this.horizontalOrientation = LEFT;
     this.isSelected = false;
     this.keyReleased = true;
+    this.defaultValue = "";
   }
 
   void display() {
@@ -87,6 +81,16 @@ class TextBox extends Component<TextBox> {
   TextBox setHorizontalOrientation(int h_) {
     this.horizontalOrientation = h_;
     return this;
+  }
+  
+  TextBox setDefaultValue(String d_){
+    this.defaultValue = d_;
+    return this;
+  }
+  
+  String getValue(){
+    if (this.value.equals("")) return this.defaultValue;
+    return this.value;
   }
   
   void reset(){

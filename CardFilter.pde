@@ -56,13 +56,8 @@ Deck makeDeck() {
   deck.setMaxTypeCounts(maxTrapCards, maxSpellCards, maxNormalCards, maxEffectCards, maxRitualCards, maxFusionCards);
   int numTrys = 0;
   String banListName = currentScreen.getInteractable("banList").getValue();
-  JSONObject banListJSON;
-  if (banListName.equals("")) {
-    banListJSON = new JSONObject();
-  } else {
-    banListJSON = loadJSONObject(dataPath("") + "/BanLists/" + banListName);
-  }
-  while (deck.addCards(cardListForFormat, banListJSON) && numTrys < 100) {
+  JSONObject banListJSON = loadBanList(banListName);
+  while (deck.addCards(cardListForFormat, banListJSON) && numTrys < 1000) {
     numTrys++;
   }
 
@@ -97,4 +92,9 @@ ArrayList<Card> trimCardListByRaceOrAttribute(ArrayList<Card> tempList, String l
   }
 
   return cardList;
+}
+
+JSONObject loadBanList(String fileName) {
+  if (fileName.equals("")) return new JSONObject();
+  return loadJSONObject(dataPath("") + "/BanLists/" + fileName);
 }
