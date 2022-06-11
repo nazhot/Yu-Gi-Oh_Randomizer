@@ -93,7 +93,10 @@ class ImageGrid extends Component<ImageGrid> {
     this.cards = new ArrayList<Card>();
   }
 
-  void makeScreens(JSONObject banlist) {
+  ImageGrid makeScreens(JSONObject banlist) {
+    println("Starting to make screens");
+    println("Number of screens: " + this.numScreens);
+    println("Number of cards: " + this.cards.size());
     for (int screen = 0; screen < this.numScreens; screen++) {
       g.removeCache(this.tempCanvas);
       this.tempCanvas = createGraphics(int(this.x + this.w), int(this.y + this.h));
@@ -126,6 +129,7 @@ class ImageGrid extends Component<ImageGrid> {
       tempCanvas.endDraw();
       this.allScreens.add(tempCanvas.get());
     }
+    return this;
   }
 
 
@@ -166,6 +170,12 @@ class ImageGrid extends Component<ImageGrid> {
 
   ImageGrid addCard(Card c_) {
     this.cards.add(c_);
+    this.refreshImageDimensions();
+    return this;
+  }
+
+  ImageGrid addCards(ArrayList<Card> c_) {
+    this.cards.addAll(c_);
     this.refreshImageDimensions();
     return this;
   }

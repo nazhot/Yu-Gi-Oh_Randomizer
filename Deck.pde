@@ -77,6 +77,7 @@ class Deck {
   }
 
   boolean addCards(ArrayList<Card> cardList, JSONObject banList) {
+    if (this.maxCards == 0) return false;
     Collections.shuffle(cardList);
     for (int i = 0; i < cardList.size(); i++) {
       Card card = cardList.get(i);
@@ -103,9 +104,10 @@ class Deck {
           }
         }
         this.currentTypeCounts.setInt(cardType, cardsOfCurrentType + numAdded);
+        if (this.cards.size() >= this.maxCards) return false;
       }
     }
-    return this.cards.size() >= this.maxCards;
+    return this.cards.size() < this.maxCards;
   }
 
   ArrayList<Card> getCards() {

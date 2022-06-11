@@ -165,6 +165,7 @@ void setup() {
     .setEntryWidth(80)
     .setEntryHorizontalOrientation(CENTER)
     );
+  println("The integer of blank is " + int(""));
 
   buttonColumn++;
   mainScreen.addComponent(new DropDown(horizontalMargin + (rowOneWidth + horizontalGap) * buttonColumn, rowOneY, rowOneWidth, rowOneHeight)
@@ -573,12 +574,12 @@ void draw() {
   controller.display();
   String screenName = controller.getCurrentScreenName();
   if (screenName.equals("card") || screenName.equals("viewAllCards")) { //check if the screen is either of the two that shows cards, and if so set the image/description for the side pane
-    ImageGrid tempGrid = (ImageGrid) controller.getCurrentScreen().getInteractable("cards");
+    ImageGridCollection tempGrid = (ImageGridCollection) controller.getCurrentScreen().getComponent("cards");
     Card largeCard = tempGrid.getHoveredCard();
     if (largeCard != null) {
-      Image tempImage = (Image) controller.getCurrentScreen().getInteractable("hoveredCard");
+      Image tempImage = (Image) controller.getCurrentScreen().getComponent("hoveredCard");
       tempImage.setImageFileName(imageFolder + largeCard.getId() + imageExtension);
-      Text tempText = (Text) controller.getCurrentScreen().getInteractable("cardDescription");
+      Text tempText = (Text) controller.getCurrentScreen().getComponent("cardDescription");
       tempText.setLabel(largeCard.getDescription());
     }
   }
@@ -603,54 +604,88 @@ void mousePressed() {
       for (String value : randomValues) {
         println(value);
       }
-      ImageGridCollection gridTemp = (ImageGridCollection) cardScreen.getInteractable("cards");
+      ImageGridCollection gridTemp = (ImageGridCollection) cardScreen.getComponent("cards");
       cardScreen.removeComponents("deck");
       gridTemp.clearScreen();
       gridTemp.setIndex(0);
       randomDecks.clear();
       int numDecks = 1;
       try {
-        numDecks = Integer.parseInt(controller.getCurrentScreen().getInteractable("numDecksValue").getValue());
-      } catch(NumberFormatException e){
+        numDecks = Integer.parseInt(controller.getCurrentScreen().getComponent("numDecksValue").getValue());
+      }
+      catch(NumberFormatException e) {
         println("Error with number of decks input: defaulting to 1");
       }
       ArrayList<Card> validCards = new ArrayList<Card>();
-      for (int i = 0; i < numDecks; i++){
+      String banListName = controller.getCurrentScreen().getComponent("banList").getValue();
+      JSONObject banListJSON = loadBanList(banListName);
+      for (int i = 0; i < numDecks; i++) {
         Deck deck = makeDeck();
         randomDecks.add(deck);
         validCards.addAll(deck.getCards());
         deck.makeYDK("random" + str(i + 1));
+        gridTemp.addImageGrid(new ImageGrid(22, 0, width * 0.80, height - 1)
+          .setDrawOrder(20)
+          .setNumCols(10)
+          .setHorizontalGap(0)
+          .setFillColor(0)
+          .addCards(deck.getCards())
+          .makeScreens(banListJSON)
+          .setName("cardGrid")
+          );
         cardScreen.addComponent(new Button(0, 40 + i * 22, 20, 20)
-        .setLabel(str(i + 1))
-        .setName("deck" + str(i))
-        );
+          .setLabel(str(i + 1))
+          .setName("deck" + str(i))
+          .setFillColor(i == 0 ? #bc5a84 : #fde68a)
+          .setHoverColor(#ff8b53)
+          );
+          
       }
-      for (Card card : validCards) {
-        gridTemp.addCard(card);
-      }
-      String banListName = controller.getCurrentScreen().getInteractable("banList").getValue();
-      JSONObject banListJSON = loadBanList(banListName);
-      gridTemp.makeScreens(banListJSON);
+      //for (Card card : validCards) {
+      //  gridTemp.addCard(card);
+      //}
+      //gridTemp.makeScreens(banListJSON);
       controller.setCurrentScreen("card");
     } else if (test.equals("card:Button:Back")) {
       controller.setCurrentScreen("main");
     } else if (test.equals("viewAllCards:Button:Back")) {
       controller.setCurrentScreen("main");
     } else if (test.equals("main:Button:viewAllCards")) { //VIEW ALL CARDS SETUP
-      ImageGridCollection gridTemp = (ImageGridCollection) controller.getScreen("viewAllCards").getInteractable("cards");
+      ImageGridCollection gridTemp = (ImageGridCollection) controller.getScreen("viewAllCards").getComponent("cards");
       gridTemp.clearScreen();
       gridTemp.setIndex(0);
       ArrayList<Card> formatCards = getFormatCards();
       println(formatCards.size());
-      for (Card card : formatCards) {
-        gridTemp.addCard(card);
-      }
-      String banListName = controller.getCurrentScreen().getInteractable("banList").getValue();
+      //for (Card card : formatCards) {
+      //  gridTemp.addCard(card);
+      //}
+      String banListName = controller.getCurrentScreen().getComponent("banList").getValue();
       JSONObject banListJSON = loadBanList(banListName);
-      gridTemp.makeScreens(banListJSON);
+      gridTemp.addImageGrid(new ImageGrid(22, 0, width * 0.80, height - 1)
+        .setDrawOrder(20)
+        .setNumCols(10)
+        .setHorizontalGap(0)
+        .setFillColor(0)
+        .addCards(formatCards)
+        .makeScreens(banListJSON)
+        .setName("cardGrid")
+        );
       controller.setCurrentScreen("viewAllCards");
     } else if (test.equals("main:Button:clearAll")) { //CLEAR ALL
       controller.getCurrentScreen().reset();
+    } else if (test.split(":")[0].equals("card") && test.split(":")[2].contains("deck")){
+      int deckNumber = int(test.split(":")[2].substring(4, test.split(":")[2].length()));
+      ImageGridCollection tempGrid = (ImageGridCollection) controller.getCurrentScreen().getComponent("cards");
+      tempGrid.setIndex(deckNumber);
+      int index = 0;
+      while(controller.getCurrentScreen().getComponent("deck" + str(index)) != null){
+        if (index == deckNumber){
+          controller.getCurrentScreen().getComponent("deck" + str(index)).setFillColor(#bc5a84);
+        } else {
+          controller.getCurrentScreen().getComponent("deck" + str(index)).setFillColor(#fde68a);
+        }
+        index++;
+      }
     }
   }
 }
@@ -658,7 +693,7 @@ void mousePressed() {
 void keyPressed() {
   if (controller.getCurrentScreenName().equals("card") || controller.getCurrentScreenName().equals("viewAllCards")) {
     if (key == CODED) {
-      ImageGridCollection tempGrid = (ImageGridCollection) controller.getCurrentScreen().getInteractable("cards");
+      ImageGridCollection tempGrid = (ImageGridCollection) controller.getCurrentScreen().getComponent("cards");
       tempGrid.incrementScreen(keyCode);
     }
   }

@@ -60,7 +60,7 @@ class Screen {
     return this.name;
   }
 
-  Component getInteractable(String n_) {
+  Component getComponent(String n_) {
     for (Component com : this.components) {
       if (com.getName().equals(n_)) {
         return com;

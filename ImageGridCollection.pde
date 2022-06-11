@@ -25,6 +25,10 @@ class ImageGridCollection extends Component<ImageGridCollection> {
     return this;
   }
   
+  Card getHoveredCard(){
+    return this.grids.get(this.gridIndex).getHoveredCard();
+  }
+  
   void addImageGrid(ImageGrid i_){
     this.grids.add(i_);
   }

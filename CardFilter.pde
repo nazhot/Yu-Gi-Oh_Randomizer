@@ -14,18 +14,18 @@ ArrayList<Card> getFormatCards() {
    -Race/Attribute: compare the race/attribute of monster cards to make sure they fall within the ones the user selected
    */
   Screen currentScreen = controller.getCurrentScreen();
-  ArrayList<Card> cardListForFormat = generateCardList(allCards, currentScreen.getInteractable("format").getValue());
+  ArrayList<Card> cardListForFormat = generateCardList(allCards, currentScreen.getComponent("format").getValue());
   println("Format filter: " + cardListForFormat.size());
   cardListForFormat = trimCardListByStats(cardListForFormat,
-    currentScreen.getInteractable("atkCompare").getValue(),
-    currentScreen.getInteractable("atkValue").getValue(),
-    currentScreen.getInteractable("defCompare").getValue(),
-    currentScreen.getInteractable("defValue").getValue()
+    currentScreen.getComponent("atkCompare").getValue(),
+    currentScreen.getComponent("atkValue").getValue(),
+    currentScreen.getComponent("defCompare").getValue(),
+    currentScreen.getComponent("defValue").getValue()
     );
   println("Stats filter: " + cardListForFormat.size());
-  cardListForFormat = trimCardListByRaceOrAttribute(cardListForFormat, currentScreen.getInteractable("monsterType").getValue(), "Race");
+  cardListForFormat = trimCardListByRaceOrAttribute(cardListForFormat, currentScreen.getComponent("monsterType").getValue(), "Race");
   println("Race filter: " + cardListForFormat.size());
-  cardListForFormat = trimCardListByRaceOrAttribute(cardListForFormat, currentScreen.getInteractable("monsterAttribute").getValue(), "Attribute");
+  cardListForFormat = trimCardListByRaceOrAttribute(cardListForFormat, currentScreen.getComponent("monsterAttribute").getValue(), "Attribute");
   println("Attribute filer: " + cardListForFormat.size());
   return cardListForFormat;
 }
@@ -35,19 +35,19 @@ Deck makeDeck() {
   Screen currentScreen = controller.getCurrentScreen();
   ArrayList<Card> cardListForFormat = getFormatCards();
 
-  int maxTrapCards = int(currentScreen.getInteractable("trapCountValue").getValue());
-  int maxSpellCards = int(currentScreen.getInteractable("spellCountValue").getValue());
-  int maxNormalCards = int(currentScreen.getInteractable("normalCountValue").getValue());
-  int maxEffectCards = int(currentScreen.getInteractable("effectCountValue").getValue());
-  int maxRitualCards = int(currentScreen.getInteractable("ritualCountValue").getValue());
-  int maxFusionCards = int(currentScreen.getInteractable("fusionCountValue").getValue());
+  int maxTrapCards = int(currentScreen.getComponent("trapCountValue").getValue());
+  int maxSpellCards = int(currentScreen.getComponent("spellCountValue").getValue());
+  int maxNormalCards = int(currentScreen.getComponent("normalCountValue").getValue());
+  int maxEffectCards = int(currentScreen.getComponent("effectCountValue").getValue());
+  int maxRitualCards = int(currentScreen.getComponent("ritualCountValue").getValue());
+  int maxFusionCards = int(currentScreen.getComponent("fusionCountValue").getValue());
 
-  float multTrapCards = float(currentScreen.getInteractable("multTrap").getValue());
-  float multSpellCards = float(currentScreen.getInteractable("multSpell").getValue());
-  float multNormalCards = float(currentScreen.getInteractable("multNormal").getValue());
-  float multEffectCards = float(currentScreen.getInteractable("multEffect").getValue());
-  float multRitualCards = float(currentScreen.getInteractable("multRitual").getValue());
-  float multFusionCards = float(currentScreen.getInteractable("multFusion").getValue());
+  float multTrapCards = float(currentScreen.getComponent("multTrap").getValue());
+  float multSpellCards = float(currentScreen.getComponent("multSpell").getValue());
+  float multNormalCards = float(currentScreen.getComponent("multNormal").getValue());
+  float multEffectCards = float(currentScreen.getComponent("multEffect").getValue());
+  float multRitualCards = float(currentScreen.getComponent("multRitual").getValue());
+  float multFusionCards = float(currentScreen.getComponent("multFusion").getValue());
 
   int maxCards = maxTrapCards + maxSpellCards + maxNormalCards + maxEffectCards + maxFusionCards + maxRitualCards;
 
@@ -55,9 +55,9 @@ Deck makeDeck() {
   deck.setMultValues(multTrapCards, multSpellCards, multNormalCards, multEffectCards, multRitualCards, multFusionCards);
   deck.setMaxTypeCounts(maxTrapCards, maxSpellCards, maxNormalCards, maxEffectCards, maxRitualCards, maxFusionCards);
   int numTrys = 0;
-  String banListName = currentScreen.getInteractable("banList").getValue();
+  String banListName = currentScreen.getComponent("banList").getValue();
   JSONObject banListJSON = loadBanList(banListName);
-  while (deck.addCards(cardListForFormat, banListJSON) && numTrys < 1000) {
+  while (deck.addCards(cardListForFormat, banListJSON) && numTrys < 10) {
     numTrys++;
   }
 
