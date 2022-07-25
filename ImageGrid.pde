@@ -20,8 +20,8 @@ class ImageGrid extends Component<ImageGrid> {
   ArrayList<PImage> allScreens;
 
 
-  ImageGrid(float x_, float y_, float w_, float h_) {
-    super(x_, y_, w_, h_);
+  ImageGrid(PApplet theParent, float x_, float y_, float w_, float h_) {
+    super(theParent, x_, y_, w_, h_);
     this.TYPE = "ImageGrid";
     this.cards = new ArrayList<Card>();
     this.cardHoverColor = color(71, 85, 214);
@@ -39,7 +39,7 @@ class ImageGrid extends Component<ImageGrid> {
     this.allScreens = new ArrayList<PImage>();
   }
 
-  void display() {
+  void draw() {
     rectMode(CORNER);
     this.hoveredCardIndex = this.mouseOverEntry();
     fill(this.fillColor);

@@ -1,5 +1,6 @@
 import java.util.*;
 import java.io.*;
+import SimpleGUI.*;
 
 Screen mainScreen; //starting screen with all the options for you to change
 Screen cardScreen; //screen that shows the deck generated based on your options
@@ -49,7 +50,6 @@ ArrayList<Deck> randomDecks;
 
 void setup() {
   size(1200, 700);
-
   textFont(createFont("Yu-Gi-Oh! Matrix Small Caps 2", 30)); // 8
 
   imageFolder = dataPath("") + "/CardImagesJPG/";
@@ -60,10 +60,10 @@ void setup() {
   formats = new ArrayList<String>();
   allCards = new ArrayList<Card>();
   randomDecks = new ArrayList<Deck>();
-  controller = new Controller();
-  mainScreen = new Screen();
-  cardScreen = new Screen();
-  viewAllCardsScreen = new Screen();
+  controller = new Controller(this);
+  mainScreen = new Screen(this);
+  cardScreen = new Screen(this);
+  viewAllCardsScreen = new Screen(this);
 
 
 
@@ -85,7 +85,7 @@ void setup() {
 
   //Every single component added to all of the screens, working on making this into imports from JSON files instead, to make editing/readability quite a bit easier
 
-  mainScreen.addComponent(new Button(width - 120, height - 55, 115, 50)
+  mainScreen.addComponent(new Button(this, width - 120, height - 55, 115, 50)
     .setDrawOrder(drawOrder--)
     .setName("Randomize")
     .setLabel("Randomize")
@@ -94,9 +94,10 @@ void setup() {
     .setFillColor(#fde68a)
     .setHoverColor(#ff8b53)
     .setStrokeWeight(1)
+    .setTextScalar(gTextScalar)
     );
 
-  mainScreen.addComponent(new Button(width / 2.0, height - 30, 115, 50)
+  mainScreen.addComponent(new Button(this, width / 2.0, height - 30, 115, 50)
     .setDrawOrder(drawOrder--)
     .setName("clearAll")
     .setShapeMode(CENTER)
@@ -106,9 +107,10 @@ void setup() {
     .setFillColor(#fde68a)
     .setHoverColor(#ff8b53)
     .setStrokeWeight(1)
+    .setTextScalar(gTextScalar)
     );
 
-  mainScreen.addComponent(new Button(5, height - 55, 150, 50)
+  mainScreen.addComponent(new Button(this, 5, height - 55, 150, 50)
     .setDrawOrder(drawOrder--)
     .setName("viewAllCards")
     .setLabel("View All Cards")
@@ -117,13 +119,14 @@ void setup() {
     .setFillColor(#fde68a)
     .setHoverColor(#ff8b53)
     .setStrokeWeight(1)
+    .setTextScalar(gTextScalar)
     );
 
   float rowOneWidth = (width - horizontalMargin * 2 - (rowOneCount - 1) * horizontalGap) / rowOneCount;
   int buttonColumn = 0;
   println(rowOneWidth);
 
-  mainScreen.addComponent(new DropDown(horizontalMargin + (rowOneWidth + horizontalGap) * buttonColumn, rowOneY, rowOneWidth, rowOneHeight)
+  mainScreen.addComponent(new DropDown(this, horizontalMargin + (rowOneWidth + horizontalGap) * buttonColumn, rowOneY, rowOneWidth, rowOneHeight)
     .setLabel("Monster Type(s): ")
     .setName("monsterType")
     .setDrawOrder(drawOrder--)
@@ -136,10 +139,13 @@ void setup() {
     .addSelectAll()
     .setEntryHorizontalOrientation(CENTER)
     .setEntryVsTitleOrientationPercent(0.0)
+    .setFillColor(#fde68a)
+    .setSelectedColor(#ff8b53)
+    .setTextScalar(gTextScalar)
     );
 
   buttonColumn++;
-  mainScreen.addComponent(new DropDown(horizontalMargin + (rowOneWidth + horizontalGap) * buttonColumn, rowOneY, rowOneWidth, rowOneHeight)
+  mainScreen.addComponent(new DropDown(this, horizontalMargin + (rowOneWidth + horizontalGap) * buttonColumn, rowOneY, rowOneWidth, rowOneHeight)
     .setLabel("Monster Attribute(s): ")
     .setName("monsterAttribute")
     .setDrawOrder(drawOrder--)
@@ -151,10 +157,13 @@ void setup() {
     .setMultiSelect(true)
     .addSelectAll()
     .setEntryHorizontalOrientation(CENTER)
+    .setFillColor(#fde68a)
+    .setSelectedColor(#ff8b53)
+    .setTextScalar(gTextScalar)
     );
 
   buttonColumn++;
-  mainScreen.addComponent(new DropDown(horizontalMargin + (rowOneWidth + horizontalGap) * buttonColumn, rowOneY, rowOneWidth, rowOneHeight)
+  mainScreen.addComponent(new DropDown(this, horizontalMargin + (rowOneWidth + horizontalGap) * buttonColumn, rowOneY, rowOneWidth, rowOneHeight)
     .setLabel("Format: ")
     .setName("format")
     .setDrawOrder(drawOrder--)
@@ -164,11 +173,14 @@ void setup() {
     .setEntryHeight(20)
     .setEntryWidth(80)
     .setEntryHorizontalOrientation(CENTER)
+    .setFillColor(#fde68a)
+    .setSelectedColor(#ff8b53)
+    .setTextScalar(gTextScalar)
     );
   println("The integer of blank is " + int(""));
 
   buttonColumn++;
-  mainScreen.addComponent(new DropDown(horizontalMargin + (rowOneWidth + horizontalGap) * buttonColumn, rowOneY, rowOneWidth, rowOneHeight)
+  mainScreen.addComponent(new DropDown(this, horizontalMargin + (rowOneWidth + horizontalGap) * buttonColumn, rowOneY, rowOneWidth, rowOneHeight)
     .setLabel("Ban List: ")
     .setName("banList")
     .setDrawOrder(drawOrder--)
@@ -178,10 +190,13 @@ void setup() {
     .setEntryHeight(20)
     .setEntryWidth(80)
     .setEntryHorizontalOrientation(CENTER)
+    .setFillColor(#fde68a)
+    .setSelectedColor(#ff8b53)
+    .setTextScalar(gTextScalar)
     );
 
   buttonColumn++;
-  mainScreen.addComponent(new DropDown(horizontalMargin + (rowOneWidth + horizontalGap) * buttonColumn, rowOneY, rowOneWidth, rowOneHeight)
+  mainScreen.addComponent(new DropDown(this, horizontalMargin + (rowOneWidth + horizontalGap) * buttonColumn, rowOneY, rowOneWidth, rowOneHeight)
     .setLabel("Set Cards: ")
     .setName("setCards")
     .setDrawOrder(drawOrder--)
@@ -191,12 +206,15 @@ void setup() {
     .setEntryHeight(20)
     .setEntryWidth(80)
     .setEntryHorizontalOrientation(CENTER)
+    .setFillColor(#fde68a)
+    .setSelectedColor(#ff8b53)
+    .setTextScalar(gTextScalar)
     );
 
   float rowTwoWidth = (width - rowTwoHorizontalMargin * 2 - (rowTwoCount - 1) * rowTwoHorizontalGap) / rowTwoCount;
   buttonColumn = 0;
 
-  mainScreen.addComponent(new Slider(rowTwoHorizontalMargin + buttonColumn * (rowTwoWidth + rowTwoHorizontalGap), rowTwoY, rowTwoWidth, sliderRadius)
+  mainScreen.addComponent(new Slider(this, rowTwoHorizontalMargin + buttonColumn * (rowTwoWidth + rowTwoHorizontalGap), rowTwoY, rowTwoWidth, sliderRadius)
     .setName("multTrap")
     .setLabel("Mult. Trap")
     .setTitlePosition("TOP")
@@ -204,11 +222,15 @@ void setup() {
     .setLineColor(#fde68a)
     .setTextSize(25)
     .setTextColor(#bc5a84)
+    .setSlideFillColor(#bc5a84)
+    .setSlideStrokeColor(#a086b7)
+    .setSlideStrokeWeight(2)
+    .setTextScalar(gTextScalar)
     );
 
   buttonColumn++;
 
-  mainScreen.addComponent(new Slider(rowTwoHorizontalMargin + buttonColumn * (rowTwoWidth + rowTwoHorizontalGap), rowTwoY, rowTwoWidth, sliderRadius)
+  mainScreen.addComponent(new Slider(this, rowTwoHorizontalMargin + buttonColumn * (rowTwoWidth + rowTwoHorizontalGap), rowTwoY, rowTwoWidth, sliderRadius)
     .setName("multSpell")
     .setLabel("Mult. Spell")
     .setTitlePosition("TOP")
@@ -216,11 +238,15 @@ void setup() {
     .setLineColor(#fde68a)
     .setTextSize(25)
     .setTextColor(#bc5a84)
+    .setSlideFillColor(#bc5a84)
+    .setSlideStrokeColor(#a086b7)
+    .setSlideStrokeWeight(2)
+    .setTextScalar(gTextScalar)
     );
 
   buttonColumn++;
 
-  mainScreen.addComponent(new Slider(rowTwoHorizontalMargin + buttonColumn * (rowTwoWidth + rowTwoHorizontalGap), rowTwoY, rowTwoWidth, sliderRadius)
+  mainScreen.addComponent(new Slider(this, rowTwoHorizontalMargin + buttonColumn * (rowTwoWidth + rowTwoHorizontalGap), rowTwoY, rowTwoWidth, sliderRadius)
     .setName("multNormal")
     .setLabel("Mult. Normal")
     .setTitlePosition("TOP")
@@ -228,11 +254,15 @@ void setup() {
     .setLineColor(#fde68a)
     .setTextSize(25)
     .setTextColor(#bc5a84)
+    .setSlideFillColor(#bc5a84)
+    .setSlideStrokeColor(#a086b7)
+    .setSlideStrokeWeight(2)
+    .setTextScalar(gTextScalar)
     );
 
   buttonColumn++;
 
-  mainScreen.addComponent(new Slider(rowTwoHorizontalMargin + buttonColumn * (rowTwoWidth + rowTwoHorizontalGap), rowTwoY, rowTwoWidth, sliderRadius)
+  mainScreen.addComponent(new Slider(this, rowTwoHorizontalMargin + buttonColumn * (rowTwoWidth + rowTwoHorizontalGap), rowTwoY, rowTwoWidth, sliderRadius)
     .setName("multEffect")
     .setLabel("Mult. Effect")
     .setTitlePosition("TOP")
@@ -240,11 +270,15 @@ void setup() {
     .setLineColor(#fde68a)
     .setTextSize(25)
     .setTextColor(#bc5a84)
+    .setSlideFillColor(#bc5a84)
+    .setSlideStrokeColor(#a086b7)
+    .setSlideStrokeWeight(2)
+    .setTextScalar(gTextScalar)
     );
 
   buttonColumn++;
 
-  mainScreen.addComponent(new Slider(rowTwoHorizontalMargin + buttonColumn * (rowTwoWidth + rowTwoHorizontalGap), rowTwoY, rowTwoWidth, sliderRadius)
+  mainScreen.addComponent(new Slider(this, rowTwoHorizontalMargin + buttonColumn * (rowTwoWidth + rowTwoHorizontalGap), rowTwoY, rowTwoWidth, sliderRadius)
     .setName("multFusion")
     .setLabel("Mult. Fusion")
     .setTitlePosition("TOP")
@@ -252,11 +286,15 @@ void setup() {
     .setLineColor(#fde68a)
     .setTextSize(25)
     .setTextColor(#bc5a84)
+    .setSlideFillColor(#bc5a84)
+    .setSlideStrokeColor(#a086b7)
+    .setSlideStrokeWeight(2)
+    .setTextScalar(gTextScalar)
     );
 
   buttonColumn++;
 
-  mainScreen.addComponent(new Slider(rowTwoHorizontalMargin + buttonColumn * (rowTwoWidth + rowTwoHorizontalGap), rowTwoY, rowTwoWidth, sliderRadius)
+  mainScreen.addComponent(new Slider(this, rowTwoHorizontalMargin + buttonColumn * (rowTwoWidth + rowTwoHorizontalGap), rowTwoY, rowTwoWidth, sliderRadius)
     .setName("multRitual")
     .setLabel("Mult. Ritual")
     .setTitlePosition("TOP")
@@ -264,6 +302,10 @@ void setup() {
     .setLineColor(#fde68a)
     .setTextSize(25)
     .setTextColor(#bc5a84)
+    .setSlideFillColor(#bc5a84)
+    .setSlideStrokeColor(#a086b7)
+    .setSlideStrokeWeight(2)
+    .setTextScalar(gTextScalar)
     );
 
   float rowThreeWidth = (width - horizontalMargin * 2 - (rowThreeCount - 1) * horizontalGap) / rowThreeCount;
@@ -271,7 +313,7 @@ void setup() {
   float textBoxWidth = rowThreeWidth - labelWidth;
   buttonColumn = 0;
 
-  mainScreen.addComponent(new Button(horizontalMargin + buttonColumn * (rowThreeWidth + horizontalGap), rowThreeY, labelWidth, 30)
+  mainScreen.addComponent(new Button(this, horizontalMargin + buttonColumn * (rowThreeWidth + horizontalGap), rowThreeY, labelWidth, 30)
     .setName("trapCount")
     .setLabel("Trap Count:")
     .setAsLabel(true)
@@ -279,9 +321,10 @@ void setup() {
     .setFillColor(#fde68a)
     .setTextSize(25)
     .setDrawOrder(drawOrder--)
+    .setTextScalar(gTextScalar)
     );
 
-  mainScreen.addComponent(new TextBox(horizontalMargin + labelWidth + buttonColumn * (rowThreeWidth + horizontalGap), rowThreeY, textBoxWidth, 30)
+  mainScreen.addComponent(new TextBox(this, horizontalMargin + labelWidth + buttonColumn * (rowThreeWidth + horizontalGap), rowThreeY, textBoxWidth, 30)
     .setName("trapCountValue")
     .setValue("")
     .setRounding(5)
@@ -291,11 +334,12 @@ void setup() {
     .setTextSize(30)
     .setHorizontalOrientation(CENTER)
     .setDrawOrder(drawOrder--)
+    .setTextScalar(gTextScalar)
     );
 
   buttonColumn++;
 
-  mainScreen.addComponent(new Button(horizontalMargin + buttonColumn * (rowThreeWidth + horizontalGap), rowThreeY, labelWidth, 30)
+  mainScreen.addComponent(new Button(this, horizontalMargin + buttonColumn * (rowThreeWidth + horizontalGap), rowThreeY, labelWidth, 30)
     .setName("spellCount")
     .setLabel("Spell Count:")
     .setAsLabel(true)
@@ -303,9 +347,10 @@ void setup() {
     .setFillColor(#fde68a)
     .setTextSize(25)
     .setDrawOrder(drawOrder--)
+    .setTextScalar(gTextScalar)
     );
 
-  mainScreen.addComponent(new TextBox(horizontalMargin + labelWidth + buttonColumn * (rowThreeWidth + horizontalGap), rowThreeY, textBoxWidth, 30)
+  mainScreen.addComponent(new TextBox(this, horizontalMargin + labelWidth + buttonColumn * (rowThreeWidth + horizontalGap), rowThreeY, textBoxWidth, 30)
     .setName("spellCountValue")
     .setValue("")
     .setRounding(5)
@@ -315,11 +360,12 @@ void setup() {
     .setTextSize(30)
     .setHorizontalOrientation(CENTER)
     .setDrawOrder(drawOrder--)
+    .setTextScalar(gTextScalar)
     );
 
   buttonColumn++;
 
-  mainScreen.addComponent(new Button(horizontalMargin + buttonColumn * (rowThreeWidth + horizontalGap), rowThreeY, labelWidth, 30)
+  mainScreen.addComponent(new Button(this, horizontalMargin + buttonColumn * (rowThreeWidth + horizontalGap), rowThreeY, labelWidth, 30)
     .setName("normalCount")
     .setLabel("Normal Count:")
     .setAsLabel(true)
@@ -327,9 +373,10 @@ void setup() {
     .setFillColor(#fde68a)
     .setTextSize(25)
     .setDrawOrder(drawOrder--)
+    .setTextScalar(gTextScalar)
     );
 
-  mainScreen.addComponent(new TextBox(horizontalMargin + labelWidth + buttonColumn * (rowThreeWidth + horizontalGap), rowThreeY, textBoxWidth, 30)
+  mainScreen.addComponent(new TextBox(this, horizontalMargin + labelWidth + buttonColumn * (rowThreeWidth + horizontalGap), rowThreeY, textBoxWidth, 30)
     .setName("normalCountValue")
     .setValue("")
     .setRounding(5)
@@ -339,11 +386,12 @@ void setup() {
     .setTextSize(30)
     .setHorizontalOrientation(CENTER)
     .setDrawOrder(drawOrder--)
+    .setTextScalar(gTextScalar)
     );
 
   buttonColumn++;
 
-  mainScreen.addComponent(new Button(horizontalMargin + buttonColumn * (rowThreeWidth + horizontalGap), rowThreeY, labelWidth, 30)
+  mainScreen.addComponent(new Button(this, horizontalMargin + buttonColumn * (rowThreeWidth + horizontalGap), rowThreeY, labelWidth, 30)
     .setName("effectCount")
     .setLabel("Effect Count:")
     .setAsLabel(true)
@@ -351,9 +399,10 @@ void setup() {
     .setFillColor(#fde68a)
     .setTextSize(25)
     .setDrawOrder(drawOrder--)
+    .setTextScalar(gTextScalar)
     );
 
-  mainScreen.addComponent(new TextBox(horizontalMargin + labelWidth + buttonColumn * (rowThreeWidth + horizontalGap), rowThreeY, textBoxWidth, 30)
+  mainScreen.addComponent(new TextBox(this, horizontalMargin + labelWidth + buttonColumn * (rowThreeWidth + horizontalGap), rowThreeY, textBoxWidth, 30)
     .setName("effectCountValue")
     .setValue("")
     .setRounding(5)
@@ -363,11 +412,12 @@ void setup() {
     .setTextSize(30)
     .setHorizontalOrientation(CENTER)
     .setDrawOrder(drawOrder--)
+    .setTextScalar(gTextScalar)
     );
 
   buttonColumn++;
 
-  mainScreen.addComponent(new Button(horizontalMargin + buttonColumn * (rowThreeWidth + horizontalGap), rowThreeY, labelWidth, 30)
+  mainScreen.addComponent(new Button(this, horizontalMargin + buttonColumn * (rowThreeWidth + horizontalGap), rowThreeY, labelWidth, 30)
     .setName("fusionCount")
     .setLabel("Fusion Count:")
     .setAsLabel(true)
@@ -375,9 +425,10 @@ void setup() {
     .setFillColor(#fde68a)
     .setTextSize(25)
     .setDrawOrder(drawOrder--)
+    .setTextScalar(gTextScalar)
     );
 
-  mainScreen.addComponent(new TextBox(horizontalMargin + labelWidth + buttonColumn * (rowThreeWidth + horizontalGap), rowThreeY, textBoxWidth, 30)
+  mainScreen.addComponent(new TextBox(this, horizontalMargin + labelWidth + buttonColumn * (rowThreeWidth + horizontalGap), rowThreeY, textBoxWidth, 30)
     .setName("fusionCountValue")
     .setValue("")
     .setRounding(5)
@@ -387,11 +438,12 @@ void setup() {
     .setTextSize(30)
     .setHorizontalOrientation(CENTER)
     .setDrawOrder(drawOrder--)
+    .setTextScalar(gTextScalar)
     );
 
   buttonColumn++;
 
-  mainScreen.addComponent(new Button(horizontalMargin + buttonColumn * (rowThreeWidth + horizontalGap), rowThreeY, labelWidth, 30)
+  mainScreen.addComponent(new Button(this, horizontalMargin + buttonColumn * (rowThreeWidth + horizontalGap), rowThreeY, labelWidth, 30)
     .setName("ritualCount")
     .setLabel("Ritual Count:")
     .setAsLabel(true)
@@ -399,9 +451,10 @@ void setup() {
     .setFillColor(#fde68a)
     .setTextSize(25)
     .setDrawOrder(drawOrder--)
+    .setTextScalar(gTextScalar)
     );
 
-  mainScreen.addComponent(new TextBox(horizontalMargin + labelWidth + buttonColumn * (rowThreeWidth + horizontalGap), rowThreeY, textBoxWidth, 30)
+  mainScreen.addComponent(new TextBox(this, horizontalMargin + labelWidth + buttonColumn * (rowThreeWidth + horizontalGap), rowThreeY, textBoxWidth, 30)
     .setName("ritualCountValue")
     .setValue("")
     .setRounding(5)
@@ -411,10 +464,11 @@ void setup() {
     .setTextSize(30)
     .setHorizontalOrientation(CENTER)
     .setDrawOrder(drawOrder--)
+    .setTextScalar(gTextScalar)
     );
 
 
-  mainScreen.addComponent(new Button(5, 280, 70, 30)
+  mainScreen.addComponent(new Button(this, 5, 280, 70, 30)
     .setName("atkLabel")
     .setLabel("ATK")
     .setAsLabel(true)
@@ -422,9 +476,10 @@ void setup() {
     .setRounding(5)
     .setFillColor(#fde68a)
     .setTextSize(25)
+    .setTextScalar(gTextScalar)
     );
 
-  mainScreen.addComponent(new DropDown(75, 280, 70, 30)
+  mainScreen.addComponent(new DropDown(this, 75, 280, 70, 30)
     .setName("atkCompare")
     .addEntries(comparisons)
     .setRounding(5)
@@ -433,9 +488,12 @@ void setup() {
     .setEntryHorizontalOrientation(CENTER)
     .setTextSize(35)
     .setTitleStroke(true)
+    .setFillColor(#fde68a)
+    .setSelectedColor(#ff8b53)
+    .setTextScalar(gTextScalar)
     );
 
-  mainScreen.addComponent(new TextBox(145, 280, 120, 30)
+  mainScreen.addComponent(new TextBox(this, 145, 280, 120, 30)
     .setName("atkValue")
     .setRounding(5)
     .setDrawOrder(drawOrder--)
@@ -445,9 +503,10 @@ void setup() {
     .setValue("1000")
     .setTextSize(30)
     .setHorizontalOrientation(CENTER)
+    .setTextScalar(gTextScalar)
     );
 
-  mainScreen.addComponent(new Button(270, 280, 70, 30)
+  mainScreen.addComponent(new Button(this, 270, 280, 70, 30)
     .setName("defLabel")
     .setLabel("DEF")
     .setAsLabel(true)
@@ -455,9 +514,10 @@ void setup() {
     .setRounding(5)
     .setFillColor(#fde68a)
     .setTextSize(25)
+    .setTextScalar(gTextScalar)
     );
 
-  mainScreen.addComponent(new DropDown(340, 280, 70, 30)
+  mainScreen.addComponent(new DropDown(this, 340, 280, 70, 30)
     .setName("defCompare")
     .addEntries(comparisons)
     .setRounding(5)
@@ -466,9 +526,12 @@ void setup() {
     .setEntryHorizontalOrientation(CENTER)
     .setTextSize(35)
     .setTitleStroke(true)
+    .setFillColor(#fde68a)
+    .setSelectedColor(#ff8b53)
+    .setTextScalar(gTextScalar)
     );
 
-  mainScreen.addComponent(new TextBox(410, 280, 120, 30)
+  mainScreen.addComponent(new TextBox(this, 410, 280, 120, 30)
     .setName("defValue")
     .setRounding(5)
     .setDrawOrder(drawOrder--)
@@ -478,9 +541,10 @@ void setup() {
     .setValue("1000")
     .setTextSize(30)
     .setHorizontalOrientation(CENTER)
+    .setTextScalar(gTextScalar)
     );
 
-  mainScreen.addComponent(new Button(535, 280, 120, 30)
+  mainScreen.addComponent(new Button(this, 535, 280, 120, 30)
     .setName("numDecks")
     .setLabel("Num. Decks:")
     .setRounding(5)
@@ -488,9 +552,10 @@ void setup() {
     .setFillColor(#fde68a)
     .setAsLabel(true)
     .setTextSize(25)
+    .setTextScalar(gTextScalar)
     );
 
-  mainScreen.addComponent(new TextBox(655, 280, 40, 30)
+  mainScreen.addComponent(new TextBox(this, 655, 280, 40, 30)
     .setName("numDecksValue")
     .setRounding(5)
     .setDrawOrder(drawOrder--)
@@ -500,12 +565,12 @@ void setup() {
     .setValue("1")
     .setTextSize(30)
     .setHorizontalOrientation(CENTER)
-
+    .setTextScalar(gTextScalar)
     );
 
 
 
-  cardScreen.addComponent(new Button(5, 5, 15, 15)
+  cardScreen.addComponent(new Button(this, 5, 5, 15, 15)
     .setDrawOrder(30)
     .setName("Back")
     .setLabel("Back")
@@ -513,21 +578,24 @@ void setup() {
     .setRounding(10)
     .setFillColor(#fde68a)
     .setHoverColor(#ff8b53)
+    .setTextScalar(gTextScalar)
     );
 
 
-  cardScreen.addComponent(new ImageGridCollection(22, 0, width * 0.80, height - 1)
+  cardScreen.addComponent(new ImageGridCollection(this, 22, 0, width * 0.80, height - 1)
     .setDrawOrder(20)
     .setName("cards")
     .setFillColor(0)
+    .setTextScalar(gTextScalar)
     );
 
-  viewAllCardsScreen.addComponent(new ImageGridCollection(22, 0, width * 0.80, height - 1)
+  viewAllCardsScreen.addComponent(new ImageGridCollection(this, 22, 0, width * 0.80, height - 1)
     .setDrawOrder(20)
     .setName("cards")
     .setFillColor(0)
+    .setTextScalar(gTextScalar)
     );
-  viewAllCardsScreen.addComponent(new Button(5, 5, 15, 15)
+  viewAllCardsScreen.addComponent(new Button(this, 5, 5, 15, 15)
     .setDrawOrder(30)
     .setName("Back")
     .setLabel("Back")
@@ -535,30 +603,35 @@ void setup() {
     .setRounding(10)
     .setFillColor(#fde68a)
     .setHoverColor(#ff8b53)
+    .setTextScalar(gTextScalar)
     );
 
-  viewAllCardsScreen.addComponent(new Image(22 + width * 0.80, 0, width - (22 + width * 0.80), (width - (22 + width * 0.80)) * 1.5)
+  viewAllCardsScreen.addComponent(new Image(this, 22 + width * 0.80, 0, width - (22 + width * 0.80), (width - (22 + width * 0.80)) * 1.5)
     .setDrawOrder(40)
     .setName("hoveredCard")
+    .setTextScalar(gTextScalar)
     );
 
-  cardScreen.addComponent(new Image(22 + width * 0.80, 0, width - (22 + width * 0.80), (width - (22 + width * 0.80)) * 1.5)
+  cardScreen.addComponent(new Image(this, 22 + width * 0.80, 0, width - (22 + width * 0.80), (width - (22 + width * 0.80)) * 1.5)
     .setDrawOrder(40)
     .setName("hoveredCard")
+    .setTextScalar(gTextScalar)
     );
 
-  viewAllCardsScreen.addComponent(new Text(24 + width * 0.80, (width - (22 + width * 0.80)) * 1.5, width - (26 + width * 0.80), height - (width - (22 + width * 0.80)) * 1.5)
+  viewAllCardsScreen.addComponent(new Text(this, 24 + width * 0.80, (width - (22 + width * 0.80)) * 1.5, width - (26 + width * 0.80), height - (width - (22 + width * 0.80)) * 1.5)
     .setDrawOrder(50)
     .setName("cardDescription")
     .setTextColor(color(255))
     .setTextSize(17)
+    .setTextScalar(gTextScalar)
     );
 
-  cardScreen.addComponent(new Text(24 + width * 0.80, (width - (22 + width * 0.80)) * 1.5, width - (26 + width * 0.80), height - (width - (22 + width * 0.80)) * 1.5)
+  cardScreen.addComponent(new Text(this, 24 + width * 0.80, (width - (22 + width * 0.80)) * 1.5, width - (26 + width * 0.80), height - (width - (22 + width * 0.80)) * 1.5)
     .setDrawOrder(50)
     .setName("cardDescription")
     .setTextColor(color(255))
     .setTextSize(17)
+    .setTextScalar(gTextScalar)
     );
 
   viewAllCardsScreen.setName("viewAllCards");
@@ -571,7 +644,7 @@ void setup() {
 
 void draw() {
   background(35);
-  controller.display();
+  controller.draw();
   String screenName = controller.getCurrentScreenName();
   if (screenName.equals("card") || screenName.equals("viewAllCards")) { //check if the screen is either of the two that shows cards, and if so set the image/description for the side pane
     ImageGridCollection tempGrid = (ImageGridCollection) controller.getCurrentScreen().getComponent("cards");
@@ -624,7 +697,7 @@ void mousePressed() {
         randomDecks.add(deck);
         validCards.addAll(deck.getCards());
         deck.makeYDK("random" + str(i + 1));
-        gridTemp.addImageGrid(new ImageGrid(22, 0, width * 0.80, height - 1)
+        gridTemp.addImageGrid(new ImageGrid(this, 22, 0, width * 0.80, height - 1)
           .setDrawOrder(20)
           .setNumCols(10)
           .setHorizontalGap(0)
@@ -633,13 +706,12 @@ void mousePressed() {
           .makeScreens(banListJSON)
           .setName("cardGrid")
           );
-        cardScreen.addComponent(new Button(0, 40 + i * 22, 20, 20)
+        cardScreen.addComponent(new Button(this, 0, 40 + i * 22, 20, 20)
           .setLabel(str(i + 1))
           .setName("deck" + str(i))
           .setFillColor(i == 0 ? #bc5a84 : #fde68a)
           .setHoverColor(#ff8b53)
           );
-          
       }
       //for (Card card : validCards) {
       //  gridTemp.addCard(card);
@@ -661,7 +733,7 @@ void mousePressed() {
       //}
       String banListName = controller.getCurrentScreen().getComponent("banList").getValue();
       JSONObject banListJSON = loadBanList(banListName);
-      gridTemp.addImageGrid(new ImageGrid(22, 0, width * 0.80, height - 1)
+      gridTemp.addImageGrid(new ImageGrid(this, 22, 0, width * 0.80, height - 1)
         .setDrawOrder(20)
         .setNumCols(10)
         .setHorizontalGap(0)
@@ -673,13 +745,13 @@ void mousePressed() {
       controller.setCurrentScreen("viewAllCards");
     } else if (test.equals("main:Button:clearAll")) { //CLEAR ALL
       controller.getCurrentScreen().reset();
-    } else if (test.split(":")[0].equals("card") && test.split(":")[2].contains("deck")){
+    } else if (test.split(":")[0].equals("card") && test.split(":")[2].contains("deck")) {
       int deckNumber = int(test.split(":")[2].substring(4, test.split(":")[2].length()));
       ImageGridCollection tempGrid = (ImageGridCollection) controller.getCurrentScreen().getComponent("cards");
       tempGrid.setIndex(deckNumber);
       int index = 0;
-      while(controller.getCurrentScreen().getComponent("deck" + str(index)) != null){
-        if (index == deckNumber){
+      while (controller.getCurrentScreen().getComponent("deck" + str(index)) != null) {
+        if (index == deckNumber) {
           controller.getCurrentScreen().getComponent("deck" + str(index)).setFillColor(#bc5a84);
         } else {
           controller.getCurrentScreen().getComponent("deck" + str(index)).setFillColor(#fde68a);

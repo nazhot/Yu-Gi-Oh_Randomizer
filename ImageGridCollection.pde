@@ -4,8 +4,8 @@ class ImageGridCollection extends Component<ImageGridCollection> {
   int gridIndex;
   
   
-  ImageGridCollection(float x_, float y_, float w_, float h_) {
-    super(x_, y_, w_, h_);
+  ImageGridCollection(PApplet theParent, float x_, float y_, float w_, float h_) {
+    super(theParent, x_, y_, w_, h_);
     this.TYPE = "ImageGrid";
     this.grids = new ArrayList<ImageGrid>();
     this.gridIndex = 0;
@@ -13,10 +13,10 @@ class ImageGridCollection extends Component<ImageGridCollection> {
   
   
   
-  void display(){
+  void draw(){
     if (this.gridIndex >= this.grids.size() || this.gridIndex < 0) return;
     
-    this.grids.get(this.gridIndex).display();
+    this.grids.get(this.gridIndex).draw();
   }
   
   
