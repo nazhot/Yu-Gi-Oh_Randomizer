@@ -14,19 +14,20 @@ ArrayList<Card> getFormatCards() {
    -Race/Attribute: compare the race/attribute of monster cards to make sure they fall within the ones the user selected
    */
   Screen currentScreen = controller.getCurrentScreen();
+  addToLog(gLogName, "FILTERING CARDS:", gLogFormat);
   ArrayList<Card> cardListForFormat = generateCardList(allCards, currentScreen.getComponent("format").getValue());
-  println("Format filter: " + cardListForFormat.size());
+  addToLog(gLogName, "After format filter: " + cardListForFormat.size(), gLogSizeFormat);
   cardListForFormat = trimCardListByStats(cardListForFormat,
     currentScreen.getComponent("atkCompare").getValue(),
     currentScreen.getComponent("atkValue").getValue(),
     currentScreen.getComponent("defCompare").getValue(),
     currentScreen.getComponent("defValue").getValue()
     );
-  println("Stats filter: " + cardListForFormat.size());
+  addToLog(gLogName, "After stats filter: " + cardListForFormat.size(), gLogSizeFormat);
   cardListForFormat = trimCardListByRaceOrAttribute(cardListForFormat, currentScreen.getComponent("monsterType").getValue(), "Race");
-  println("Race filter: " + cardListForFormat.size());
+  addToLog(gLogName, "After race filter: " + cardListForFormat.size(), gLogSizeFormat);
   cardListForFormat = trimCardListByRaceOrAttribute(cardListForFormat, currentScreen.getComponent("monsterAttribute").getValue(), "Attribute");
-  println("Attribute filer: " + cardListForFormat.size());
+  addToLog(gLogName, "After attribute filer: " + cardListForFormat.size(), gLogSizeFormat);
   return cardListForFormat;
 }
 
@@ -97,4 +98,11 @@ ArrayList<Card> trimCardListByRaceOrAttribute(ArrayList<Card> tempList, String l
 JSONObject loadBanList(String fileName) {
   if (fileName.equals("")) return new JSONObject();
   return loadJSONObject(dataPath("") + "/BanLists/" + fileName);
+}
+
+void loadBanLists() {
+  File banListFolder = new File(dataPath("") + "/BanLists"); //get the names of the files that are in the ban list folder, which are used to both load the ban list, and also to set the name of the banlist
+  for (String banListFile : banListFolder.list()) {
+    banLists.add(banListFile);
+  }
 }

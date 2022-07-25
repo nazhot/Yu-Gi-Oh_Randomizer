@@ -94,9 +94,9 @@ class ImageGrid extends Component<ImageGrid> {
   }
 
   ImageGrid makeScreens(JSONObject banlist) {
-    println("Starting to make screens");
-    println("Number of screens: " + this.numScreens);
-    println("Number of cards: " + this.cards.size());
+    addToLog(gLogName, "STARTING TO MAKE SCREENS", gLogFormat);
+    addToLog(gLogName, "Number of screens: " + this.numScreens, gLogSizeFormat);
+    addToLog(gLogName, "Number of cards: " + this.cards.size(), gLogSizeFormat);
     for (int screen = 0; screen < this.numScreens; screen++) {
       g.removeCache(this.tempCanvas);
       this.tempCanvas = createGraphics(int(this.x + this.w), int(this.y + this.h));

@@ -1,3 +1,5 @@
+import processing.javafx.*;
+
 import java.util.*;
 import java.io.*;
 import SimpleGUI.*;
@@ -22,6 +24,9 @@ String[] setCards = {"Set Cards 1", "Draw Cards", "Staples"}; //TODO: needs to b
 
 String[] comparisons = {"<", "<=", "=", ">=", ">"}; //all of the different comparisons that can be done to atk and def
 
+String gLogFormat = "%y:%M:%d-%h:%m:%s %u %a";
+String gLogSizeFormat = "%ys %Ms %ds %hs %ms %ss %us %a";
+String gLogName = "log";
 
 float gTextScalar = 0.15; //the multiple to use when attempting to center text. 0.15 has appeared to be working great for this font
 int horizontalMargin = 5; //these are all of the parameters for adjusting the positions of rows of sliders/dropdowns, for easy changing if need be
@@ -46,15 +51,17 @@ String imageExtension; //what the extension is for the images
 int gridRows; //421
 int gridCols; //421
 
+
 ArrayList<Deck> randomDecks;
 
 void setup() {
   size(1200, 700);
-  textFont(createFont("Yu-Gi-Oh! Matrix Small Caps 2", 30)); // 8
+  addToLog(gLogName, "#########################START PROGAM#########################", "%a");
+  textFont(createFont("Yu-Gi-Oh! Matrix Regular Small Caps 2.ttf", 30)); // 8
 
   imageFolder = dataPath("") + "/CardImagesJPG/";
   imageExtension = ".jpg";
-
+  
   allCardsJSON = loadJSONArray("data/allCards.json");
   banLists = new ArrayList<String>();
   formats = new ArrayList<String>();
@@ -71,8 +78,9 @@ void setup() {
   cardScreen.setName("card");
 
 
-
+  
   loadBanLists();
+  
 
   for (int i = 0; i < allCardsJSON.size(); i++) { //make every Card object, and add it to the allCards arrayList, get the formats
     JSONObject object = allCardsJSON.getJSONObject(i);
@@ -82,6 +90,9 @@ void setup() {
       if (!formats.contains(format)) formats.add(format);
     }
   }
+  addToLog(gLogName, "(" + banLists.size() + ") ban lists loaded!", gLogFormat);
+  addToLog(gLogName, "(" + allCards.size() + ") total cards loaded!", gLogSizeFormat);
+  addToLog(gLogName, "(" + formats.size() + ") different formats found! " + formats.toString(), gLogSizeFormat);
 
   //Every single component added to all of the screens, working on making this into imports from JSON files instead, to make editing/readability quite a bit easier
 
@@ -177,7 +188,6 @@ void setup() {
     .setSelectedColor(#ff8b53)
     .setTextScalar(gTextScalar)
     );
-  println("The integer of blank is " + int(""));
 
   buttonColumn++;
   mainScreen.addComponent(new DropDown(this, horizontalMargin + (rowOneWidth + horizontalGap) * buttonColumn, rowOneY, rowOneWidth, rowOneHeight)
@@ -659,23 +669,17 @@ void draw() {
 }
 
 
-void loadBanLists() {
-  File banListFolder = new File(dataPath("") + "/BanLists"); //get the names of the files that are in the ban list folder, which are used to both load the ban list, and also to set the name of the banlist
-  for (String banListFile : banListFolder.list()) {
-    banLists.add(banListFile);
-  }
-}
-
 
 void mousePressed() {
   String test = controller.checkClick();
   if (test.length() > 0) {
-    println(test);
+    addToLog(gLogName, test, gLogFormat);
     if (test.equals("main:Button:Randomize")) { //MAKE DECKS SETUP
       ArrayList<String> randomValues = controller.getValues();
       Screen cardScreen = controller.getScreen("card");
+      addToLog(gLogName, "RANDOMIZING, WITH FOLLOWING VALUES:", gLogFormat);
       for (String value : randomValues) {
-        println(value);
+        addToLog(gLogName, value, gLogSizeFormat);
       }
       ImageGridCollection gridTemp = (ImageGridCollection) cardScreen.getComponent("cards");
       cardScreen.removeComponents("deck");
@@ -687,7 +691,7 @@ void mousePressed() {
         numDecks = Integer.parseInt(controller.getCurrentScreen().getComponent("numDecksValue").getValue());
       }
       catch(NumberFormatException e) {
-        println("Error with number of decks input: defaulting to 1");
+        addToLog(gLogName, "Error with number of decks input (" + controller.getCurrentScreen().getComponent("numDecksValue").getValue() + "): defaulting to 1", gLogFormat);
       }
       ArrayList<Card> validCards = new ArrayList<Card>();
       String banListName = controller.getCurrentScreen().getComponent("banList").getValue();

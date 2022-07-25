@@ -45,46 +45,8 @@ void addFormats(String fileName, String formatName) {
     }
   }
   saveJSONArray(all, dataPath("") + "/allCards.json");
+  addToLog(gLogName, "CARDS NOT ADDED FOR " + formatName + " FORMAT:", gLogFormat);
   for (String f : cardsNotAdded){
-    println(f);
-  }
-}
-
-
-void makeFormatFile(String fileName, String formatName) {
-  JSONArray all = loadJSONArray("data/allCards.json");
-  PrintWriter newFile = createWriter(fileName);
-  for (int i = 0; i < all.size(); i++) {
-    JSONObject cardJSON = all.getJSONObject(i);
-    JSONArray formats = cardJSON.getJSONArray("misc_info").getJSONObject(0).getJSONArray("formats");
-    boolean matchFormat = false;
-    for (int j = 0; j < formats.size(); j++) {
-      if (formats.getString(j).equals(formatName)) {
-        matchFormat = true;
-        break;
-      }
-    }
-    if (matchFormat) {
-      newFile.println(cardJSON.getString("name"));
-    }
-  }
-  newFile.flush();
-  newFile.close();
-}
-
-void compareFiles(String file1, String file2) {
-  String[] file1Contents = loadStrings(file1);
-  String[] file2Contents = loadStrings(file2);
-  for (String line1 : file1Contents) {
-    boolean bothHave = false;
-    for (String line2 : file2Contents) {
-      if (line1.toLowerCase().equals(line2.toLowerCase())) {
-        bothHave = true;
-        break;
-      }
-    }
-    if (!bothHave) {
-      println(line1);
-    }
+    addToLog(gLogName, f, gLogFormat);
   }
 }
