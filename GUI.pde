@@ -699,13 +699,13 @@ void mousePressed() {
         randomDecks.add(deck);
         validCards.addAll(deck.getCards());
         deck.makeYDK("random" + str(i + 1));
-        gridTemp.addImageGrid(new ImageGrid(this, 22, 0, width * 0.80, height - 1)
+        gridTemp.addImageGrid(new ImageGrid(this, cardScreen, 22, 0, width * 0.80, height - 1)
           .setDrawOrder(20)
-          .setNumCols(cardScreen, 10)
-          .setHorizontalGap(cardScreen, 0)
+          .setNumCols(10)
+          .setHorizontalGap(0)
           .setFillColor(0)
-          .addCards(cardScreen, deck.getCards())
-          .makeScreens(cardScreen, banListJSON)
+          .addCards(deck.getCards())
+          .makeScreens(banListJSON)
           .setName("cardGrid")
           );
         cardScreen.addComponent(new Button(this, 0, 40 + i * 22, 20, 20)
@@ -735,13 +735,13 @@ void mousePressed() {
       //}
       String banListName = controller.getCurrentScreen().getComponent("banList").getValue();
       JSONObject banListJSON = loadBanList(banListName);
-      gridTemp.addImageGrid(new ImageGrid(this, 22, 0, width * 0.80, height - 1)
+      gridTemp.addImageGrid(new ImageGrid(this, viewAllCardsScreen, 22, 0, width * 0.80, height - 1)
         .setDrawOrder(20)
-        .setNumCols(viewAllCardsScreen, 10)
-        .setHorizontalGap(viewAllCardsScreen, 0)
+        .setNumCols(10)
+        .setHorizontalGap(0)
         .setFillColor(0)
-        .addCards(viewAllCardsScreen, formatCards)
-        .makeScreens(viewAllCardsScreen, banListJSON)
+        .addCards(formatCards)
+        .makeScreens(banListJSON)
         .setName("cardGrid")
         );
       controller.setCurrentScreen("viewAllCards");

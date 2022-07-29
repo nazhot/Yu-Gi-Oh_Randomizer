@@ -13,10 +13,10 @@ class ImageGridCollection extends Component<ImageGridCollection> {
   
   
   
-  void draw(Screen screenParent){
+  void draw(){
     if (this.gridIndex >= this.grids.size() || this.gridIndex < 0) return;
     
-    this.grids.get(this.gridIndex).draw(screenParent);
+    this.grids.get(this.gridIndex).draw();
   }
   
   
@@ -30,6 +30,7 @@ class ImageGridCollection extends Component<ImageGridCollection> {
   }
   
   void addImageGrid(ImageGrid i_){
+    i_.setScreen(this.screenParent);
     this.grids.add(i_);
   }
   
