@@ -48,8 +48,6 @@ int drawOrder = 100;
 
 String imageFolder; //where the images are stored
 String imageExtension; //what the extension is for the images
-int gridRows; //421
-int gridCols; //421
 
 
 ArrayList<Deck> randomDecks;
@@ -68,9 +66,9 @@ void setup() {
   allCards = new ArrayList<Card>();
   randomDecks = new ArrayList<Deck>();
   controller = new Controller(this);
-  mainScreen = new Screen(this);
-  cardScreen = new Screen(this);
-  viewAllCardsScreen = new Screen(this);
+  mainScreen = new Screen(this, "0w", "0h", "1w", "1h");
+  cardScreen = new Screen(this, "0w", "0h", "1w", "1h");
+  viewAllCardsScreen = new Screen(this, "0w", "0h", "1w", "1h");
 
 
 
@@ -108,7 +106,7 @@ void setup() {
     .setTextScalar(gTextScalar)
     );
 
-  mainScreen.addComponent(new Button(this, width / 2.0, height - 30, 115, 50)
+  mainScreen.addComponent(new Button(this, width / 2.0, height - 30.0, 115.0, 50.0)
     .setDrawOrder(drawOrder--)
     .setName("clearAll")
     .setShapeMode(CENTER)
@@ -703,11 +701,11 @@ void mousePressed() {
         deck.makeYDK("random" + str(i + 1));
         gridTemp.addImageGrid(new ImageGrid(this, 22, 0, width * 0.80, height - 1)
           .setDrawOrder(20)
-          .setNumCols(10)
-          .setHorizontalGap(0)
+          .setNumCols(cardScreen, 10)
+          .setHorizontalGap(cardScreen, 0)
           .setFillColor(0)
-          .addCards(deck.getCards())
-          .makeScreens(banListJSON)
+          .addCards(cardScreen, deck.getCards())
+          .makeScreens(cardScreen, banListJSON)
           .setName("cardGrid")
           );
         cardScreen.addComponent(new Button(this, 0, 40 + i * 22, 20, 20)
@@ -739,11 +737,11 @@ void mousePressed() {
       JSONObject banListJSON = loadBanList(banListName);
       gridTemp.addImageGrid(new ImageGrid(this, 22, 0, width * 0.80, height - 1)
         .setDrawOrder(20)
-        .setNumCols(10)
-        .setHorizontalGap(0)
+        .setNumCols(viewAllCardsScreen, 10)
+        .setHorizontalGap(viewAllCardsScreen, 0)
         .setFillColor(0)
-        .addCards(formatCards)
-        .makeScreens(banListJSON)
+        .addCards(viewAllCardsScreen, formatCards)
+        .makeScreens(viewAllCardsScreen, banListJSON)
         .setName("cardGrid")
         );
       controller.setCurrentScreen("viewAllCards");

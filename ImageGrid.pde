@@ -27,21 +27,30 @@ class ImageGrid extends Component<ImageGrid> {
     this.cardHoverColor = color(71, 85, 214);
     this.cardHoverStrokeWeight = 3;
     this.numCols = 1;
-    this.horizontalMargin = 5;
-    this.horizontalGap = 5;
+    horizontalMargin = 5;
+    horizontalGap = 5;
     this.verticalMargin = 5;
     this.verticalGap = 5;
-    this.widthHeightRatio = 1;
-    this.hoveredCardIndex = -1;
-    this.refreshImageDimensions();
+    widthHeightRatio = 1;
+    hoveredCardIndex = -1;
+
     this.currentScreen = 0;
     this.tempCanvas = null;
     this.allScreens = new ArrayList<PImage>();
   }
 
-  void draw() {
+  boolean initialize(Screen screenParent) {
+    this.refreshImageDimensions(screenParent);
+    return true;
+  }
+
+  void draw(Screen screenParent) {
+    float x = this.getX(screenParent);
+    float y = this.getY(screenParent);
+    float w = this.getW(screenParent);
+    float h = this.getH(screenParent);
     rectMode(CORNER);
-    this.hoveredCardIndex = this.mouseOverEntry();
+    hoveredCardIndex = this.mouseOverEntry(screenParent);
     fill(this.fillColor);
     if (this.strokeWeight == 0) {
       noStroke();
@@ -49,29 +58,29 @@ class ImageGrid extends Component<ImageGrid> {
       stroke(this.strokeColor);
       strokeWeight(this.strokeWeight);
     }
-    rect(this.x, this.y, this.w, this.h);
+    rect(x, y, w, h);
     if (this.allScreens.size() > 0 ) {
-      image(this.allScreens.get(this.currentScreen), this.x, this.y);
+      image(this.allScreens.get(this.currentScreen), x, y);
     }
 
-    if (this.hoveredCardIndex > -1) {
+    if (hoveredCardIndex > -1) {
       rectMode(CORNER);
       stroke(this.cardHoverColor);
       strokeWeight(this.cardHoverStrokeWeight);
       noFill();
-      rect(this.getImageX(this.hoveredCardIndex), this.getImageY(this.hoveredCardIndex), this.imageWidth, this.imageHeight);
+      rect(this.getImageX(screenParent, hoveredCardIndex), this.getImageY(screenParent, hoveredCardIndex), this.imageWidth, this.imageHeight);
     }
     textAlign(LEFT, TOP);
     textSize(30);
     fill(255);
-    text(str(this.currentScreen + 1) + "/" + str(this.numScreens), this.x + this.horizontalMargin, this.y + this.verticalMargin);
+    text(str(this.currentScreen + 1) + "/" + str(this.numScreens), x + horizontalMargin, y + this.verticalMargin);
   }
 
-  int mouseOverEntry() {
+  int mouseOverEntry(Screen screenParent) {
     int hoveredOverEntry = -1;
     for (int i = 0; i < this.cards.size(); i++) {
-      float imageX = this.getImageX(i);
-      float imageY = this.getImageY(i);
+      float imageX = this.getImageX(screenParent, i);
+      float imageY = this.getImageY(screenParent, i);
       if (mouseX >= imageX && mouseX <= imageX + imageWidth && mouseY >= imageY && mouseY <= imageY + imageHeight) {
         return i;
       }
@@ -79,8 +88,12 @@ class ImageGrid extends Component<ImageGrid> {
     return hoveredOverEntry;
   }
 
-  boolean mouseOver(boolean calledByScreen) {
-    boolean mouseOver = (mouseX >= this.x && mouseX <= this.x + this.w && mouseY >= this.y && mouseY <= this.y + this.h);
+  boolean mouseOver(Screen screenParent, boolean calledByScreen) {
+    float x = this.getX(screenParent);
+    float y = this.getY(screenParent);
+    float w = this.getW(screenParent);
+    float h = this.getH(screenParent);
+    boolean mouseOver = (mouseX >= x && mouseX <= x + w && mouseY >= y && mouseY <= y + h);
     return mouseOver;
   }
 
@@ -93,21 +106,25 @@ class ImageGrid extends Component<ImageGrid> {
     this.cards = new ArrayList<Card>();
   }
 
-  ImageGrid makeScreens(JSONObject banlist) {
+  ImageGrid makeScreens(Screen screenParent, JSONObject banlist) {
+    float x = this.getX(screenParent);
+    float y = this.getY(screenParent);
+    float w = this.getW(screenParent);
+    float h = this.getH(screenParent);
     addToLog(gLogName, "STARTING TO MAKE SCREENS", gLogFormat);
     addToLog(gLogName, "Number of screens: " + this.numScreens, gLogSizeFormat);
     addToLog(gLogName, "Number of cards: " + this.cards.size(), gLogSizeFormat);
     for (int screen = 0; screen < this.numScreens; screen++) {
       g.removeCache(this.tempCanvas);
-      this.tempCanvas = createGraphics(int(this.x + this.w), int(this.y + this.h));
+      this.tempCanvas = createGraphics(int(x + w), int(y + h));
       tempCanvas.beginDraw();
       int startCard = screen * this.numCardsOnScreen;
       int endCard = min(this.cards.size(), (screen + 1) * this.numCardsOnScreen);
       tempCanvas.textAlign(CENTER, CENTER);
       tempCanvas.textSize(20);
       for (int i = startCard; i < endCard; i++) {
-        float topLeftX = this.getImageX((i - startCard) % this.numCardsOnScreen) - this.x;
-        float topLeftY = this.getImageY((i - startCard) % this.numCardsOnScreen) - this.y;
+        float topLeftX = this.getImageX(screenParent, (i - startCard) % this.numCardsOnScreen) - x;
+        float topLeftY = this.getImageY(screenParent, (i - startCard) % this.numCardsOnScreen) - y;
         PImage tempImage = loadImage(imageFolder + this.cards.get(i).getId() + imageExtension);
 
         if (tempImage != null) {
@@ -142,87 +159,81 @@ class ImageGrid extends Component<ImageGrid> {
     }
   }
 
-  void refreshImageDimensions() {
-    this.imageWidth = (this.w - this.horizontalMargin * 2 - this.horizontalGap * (this.numCols - 1))/this.numCols;
-    this.imageHeight = imageWidth * this.widthHeightRatio;
-    this.numRows = floor(1.0 *  this.h/ this.imageHeight);
+  void refreshImageDimensions(Screen screenParent) {
+    float w = this.getW(screenParent);
+    float h = this.getH(screenParent);
+    this.imageWidth = (w - horizontalMargin * 2 - horizontalGap * (this.numCols - 1))/this.numCols;
+    this.imageHeight = imageWidth * widthHeightRatio;
+    this.numRows = floor(1.0 *  h/ this.imageHeight);
     this.numCardsOnScreen = this.numRows * this.numCols;
     this.totalGridHeight = this.verticalMargin + this.imageHeight * (numRows) + this.verticalGap * (numRows - 1);
     this.numScreens = ceil(1.0 * this.cards.size() / this.numCardsOnScreen);
   }
 
-  float getImageX(int cardIndex) {
+  float getImageX(Screen screenParent, int cardIndex) {
+    float x = this.getX(screenParent);
     int columnNumber = cardIndex % this.numCols;
-    return this.x + this.horizontalMargin + columnNumber * (this.imageWidth + this.horizontalGap);
+    return x + horizontalMargin + columnNumber * (this.imageWidth + horizontalGap);
   }
 
-  float getImageY(int cardIndex) {
+  float getImageY(Screen screenParent, int cardIndex) {
+    float y = this.getY(screenParent);
     int rowNumber = floor(1.0 * cardIndex / this.numCols);
-    return this.y + this.verticalMargin + rowNumber * (this.imageHeight + this.horizontalGap);
+    return y + this.verticalMargin + rowNumber * (this.imageHeight + horizontalGap);
   }
 
   Card getHoveredCard() {
-    if (this.hoveredCardIndex > -1) {
-      return this.cards.get(min(this.cards.size() - 1, this.numCardsOnScreen * this.currentScreen + this.hoveredCardIndex));
+    if (hoveredCardIndex > -1) {
+      return this.cards.get(min(this.cards.size() - 1, this.numCardsOnScreen * this.currentScreen + hoveredCardIndex));
     }
     return null;
   }
 
-  ImageGrid addCard(Card c_) {
+  ImageGrid addCard(Screen screenParent, Card c_) {
     this.cards.add(c_);
-    this.refreshImageDimensions();
+    this.refreshImageDimensions(screenParent);
     return this;
   }
 
-  ImageGrid addCards(ArrayList<Card> c_) {
+  ImageGrid addCards(Screen screenParent, ArrayList<Card> c_) {
     this.cards.addAll(c_);
-    this.refreshImageDimensions();
+    this.refreshImageDimensions(screenParent);
     return this;
   }
 
-  ImageGrid setHorizontalMargin(float h_) {
-    this.horizontalMargin = h_;
-    this.refreshImageDimensions();
+  ImageGrid setHorizontalMargin(Screen screenParent,float h_) {
+    horizontalMargin = h_;
+    this.refreshImageDimensions(screenParent);
     return this;
   }
 
-  ImageGrid setHorizontalGap(float h_) {
-    this.horizontalGap = h_;
-    this.refreshImageDimensions();
+  ImageGrid setHorizontalGap(Screen screenParent, float h_) {
+    horizontalGap = h_;
+    this.refreshImageDimensions(screenParent);
     return this;
   }
 
-  ImageGrid setVerticalMargin(float v_) {
+  ImageGrid setVerticalMargin(Screen screenParent, float v_) {
     this.verticalMargin = v_;
-    this.refreshImageDimensions();
+    this.refreshImageDimensions(screenParent);
     return this;
   }
 
-  ImageGrid setVerticalGap(float v_) {
+  ImageGrid setVerticalGap(Screen screenParent, float v_) {
     this.verticalGap = v_;
-    this.refreshImageDimensions();
+    this.refreshImageDimensions(screenParent);
     return this;
   }
 
-  ImageGrid setWidthHeightRatio(float w_) {
-    this.widthHeightRatio = w_;
-    this.refreshImageDimensions();
+  ImageGrid setWidthHeightRatio(Screen screenParent, float w_) {
+    widthHeightRatio = w_;
+    this.refreshImageDimensions(screenParent);
     return this;
   }
 
-  ImageGrid setNumCols(int n_) {
+  ImageGrid setNumCols(Screen screenParent, int n_) {
     this.numCols = n_;
-    this.refreshImageDimensions();
-    return this;
-  }
-
-
-  ImageGrid setMultipliers(float colMultiplier, float rowMultiplier) {
-    this.x *= colMultiplier;
-    this.w *= colMultiplier;
-    this.y *= rowMultiplier;
-    this.h *= rowMultiplier;
-    this.refreshImageDimensions();
+    this.refreshImageDimensions(screenParent);
     return this;
   }
 }
