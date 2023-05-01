@@ -6,7 +6,6 @@ class ImageGridCollection extends Component<ImageGridCollection> {
   
   ImageGridCollection(PApplet theParent, float x_, float y_, float w_, float h_) {
     super(theParent, x_, y_, w_, h_);
-    this.TYPE = "ImageGrid";
     this.grids = new ArrayList<ImageGrid>();
     this.gridIndex = 0;
   }

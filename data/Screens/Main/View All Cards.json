@@ -1,0 +1,21 @@
+{
+	"Name" : "View All Cards",
+	"Label" : "View All Cards",
+	"Type" : "Button",
+	"DrawOrder" : 198,
+	"X" : "0.0042w",
+	"Y" : "0.9214h",
+	"W" : "0.01w",
+	"H" : "0.07",
+	"TextSize" : 30,
+	"Rounding" : 10.0,
+	"FillColor" : -137590,
+	"HoverColor" : -29869,
+	"StrokeWeight" : 1,
+	"TextScalar" : 0.15,
+	"ShapeMode" : "CENTER",
+	"Payload" : {
+		"Command" : "Change Screen",
+		"Command Parameters" : "All Cards"
+	}
+}

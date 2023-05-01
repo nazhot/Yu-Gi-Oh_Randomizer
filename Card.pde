@@ -49,7 +49,7 @@ class Card {
     return (nameOrId.toLowerCase().equals(this.name.toLowerCase()) || 
     nameOrId.equals(str(this.id)) || 
     nameOrId.equals(str(this.konamiId)) || 
-    nameOrId.toLowerCase().equals(this.betaName.toLowerCase()));
+    nameOrId.toLowerCase().equals(betaName.toLowerCase()));
   }
 
   boolean compareStat(String statName, String comparison, String statValue) {

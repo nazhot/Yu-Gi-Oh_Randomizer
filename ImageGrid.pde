@@ -23,7 +23,6 @@ class ImageGrid extends Component<ImageGrid> {
   ImageGrid(PApplet theParent, Screen sp, float x_, float y_, float w_, float h_) {
     super(theParent, x_, y_, w_, h_);
     this.screenParent = sp;
-    this.TYPE = "ImageGrid";
     this.cards = new ArrayList<Card>();
     this.cardHoverColor = color(71, 85, 214);
     this.cardHoverStrokeWeight = 3;

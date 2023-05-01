@@ -1,0 +1,1218 @@
+#########################START PROGAM#########################
+2022:06:14-16:57:37 noah (4) ban lists loaded!
+                         (11919) total cards loaded!
+                         (8) different formats found! [Duel Links, TCG, OCG, GOAT, OCG GOAT, Stairway, GX, Speed Duel]
+2022:06:14-16:57:39 noah main:DropDown:format
+2022:06:14-16:57:40 noah main:DropDown:format
+2022:06:14-16:57:41 noah main:DropDown:format
+2022:06:14-16:57:42 noah main:DropDown:banList
+2022:06:14-16:57:42 noah main:DropDown:banList
+2022:06:14-16:57:43 noah main:DropDown:banList
+2022:06:14-16:57:44 noah main:Button:viewAllCards
+2022:06:14-16:57:44 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1052
+                         After race filter: 1052
+                         After attribute filer: 1052
+2022:06:14-16:57:44 noah STARTING TO MAKE SCREENS
+                         Number of screens: 16
+                         Number of cards: 1052
+2022:06:14-16:58:10 noah viewAllCards:Button:Back
+2022:06:14-16:58:11 noah main:TextBox:spellCountValue
+2022:06:14-16:58:14 noah main:TextBox:normalCountValue
+2022:06:14-16:58:15 noah main:TextBox:effectCountValue
+2022:06:14-16:58:17 noah main:DropDown:format
+2022:06:14-16:58:19 noah main:DropDown:format
+2022:06:14-16:58:20 noah main:DropDown:setCards
+2022:06:14-16:58:21 noah main:DropDown:setCards
+2022:06:14-16:58:21 noah main:DropDown:setCards
+2022:06:14-16:58:24 noah main:Slider:multEffect
+2022:06:14-16:58:25 noah main:Slider:multNormal
+2022:06:14-16:58:27 noah main:TextBox:numDecksValue
+2022:06:14-16:58:29 noah main:Button:Randomize
+2022:06:14-16:58:29 noah RANDOMIZING, WITH FOLLOWING VALUES:
+                         main:TextBox:numDecksValue:10
+                         main:Button:numDecks:
+                         main:TextBox:defValue:1000
+                         main:DropDown:defCompare:
+                         main:Button:defLabel:
+                         main:TextBox:atkValue:1000
+                         main:DropDown:atkCompare:
+                         main:Button:atkLabel:
+                         main:TextBox:ritualCountValue:
+                         main:Button:ritualCount:
+                         main:TextBox:fusionCountValue:
+                         main:Button:fusionCount:
+                         main:TextBox:effectCountValue:10
+                         main:Button:effectCount:
+                         main:TextBox:normalCountValue:10
+                         main:Button:normalCount:
+                         main:TextBox:spellCountValue:10
+                         main:Button:spellCount:
+                         main:TextBox:trapCountValue:
+                         main:Button:trapCount:
+                         main:Slider:multRitual:0.0
+                         main:Slider:multFusion:0.0
+                         main:Slider:multEffect:0.45402297
+                         main:Slider:multNormal:0.29310346
+                         main:Slider:multSpell:0.0
+                         main:Slider:multTrap:0.0
+                         main:DropDown:setCards:Set Cards 1
+                         main:DropDown:banList:Stairway
+                         main:DropDown:format:Stairway
+                         main:DropDown:monsterAttribute:
+                         main:DropDown:monsterType:
+                         main:Button:viewAllCards:
+                         main:Button:clearAll:
+                         main:Button:Randomize:
+2022:06:14-16:58:30 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1052
+                         After race filter: 1052
+                         After attribute filer: 1052
+2022:06:14-16:58:30 noah STARTING TO MAKE SCREENS
+                         Number of screens: 1
+                         Number of cards: 30
+2022:06:14-16:58:30 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1052
+                         After race filter: 1052
+                         After attribute filer: 1052
+2022:06:14-16:58:30 noah STARTING TO MAKE SCREENS
+                         Number of screens: 1
+                         Number of cards: 30
+2022:06:14-16:58:30 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1052
+                         After race filter: 1052
+                         After attribute filer: 1052
+2022:06:14-16:58:30 noah STARTING TO MAKE SCREENS
+                         Number of screens: 1
+                         Number of cards: 30
+2022:06:14-16:58:30 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1052
+                         After race filter: 1052
+                         After attribute filer: 1052
+2022:06:14-16:58:30 noah STARTING TO MAKE SCREENS
+                         Number of screens: 1
+                         Number of cards: 30
+2022:06:14-16:58:30 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1052
+                         After race filter: 1052
+                         After attribute filer: 1052
+2022:06:14-16:58:30 noah STARTING TO MAKE SCREENS
+                         Number of screens: 1
+                         Number of cards: 30
+2022:06:14-16:58:31 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1052
+                         After race filter: 1052
+                         After attribute filer: 1052
+2022:06:14-16:58:31 noah STARTING TO MAKE SCREENS
+                         Number of screens: 1
+                         Number of cards: 30
+2022:06:14-16:58:31 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1052
+                         After race filter: 1052
+                         After attribute filer: 1052
+2022:06:14-16:58:31 noah STARTING TO MAKE SCREENS
+                         Number of screens: 1
+                         Number of cards: 30
+2022:06:14-16:58:31 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1052
+                         After race filter: 1052
+                         After attribute filer: 1052
+2022:06:14-16:58:31 noah STARTING TO MAKE SCREENS
+                         Number of screens: 1
+                         Number of cards: 30
+2022:06:14-16:58:31 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1052
+                         After race filter: 1052
+                         After attribute filer: 1052
+2022:06:14-16:58:31 noah STARTING TO MAKE SCREENS
+                         Number of screens: 1
+                         Number of cards: 30
+2022:06:14-16:58:31 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1052
+                         After race filter: 1052
+                         After attribute filer: 1052
+2022:06:14-16:58:31 noah STARTING TO MAKE SCREENS
+                         Number of screens: 1
+                         Number of cards: 30
+2022:06:14-16:58:33 noah card:Button:deck5
+2022:06:14-16:58:34 noah card:Button:deck8
+2022:06:14-16:58:35 noah card:Button:Back
+2022:06:14-16:58:36 noah main:Button:clearAll
+#########################START PROGAM#########################
+2022:06:16-10:23:25 noah (4) ban lists loaded!
+                         (11919) total cards loaded!
+                         (8) different formats found! [Duel Links, TCG, OCG, GOAT, OCG GOAT, Stairway, GX, Speed Duel]
+2022:06:16-10:23:27 noah main:DropDown:format
+2022:06:16-10:23:28 noah main:DropDown:format
+2022:06:16-10:23:29 noah main:DropDown:format
+2022:06:16-10:23:29 noah main:DropDown:banList
+2022:06:16-10:23:30 noah main:DropDown:banList
+2022:06:16-10:23:31 noah main:DropDown:banList
+2022:06:16-10:23:32 noah main:Button:viewAllCards
+2022:06:16-10:23:32 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1052
+                         After race filter: 1052
+                         After attribute filer: 1052
+2022:06:16-10:23:32 noah STARTING TO MAKE SCREENS
+                         Number of screens: 16
+                         Number of cards: 1052
+2022:06:16-10:24:03 noah viewAllCards:Button:Back
+#########################START PROGAM#########################
+2022:06:16-11:26:42 noah (4) ban lists loaded!
+                         (11919) total cards loaded!
+                         (8) different formats found! [Duel Links, TCG, OCG, GOAT, OCG GOAT, Stairway, GX, Speed Duel]
+#########################START PROGAM#########################
+2022:06:17-13:43:53 noah (4) ban lists loaded!
+                         (11919) total cards loaded!
+                         (8) different formats found! [Duel Links, TCG, OCG, GOAT, OCG GOAT, Stairway, GX, Speed Duel]
+#########################START PROGAM#########################
+#########################START PROGAM#########################
+2022:06:17-13:44:21 noah (4) ban lists loaded!
+                         (11919) total cards loaded!
+                         (8) different formats found! [Duel Links, TCG, OCG, GOAT, OCG GOAT, Stairway, GX, Speed Duel]
+#########################START PROGAM#########################
+#########################START PROGAM#########################
+#########################START PROGAM#########################
+#########################START PROGAM#########################
+#########################START PROGAM#########################
+#########################START PROGAM#########################
+2022:06:22-16:58:38 noah (4) ban lists loaded!
+                         (11919) total cards loaded!
+                         (8) different formats found! [Duel Links, TCG, OCG, GOAT, OCG GOAT, Stairway, GX, Speed Duel]
+2022:06:22-16:58:51 noah main:Slider:multFusion
+2022:06:22-16:58:54 noah main:Slider:multFusion
+#########################START PROGAM#########################
+2022:06:22-21:20:35 noah (4) ban lists loaded!
+                         (11919) total cards loaded!
+                         (8) different formats found! [Duel Links, TCG, OCG, GOAT, OCG GOAT, Stairway, GX, Speed Duel]
+2022:06:22-21:20:40 noah main:DropDown:format
+2022:06:22-21:20:41 noah main:DropDown:format
+2022:06:22-21:20:42 noah main:DropDown:format
+2022:06:22-21:20:43 noah main:DropDown:banList
+2022:06:22-21:20:44 noah main:DropDown:banList
+2022:06:22-21:20:45 noah main:DropDown:banList
+2022:06:22-21:20:46 noah main:Button:viewAllCards
+2022:06:22-21:20:46 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1052
+                         After race filter: 1052
+                         After attribute filer: 1052
+2022:06:22-21:20:46 noah STARTING TO MAKE SCREENS
+                         Number of screens: 16
+                         Number of cards: 1052
+2022:06:22-22:01:22 noah viewAllCards:Button:Back
+2022:06:22-22:01:23 noah main:DropDown:defCompare
+2022:06:22-22:01:25 noah main:DropDown:defCompare
+2022:06:22-22:01:26 noah main:DropDown:defCompare
+2022:06:22-22:01:27 noah main:TextBox:defValue
+2022:06:22-22:01:32 noah main:Button:viewAllCards
+2022:06:22-22:01:32 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 287
+                         After race filter: 287
+                         After attribute filer: 287
+2022:06:22-22:01:32 noah STARTING TO MAKE SCREENS
+                         Number of screens: 5
+                         Number of cards: 287
+2022:06:22-22:18:12 noah viewAllCards:Button:Back
+#########################START PROGAM#########################
+2022:06:22-22:28:43 noah (4) ban lists loaded!
+                         (11919) total cards loaded!
+                         (8) different formats found! [Duel Links, TCG, OCG, GOAT, OCG GOAT, Stairway, GX, Speed Duel]
+2022:06:22-22:29:00 noah main:TextBox:defValue
+2022:06:22-22:29:04 noah main:DropDown:defCompare
+2022:06:22-22:29:05 noah main:DropDown:defCompare
+2022:06:22-22:29:06 noah main:DropDown:defCompare
+2022:06:22-22:29:07 noah main:DropDown:format
+2022:06:22-22:29:08 noah main:DropDown:format
+2022:06:22-22:29:09 noah main:DropDown:format
+2022:06:22-22:29:09 noah main:DropDown:banList
+2022:06:22-22:29:10 noah main:DropDown:banList
+2022:06:22-22:29:10 noah main:DropDown:banList
+2022:06:22-22:29:11 noah main:Button:viewAllCards
+2022:06:22-22:29:11 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 281
+                         After race filter: 281
+                         After attribute filer: 281
+2022:06:22-22:29:12 noah STARTING TO MAKE SCREENS
+                         Number of screens: 5
+                         Number of cards: 281
+2022:06:22-22:33:26 noah viewAllCards:Button:Back
+#########################START PROGAM#########################
+2022:07:23-19:32:51 noah (4) ban lists loaded!
+                         (11919) total cards loaded!
+                         (8) different formats found! [Duel Links, TCG, OCG, GOAT, OCG GOAT, Stairway, GX, Speed Duel]
+2022:07:23-19:32:55 noah main:Slider:multTrap
+2022:07:23-19:32:58 noah main:Slider:multSpell
+2022:07:23-19:33:03 noah main:Slider:multNormal
+2022:07:23-19:33:17 noah main:Slider:multNormal
+2022:07:23-19:33:19 noah main:Slider:multEffect
+2022:07:23-19:33:44 noah main:Slider:multEffect
+2022:07:23-19:33:52 noah main:Slider:multNormal
+2022:07:23-19:33:56 noah main:Slider:multEffect
+2022:07:23-19:34:03 noah main:DropDown:monsterType
+2022:07:23-19:34:04 noah main:DropDown:monsterType
+2022:07:23-19:34:04 noah main:DropDown:monsterType
+2022:07:23-19:34:05 noah main:DropDown:monsterType
+2022:07:23-19:34:05 noah main:DropDown:monsterAttribute
+2022:07:23-19:34:06 noah main:DropDown:monsterAttribute
+2022:07:23-19:34:06 noah main:DropDown:monsterType
+2022:07:23-19:34:06 noah main:DropDown:monsterType
+2022:07:23-19:34:07 noah main:DropDown:monsterType
+2022:07:23-19:34:07 noah main:DropDown:monsterType
+2022:07:23-19:34:07 noah main:DropDown:monsterAttribute
+2022:07:23-19:34:07 noah main:DropDown:monsterAttribute
+2022:07:23-19:34:08 noah main:DropDown:monsterType
+2022:07:23-19:34:08 noah main:DropDown:monsterType
+2022:07:23-19:34:08 noah main:DropDown:monsterType
+2022:07:23-19:34:09 noah main:DropDown:monsterType
+2022:07:23-19:34:09 noah main:DropDown:monsterAttribute
+2022:07:23-19:34:09 noah main:DropDown:monsterAttribute
+2022:07:23-19:34:11 noah main:DropDown:format
+2022:07:23-19:34:12 noah main:DropDown:format
+2022:07:23-19:34:13 noah main:DropDown:format
+2022:07:23-19:34:13 noah main:DropDown:banList
+2022:07:23-19:34:14 noah main:DropDown:banList
+2022:07:23-19:34:15 noah main:DropDown:banList
+2022:07:23-19:34:18 noah main:TextBox:numDecksValue
+2022:07:23-19:34:33 noah main:DropDown:atkCompare
+2022:07:23-19:34:33 noah main:DropDown:atkCompare
+2022:07:23-19:34:40 noah main:TextBox:trapCountValue
+2022:07:23-19:34:50 noah main:DropDown:monsterType
+2022:07:23-19:34:51 noah main:DropDown:monsterType
+2022:07:23-19:34:51 noah main:DropDown:monsterType
+2022:07:23-19:34:52 noah main:DropDown:monsterType
+2022:07:23-19:34:52 noah main:DropDown:monsterType
+2022:07:23-19:34:56 noah main:DropDown:monsterType
+2022:07:23-19:34:56 noah main:DropDown:monsterAttribute
+2022:07:23-19:35:00 noah main:DropDown:monsterType
+2022:07:23-19:35:00 noah main:DropDown:monsterType
+2022:07:23-19:35:00 noah main:DropDown:monsterAttribute
+2022:07:23-19:35:01 noah main:DropDown:monsterAttribute
+2022:07:23-19:35:03 noah main:DropDown:monsterAttribute
+2022:07:23-19:35:03 noah main:DropDown:monsterAttribute
+2022:07:23-19:35:03 noah main:DropDown:monsterAttribute
+2022:07:23-19:35:03 noah main:DropDown:monsterAttribute
+2022:07:23-19:35:12 noah main:DropDown:monsterAttribute
+2022:07:23-19:35:14 noah main:DropDown:monsterAttribute
+2022:07:23-19:35:16 noah main:DropDown:monsterAttribute
+2022:07:23-19:35:20 noah main:TextBox:trapCountValue
+2022:07:23-19:35:24 noah main:TextBox:spellCountValue
+2022:07:23-19:35:33 noah main:TextBox:effectCountValue
+2022:07:23-19:35:36 noah main:Slider:multEffect
+2022:07:23-19:35:37 noah main:TextBox:effectCountValue
+2022:07:23-19:35:43 noah main:TextBox:spellCountValue
+2022:07:23-19:35:46 noah main:TextBox:trapCountValue
+2022:07:23-19:35:52 noah main:TextBox:spellCountValue
+2022:07:23-19:35:57 noah main:DropDown:monsterType
+2022:07:23-19:36:00 noah main:DropDown:monsterType
+2022:07:23-19:36:01 noah main:DropDown:monsterAttribute
+2022:07:23-19:36:03 noah main:DropDown:monsterAttribute
+2022:07:23-19:36:03 noah main:DropDown:monsterAttribute
+2022:07:23-19:36:09 noah main:Button:Randomize
+2022:07:23-19:36:09 noah RANDOMIZING, WITH FOLLOWING VALUES:
+                         main:TextBox:numDecksValue:3
+                         main:Button:numDecks:
+                         main:TextBox:defValue:1000
+                         main:DropDown:defCompare:
+                         main:Button:defLabel:
+                         main:TextBox:atkValue:1000
+                         main:DropDown:atkCompare:
+                         main:Button:atkLabel:
+                         main:TextBox:ritualCountValue:
+                         main:Button:ritualCount:
+                         main:TextBox:fusionCountValue:
+                         main:Button:fusionCount:
+                         main:TextBox:effectCountValue:13
+                         main:Button:effectCount:
+                         main:TextBox:normalCountValue:
+                         main:Button:normalCount:
+                         main:TextBox:spellCountValue:17
+                         main:Button:spellCount:
+                         main:TextBox:trapCountValue:10
+                         main:Button:trapCount:
+                         main:Slider:multRitual:0.0
+                         main:Slider:multFusion:0.0
+                         main:Slider:multEffect:1.0
+                         main:Slider:multNormal:0.25287357
+                         main:Slider:multSpell:1.0
+                         main:Slider:multTrap:1.0
+                         main:DropDown:setCards:
+                         main:DropDown:banList:Stairway
+                         main:DropDown:format:Stairway
+                         main:DropDown:monsterAttribute:LIGHT
+                         main:DropDown:monsterType:
+                         main:Button:viewAllCards:
+                         main:Button:clearAll:
+                         main:Button:Randomize:
+2022:07:23-19:36:10 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1052
+                         After race filter: 1052
+                         After attribute filer: 358
+2022:07:23-19:36:10 noah STARTING TO MAKE SCREENS
+                         Number of screens: 1
+                         Number of cards: 40
+2022:07:23-19:36:11 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1052
+                         After race filter: 1052
+                         After attribute filer: 358
+2022:07:23-19:36:11 noah STARTING TO MAKE SCREENS
+                         Number of screens: 1
+                         Number of cards: 40
+2022:07:23-19:36:12 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1052
+                         After race filter: 1052
+                         After attribute filer: 358
+2022:07:23-19:36:12 noah STARTING TO MAKE SCREENS
+                         Number of screens: 1
+                         Number of cards: 40
+2022:07:23-19:36:30 noah card:Button:deck1
+2022:07:23-19:36:44 noah card:Button:deck2
+#########################START PROGAM#########################
+2022:07:23-19:56:46 noah (4) ban lists loaded!
+                         (11919) total cards loaded!
+                         (8) different formats found! [Duel Links, TCG, OCG, GOAT, OCG GOAT, Stairway, GX, Speed Duel]
+2022:07:23-19:56:47 noah main:Slider:multTrap
+2022:07:23-19:56:48 noah main:Slider:multSpell
+2022:07:23-19:56:50 noah main:Slider:multEffect
+2022:07:23-19:56:53 noah main:TextBox:numDecksValue
+2022:07:23-19:56:56 noah main:DropDown:monsterType
+2022:07:23-19:57:10 noah main:DropDown:monsterAttribute
+2022:07:23-19:57:12 noah main:DropDown:monsterAttribute
+2022:07:23-19:57:16 noah main:DropDown:monsterType
+2022:07:23-19:57:18 noah main:DropDown:monsterType
+2022:07:23-19:57:27 noah main:DropDown:monsterType
+2022:07:23-19:57:28 noah main:DropDown:monsterType
+2022:07:23-19:57:28 noah main:DropDown:atkCompare
+2022:07:23-19:57:29 noah main:DropDown:atkCompare
+2022:07:23-19:57:30 noah main:DropDown:atkCompare
+2022:07:23-19:57:30 noah main:DropDown:atkCompare
+2022:07:23-19:57:31 noah main:DropDown:atkCompare
+2022:07:23-19:57:32 noah main:DropDown:atkCompare
+2022:07:23-19:57:33 noah main:DropDown:atkCompare
+2022:07:23-19:57:33 noah main:TextBox:trapCountValue
+2022:07:23-19:57:35 noah main:TextBox:spellCountValue
+2022:07:23-19:57:37 noah main:TextBox:effectCountValue
+2022:07:23-19:57:39 noah main:TextBox:trapCountValue
+2022:07:23-19:57:43 noah main:DropDown:format
+2022:07:23-19:57:44 noah main:DropDown:format
+2022:07:23-19:57:45 noah main:DropDown:format
+2022:07:23-19:57:46 noah main:DropDown:banList
+2022:07:23-19:57:47 noah main:DropDown:banList
+2022:07:23-19:57:47 noah main:DropDown:banList
+2022:07:23-19:57:48 noah main:Button:Randomize
+2022:07:23-19:57:48 noah RANDOMIZING, WITH FOLLOWING VALUES:
+                         main:TextBox:numDecksValue:3
+                         main:Button:numDecks:
+                         main:TextBox:defValue:1000
+                         main:DropDown:defCompare:
+                         main:Button:defLabel:
+                         main:TextBox:atkValue:1000
+                         main:DropDown:atkCompare:>=
+                         main:Button:atkLabel:
+                         main:TextBox:ritualCountValue:
+                         main:Button:ritualCount:
+                         main:TextBox:fusionCountValue:
+                         main:Button:fusionCount:
+                         main:TextBox:effectCountValue:13
+                         main:Button:effectCount:
+                         main:TextBox:normalCountValue:
+                         main:Button:normalCount:
+                         main:TextBox:spellCountValue:10
+                         main:Button:spellCount:
+                         main:TextBox:trapCountValue:17
+                         main:Button:trapCount:
+                         main:Slider:multRitual:0.0
+                         main:Slider:multFusion:0.0
+                         main:Slider:multEffect:1.0
+                         main:Slider:multNormal:0.0
+                         main:Slider:multSpell:1.0
+                         main:Slider:multTrap:1.0
+                         main:DropDown:setCards:
+                         main:DropDown:banList:Stairway
+                         main:DropDown:format:Stairway
+                         main:DropDown:monsterAttribute:
+                         main:DropDown:monsterType:Fiend,Machine,Warrior
+                         main:Button:viewAllCards:
+                         main:Button:clearAll:
+                         main:Button:Randomize:
+2022:07:23-19:57:48 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 761
+                         After race filter: 440
+                         After attribute filer: 440
+2022:07:23-19:57:48 noah STARTING TO MAKE SCREENS
+                         Number of screens: 1
+                         Number of cards: 40
+2022:07:23-19:57:49 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 761
+                         After race filter: 440
+                         After attribute filer: 440
+2022:07:23-19:57:49 noah STARTING TO MAKE SCREENS
+                         Number of screens: 1
+                         Number of cards: 40
+2022:07:23-19:57:50 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 761
+                         After race filter: 440
+                         After attribute filer: 440
+2022:07:23-19:57:50 noah STARTING TO MAKE SCREENS
+                         Number of screens: 1
+                         Number of cards: 40
+2022:07:23-19:58:03 noah card:Button:deck1
+2022:07:23-19:58:20 noah card:Button:deck2
+2022:07:23-19:59:05 noah card:Button:deck1
+#########################START PROGAM#########################
+2022:07:29-14:39:52 noah (4) ban lists loaded!
+                         (11919) total cards loaded!
+                         (8) different formats found! [Duel Links, TCG, OCG, GOAT, OCG GOAT, Stairway, GX, Speed Duel]
+#########################START PROGAM#########################
+2022:07:29-14:43:22 noah (4) ban lists loaded!
+                         (11919) total cards loaded!
+                         (8) different formats found! [Duel Links, TCG, OCG, GOAT, OCG GOAT, Stairway, GX, Speed Duel]
+#########################START PROGAM#########################
+2022:07:29-14:46:03 noah (4) ban lists loaded!
+                         (11919) total cards loaded!
+                         (8) different formats found! [Duel Links, TCG, OCG, GOAT, OCG GOAT, Stairway, GX, Speed Duel]
+#########################START PROGAM#########################
+2022:07:29-14:50:53 noah (4) ban lists loaded!
+                         (11919) total cards loaded!
+                         (8) different formats found! [Duel Links, TCG, OCG, GOAT, OCG GOAT, Stairway, GX, Speed Duel]
+#########################START PROGAM#########################
+2022:07:29-14:51:22 noah (4) ban lists loaded!
+                         (11919) total cards loaded!
+                         (8) different formats found! [Duel Links, TCG, OCG, GOAT, OCG GOAT, Stairway, GX, Speed Duel]
+#########################START PROGAM#########################
+2022:07:29-14:53:03 noah (4) ban lists loaded!
+                         (11919) total cards loaded!
+                         (8) different formats found! [Duel Links, TCG, OCG, GOAT, OCG GOAT, Stairway, GX, Speed Duel]
+#########################START PROGAM#########################
+2022:07:29-14:56:06 noah (4) ban lists loaded!
+                         (11919) total cards loaded!
+                         (8) different formats found! [Duel Links, TCG, OCG, GOAT, OCG GOAT, Stairway, GX, Speed Duel]
+2022:07:29-14:56:07 noah main:TextBox:spellCountValue
+2022:07:29-14:56:08 noah main:TextBox:spellCountValue
+2022:07:29-14:56:09 noah main:DropDown:defCompare
+2022:07:29-14:56:10 noah main:DropDown:defCompare
+2022:07:29-14:56:10 noah main:DropDown:defCompare
+2022:07:29-14:56:10 noah main:DropDown:defCompare
+2022:07:29-14:56:11 noah main:TextBox:defValue
+2022:07:29-14:56:11 noah main:TextBox:defValue
+2022:07:29-14:56:12 noah main:TextBox:defValue
+2022:07:29-14:56:12 noah main:TextBox:numDecksValue
+2022:07:29-14:56:16 noah main:DropDown:format
+2022:07:29-14:56:17 noah main:DropDown:format
+2022:07:29-14:56:18 noah main:DropDown:format
+2022:07:29-14:56:19 noah main:DropDown:banList
+2022:07:29-14:56:20 noah main:DropDown:banList
+2022:07:29-14:56:20 noah main:DropDown:banList
+2022:07:29-14:56:21 noah main:DropDown:banList
+2022:07:29-14:56:21 noah main:DropDown:banList
+2022:07:29-14:56:22 noah main:DropDown:banList
+2022:07:29-14:56:23 noah main:DropDown:banList
+2022:07:29-14:56:24 noah main:Button:viewAllCards
+2022:07:29-14:56:24 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1052
+                         After race filter: 1052
+                         After attribute filer: 1052
+2022:07:29-14:56:24 noah STARTING TO MAKE SCREENS
+                         Number of screens: 16
+                         Number of cards: 1052
+2022:07:29-14:57:02 noah viewAllCards:Button:Back
+2022:07:29-14:57:04 noah main:Button:viewAllCards
+2022:07:29-14:57:04 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1052
+                         After race filter: 1052
+                         After attribute filer: 1052
+2022:07:29-14:57:04 noah STARTING TO MAKE SCREENS
+                         Number of screens: 16
+                         Number of cards: 1052
+2022:07:29-14:57:11 noah viewAllCards:Button:Back
+2022:07:29-14:57:12 noah main:DropDown:format
+2022:07:29-14:57:14 noah main:DropDown:format
+2022:07:29-14:57:15 noah main:DropDown:format
+2022:07:29-14:57:16 noah main:Button:viewAllCards
+2022:07:29-14:57:16 noah FILTERING CARDS:
+                         After format filter: 1199
+                         After stats filter: 1199
+                         After race filter: 1199
+                         After attribute filer: 1199
+2022:07:29-14:57:16 noah STARTING TO MAKE SCREENS
+                         Number of screens: 18
+                         Number of cards: 1199
+2022:07:29-14:57:41 noah viewAllCards:Button:Back
+#########################START PROGAM#########################
+2022:07:29-15:29:23 noah (4) ban lists loaded!
+                         (11919) total cards loaded!
+                         (8) different formats found! [Duel Links, TCG, OCG, GOAT, OCG GOAT, Stairway, GX, Speed Duel]
+2022:07:29-15:29:25 noah main:DropDown:defCompare
+2022:07:29-15:29:25 noah main:DropDown:defCompare
+2022:07:29-15:29:25 noah main:TextBox:defValue
+2022:07:29-15:29:26 noah main:TextBox:defValue
+2022:07:29-15:29:27 noah main:DropDown:format
+2022:07:29-15:29:28 noah main:DropDown:format
+2022:07:29-15:29:28 noah main:DropDown:format
+2022:07:29-15:29:28 noah main:DropDown:banList
+2022:07:29-15:29:29 noah main:DropDown:banList
+2022:07:29-15:29:30 noah main:DropDown:banList
+2022:07:29-15:29:31 noah main:Button:viewAllCards
+2022:07:29-15:29:31 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1052
+                         After race filter: 1052
+                         After attribute filer: 1052
+#########################START PROGAM#########################
+2022:07:29-15:30:30 noah (4) ban lists loaded!
+                         (11919) total cards loaded!
+                         (8) different formats found! [Duel Links, TCG, OCG, GOAT, OCG GOAT, Stairway, GX, Speed Duel]
+2022:07:29-15:30:32 noah main:DropDown:format
+2022:07:29-15:30:32 noah main:DropDown:format
+2022:07:29-15:30:33 noah main:DropDown:format
+2022:07:29-15:30:33 noah main:DropDown:banList
+2022:07:29-15:30:34 noah main:DropDown:banList
+2022:07:29-15:30:34 noah main:DropDown:banList
+2022:07:29-15:30:35 noah main:Button:viewAllCards
+2022:07:29-15:30:35 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1052
+                         After race filter: 1052
+                         After attribute filer: 1052
+#########################START PROGAM#########################
+2022:07:29-15:34:05 noah (4) ban lists loaded!
+                         (11919) total cards loaded!
+                         (8) different formats found! [Duel Links, TCG, OCG, GOAT, OCG GOAT, Stairway, GX, Speed Duel]
+2022:07:29-15:34:06 noah main:DropDown:format
+2022:07:29-15:34:07 noah main:DropDown:format
+2022:07:29-15:34:08 noah main:DropDown:format
+2022:07:29-15:34:08 noah main:DropDown:banList
+2022:07:29-15:34:09 noah main:DropDown:banList
+2022:07:29-15:34:10 noah main:DropDown:banList
+2022:07:29-15:34:10 noah main:Button:viewAllCards
+2022:07:29-15:34:10 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1052
+                         After race filter: 1052
+                         After attribute filer: 1052
+2022:07:29-15:34:10 noah STARTING TO MAKE SCREENS
+                         Number of screens: 16
+                         Number of cards: 1052
+2022:07:29-15:34:25 noah viewAllCards:Button:Back
+2022:07:29-15:34:26 noah main:DropDown:banList
+2022:07:29-15:34:27 noah main:DropDown:banList
+2022:07:29-15:34:27 noah main:DropDown:format
+2022:07:29-15:34:28 noah main:DropDown:format
+2022:07:29-15:34:29 noah main:DropDown:format
+2022:07:29-15:34:30 noah main:DropDown:banList
+2022:07:29-15:34:30 noah main:DropDown:banList
+2022:07:29-15:34:31 noah main:DropDown:banList
+2022:07:29-15:34:31 noah main:DropDown:banList
+2022:07:29-15:34:32 noah main:Button:viewAllCards
+2022:07:29-15:34:32 noah FILTERING CARDS:
+                         After format filter: 1199
+                         After stats filter: 1199
+                         After race filter: 1199
+                         After attribute filer: 1199
+2022:07:29-15:34:32 noah STARTING TO MAKE SCREENS
+                         Number of screens: 18
+                         Number of cards: 1199
+2022:07:29-15:34:43 noah viewAllCards:Button:Back
+2022:07:29-15:34:44 noah main:TextBox:trapCountValue
+2022:07:29-15:34:46 noah main:Button:Randomize
+2022:07:29-15:34:46 noah RANDOMIZING, WITH FOLLOWING VALUES:
+                         main:TextBox:numDecksValue:1
+                         main:Button:numDecks:
+                         main:TextBox:defValue:1000
+                         main:DropDown:defCompare:
+                         main:Button:defLabel:
+                         main:TextBox:atkValue:1000
+                         main:DropDown:atkCompare:
+                         main:Button:atkLabel:
+                         main:TextBox:ritualCountValue:
+                         main:Button:ritualCount:
+                         main:TextBox:fusionCountValue:
+                         main:Button:fusionCount:
+                         main:TextBox:effectCountValue:
+                         main:Button:effectCount:
+                         main:TextBox:normalCountValue:
+                         main:Button:normalCount:
+                         main:TextBox:spellCountValue:
+                         main:Button:spellCount:
+                         main:TextBox:trapCountValue:20
+                         main:Button:trapCount:
+                         main:Slider:multRitual:0.0
+                         main:Slider:multFusion:0.0
+                         main:Slider:multEffect:0.0
+                         main:Slider:multNormal:0.0
+                         main:Slider:multSpell:0.0
+                         main:Slider:multTrap:0.0
+                         main:DropDown:setCards:
+                         main:DropDown:banList:GX Year 2
+                         main:DropDown:format:GX
+                         main:DropDown:monsterAttribute:
+                         main:DropDown:monsterType:
+                         main:Button:viewAllCards:
+                         main:Button:clearAll:
+                         main:Button:Randomize:
+2022:07:29-15:34:46 noah FILTERING CARDS:
+                         After format filter: 1199
+                         After stats filter: 1199
+                         After race filter: 1199
+                         After attribute filer: 1199
+2022:07:29-15:34:46 noah STARTING TO MAKE SCREENS
+                         Number of screens: 1
+                         Number of cards: 20
+2022:07:29-15:34:53 noah card:Button:Back
+#########################START PROGAM#########################
+2022:08:03-13:20:28 noah (4) ban lists loaded!
+                         (11919) total cards loaded!
+                         (8) different formats found! [Duel Links, TCG, OCG, GOAT, OCG GOAT, Stairway, GX, Speed Duel]
+#########################START PROGAM#########################
+2022:08:10-16:15:30 noah (4) ban lists loaded!
+                         (11919) total cards loaded!
+                         (8) different formats found! [Duel Links, TCG, OCG, GOAT, OCG GOAT, Stairway, GX, Speed Duel]
+#########################START PROGAM#########################
+2022:08:10-16:16:07 noah (4) ban lists loaded!
+                         (11919) total cards loaded!
+                         (8) different formats found! [Duel Links, TCG, OCG, GOAT, OCG GOAT, Stairway, GX, Speed Duel]
+#########################START PROGAM#########################
+2022:08:10-16:19:54 noah (4) ban lists loaded!
+                         (11919) total cards loaded!
+                         (8) different formats found! [Duel Links, TCG, OCG, GOAT, OCG GOAT, Stairway, GX, Speed Duel]
+#########################START PROGAM#########################
+2022:08:10-16:33:43 noah (4) ban lists loaded!
+                         (11919) total cards loaded!
+                         (8) different formats found! [Duel Links, TCG, OCG, GOAT, OCG GOAT, Stairway, GX, Speed Duel]
+#########################START PROGAM#########################
+2022:08:10-16:36:11 noah (4) ban lists loaded!
+                         (11919) total cards loaded!
+                         (8) different formats found! [Duel Links, TCG, OCG, GOAT, OCG GOAT, Stairway, GX, Speed Duel]
+2022:08:10-16:36:17 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1052
+                         After race filter: 1052
+                         After attribute filer: 1052
+2022:08:10-16:36:17 noah STARTING TO MAKE SCREENS
+                         Number of screens: 16
+                         Number of cards: 1052
+#########################START PROGAM#########################
+2022:08:10-16:40:09 noah (4) ban lists loaded!
+                         (11919) total cards loaded!
+                         (8) different formats found! [Duel Links, TCG, OCG, GOAT, OCG GOAT, Stairway, GX, Speed Duel]
+2022:08:10-16:40:16 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1052
+                         After race filter: 1052
+                         After attribute filer: 1052
+2022:08:10-16:40:16 noah STARTING TO MAKE SCREENS
+                         Number of screens: 16
+                         Number of cards: 1052
+#########################START PROGAM#########################
+2022:08:10-16:41:13 noah (4) ban lists loaded!
+                         (11919) total cards loaded!
+                         (8) different formats found! [Duel Links, TCG, OCG, GOAT, OCG GOAT, Stairway, GX, Speed Duel]
+2022:08:10-16:41:19 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1052
+                         After race filter: 1052
+                         After attribute filer: 1052
+2022:08:10-16:41:19 noah STARTING TO MAKE SCREENS
+                         Number of screens: 16
+                         Number of cards: 1052
+2022:08:10-16:41:30 noah RANDOMIZING, WITH FOLLOWING VALUES:
+                         main:TextBox:numDecksValue:1
+                         main:Button:numDecks:
+                         main:TextBox:defValue:1000
+                         main:DropDown:defCompare:
+                         main:Button:defLabel:
+                         main:TextBox:atkValue:1000
+                         main:DropDown:atkCompare:
+                         main:Button:atkLabel:
+                         main:TextBox:ritualCountValue:
+                         main:Button:ritualCount:
+                         main:TextBox:fusionCountValue:
+                         main:Button:fusionCount:
+                         main:TextBox:effectCountValue:
+                         main:Button:effectCount:
+                         main:TextBox:normalCountValue:
+                         main:Button:normalCount:
+                         main:TextBox:spellCountValue:
+                         main:Button:spellCount:
+                         main:TextBox:trapCountValue:
+                         main:Button:trapCount:
+                         main:Slider:multRitual:0.0
+                         main:Slider:multFusion:0.0
+                         main:Slider:multEffect:0.0
+                         main:Slider:multNormal:0.0
+                         main:Slider:multSpell:0.0
+                         main:Slider:multTrap:0.0
+                         main:DropDown:setCards:
+                         main:DropDown:banList:Stairway
+                         main:DropDown:format:Stairway
+                         main:DropDown:monsterAttribute:
+                         main:DropDown:monsterType:
+                         main:Button:viewAllCards:
+                         main:Button:clearAll:
+                         main:Button:Randomize:
+2022:08:10-16:41:30 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1052
+                         After race filter: 1052
+                         After attribute filer: 1052
+2022:08:10-16:41:30 noah STARTING TO MAKE SCREENS
+                         Number of screens: 0
+                         Number of cards: 0
+#########################START PROGAM#########################
+2022:08:10-16:42:04 noah (4) ban lists loaded!
+                         (11919) total cards loaded!
+                         (8) different formats found! [Duel Links, TCG, OCG, GOAT, OCG GOAT, Stairway, GX, Speed Duel]
+2022:08:10-16:42:23 noah RANDOMIZING, WITH FOLLOWING VALUES:
+                         main:TextBox:numDecksValue:1
+                         main:Button:numDecks:
+                         main:TextBox:defValue:1000
+                         main:DropDown:defCompare:
+                         main:Button:defLabel:
+                         main:TextBox:atkValue:1000
+                         main:DropDown:atkCompare:
+                         main:Button:atkLabel:
+                         main:TextBox:ritualCountValue:
+                         main:Button:ritualCount:
+                         main:TextBox:fusionCountValue:
+                         main:Button:fusionCount:
+                         main:TextBox:effectCountValue:
+                         main:Button:effectCount:
+                         main:TextBox:normalCountValue:12
+                         main:Button:normalCount:
+                         main:TextBox:spellCountValue:14
+                         main:Button:spellCount:
+                         main:TextBox:trapCountValue:14
+                         main:Button:trapCount:
+                         main:Slider:multRitual:0.0
+                         main:Slider:multFusion:0.0
+                         main:Slider:multEffect:0.0
+                         main:Slider:multNormal:0.0
+                         main:Slider:multSpell:0.0
+                         main:Slider:multTrap:0.0
+                         main:DropDown:setCards:
+                         main:DropDown:banList:Stairway
+                         main:DropDown:format:Stairway
+                         main:DropDown:monsterAttribute:
+                         main:DropDown:monsterType:
+                         main:Button:viewAllCards:
+                         main:Button:clearAll:
+                         main:Button:Randomize:
+2022:08:10-16:42:24 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1052
+                         After race filter: 1052
+                         After attribute filer: 1052
+2022:08:10-16:42:24 noah STARTING TO MAKE SCREENS
+                         Number of screens: 1
+                         Number of cards: 40
+2022:08:10-16:42:29 noah RANDOMIZING, WITH FOLLOWING VALUES:
+                         main:TextBox:numDecksValue:10
+                         main:Button:numDecks:
+                         main:TextBox:defValue:1000
+                         main:DropDown:defCompare:
+                         main:Button:defLabel:
+                         main:TextBox:atkValue:1000
+                         main:DropDown:atkCompare:
+                         main:Button:atkLabel:
+                         main:TextBox:ritualCountValue:
+                         main:Button:ritualCount:
+                         main:TextBox:fusionCountValue:
+                         main:Button:fusionCount:
+                         main:TextBox:effectCountValue:
+                         main:Button:effectCount:
+                         main:TextBox:normalCountValue:12
+                         main:Button:normalCount:
+                         main:TextBox:spellCountValue:14
+                         main:Button:spellCount:
+                         main:TextBox:trapCountValue:14
+                         main:Button:trapCount:
+                         main:Slider:multRitual:0.0
+                         main:Slider:multFusion:0.0
+                         main:Slider:multEffect:0.0
+                         main:Slider:multNormal:0.0
+                         main:Slider:multSpell:0.0
+                         main:Slider:multTrap:0.0
+                         main:DropDown:setCards:
+                         main:DropDown:banList:Stairway
+                         main:DropDown:format:Stairway
+                         main:DropDown:monsterAttribute:
+                         main:DropDown:monsterType:
+                         main:Button:viewAllCards:
+                         main:Button:clearAll:
+                         main:Button:Randomize:
+2022:08:10-16:42:29 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1052
+                         After race filter: 1052
+                         After attribute filer: 1052
+2022:08:10-16:42:30 noah STARTING TO MAKE SCREENS
+                         Number of screens: 1
+                         Number of cards: 40
+2022:08:10-16:42:30 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1052
+                         After race filter: 1052
+                         After attribute filer: 1052
+2022:08:10-16:42:30 noah STARTING TO MAKE SCREENS
+                         Number of screens: 1
+                         Number of cards: 40
+2022:08:10-16:42:30 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1052
+                         After race filter: 1052
+                         After attribute filer: 1052
+2022:08:10-16:42:30 noah STARTING TO MAKE SCREENS
+                         Number of screens: 1
+                         Number of cards: 40
+2022:08:10-16:42:31 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1052
+                         After race filter: 1052
+                         After attribute filer: 1052
+2022:08:10-16:42:31 noah STARTING TO MAKE SCREENS
+                         Number of screens: 1
+                         Number of cards: 40
+2022:08:10-16:42:31 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1052
+                         After race filter: 1052
+                         After attribute filer: 1052
+2022:08:10-16:42:31 noah STARTING TO MAKE SCREENS
+                         Number of screens: 1
+                         Number of cards: 40
+2022:08:10-16:42:31 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1052
+                         After race filter: 1052
+                         After attribute filer: 1052
+2022:08:10-16:42:31 noah STARTING TO MAKE SCREENS
+                         Number of screens: 1
+                         Number of cards: 40
+2022:08:10-16:42:31 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1052
+                         After race filter: 1052
+                         After attribute filer: 1052
+2022:08:10-16:42:31 noah STARTING TO MAKE SCREENS
+                         Number of screens: 1
+                         Number of cards: 40
+2022:08:10-16:42:32 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1052
+                         After race filter: 1052
+                         After attribute filer: 1052
+2022:08:10-16:42:32 noah STARTING TO MAKE SCREENS
+                         Number of screens: 1
+                         Number of cards: 40
+2022:08:10-16:42:32 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1052
+                         After race filter: 1052
+                         After attribute filer: 1052
+2022:08:10-16:42:32 noah STARTING TO MAKE SCREENS
+                         Number of screens: 1
+                         Number of cards: 40
+2022:08:10-16:42:32 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1052
+                         After race filter: 1052
+                         After attribute filer: 1052
+2022:08:10-16:42:32 noah STARTING TO MAKE SCREENS
+                         Number of screens: 1
+                         Number of cards: 40
+2022:08:10-16:42:57 noah RANDOMIZING, WITH FOLLOWING VALUES:
+                         main:TextBox:numDecksValue:10
+                         main:Button:numDecks:
+                         main:TextBox:defValue:1000
+                         main:DropDown:defCompare:
+                         main:Button:defLabel:
+                         main:TextBox:atkValue:1000
+                         main:DropDown:atkCompare:
+                         main:Button:atkLabel:
+                         main:TextBox:ritualCountValue:
+                         main:Button:ritualCount:
+                         main:TextBox:fusionCountValue:
+                         main:Button:fusionCount:
+                         main:TextBox:effectCountValue:
+                         main:Button:effectCount:
+                         main:TextBox:normalCountValue:12
+                         main:Button:normalCount:
+                         main:TextBox:spellCountValue:14
+                         main:Button:spellCount:
+                         main:TextBox:trapCountValue:14
+                         main:Button:trapCount:
+                         main:Slider:multRitual:0.0
+                         main:Slider:multFusion:0.0
+                         main:Slider:multEffect:0.0
+                         main:Slider:multNormal:0.0
+                         main:Slider:multSpell:0.0
+                         main:Slider:multTrap:0.0
+                         main:DropDown:setCards:
+                         main:DropDown:banList:Stairway
+                         main:DropDown:format:Stairway
+                         main:DropDown:monsterAttribute:
+                         main:DropDown:monsterType:
+                         main:Button:viewAllCards:
+                         main:Button:clearAll:
+                         main:Button:Randomize:
+2022:08:10-16:42:57 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1052
+                         After race filter: 1052
+                         After attribute filer: 1052
+2022:08:10-16:42:57 noah STARTING TO MAKE SCREENS
+                         Number of screens: 1
+                         Number of cards: 40
+2022:08:10-16:42:57 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1052
+                         After race filter: 1052
+                         After attribute filer: 1052
+2022:08:10-16:42:57 noah STARTING TO MAKE SCREENS
+                         Number of screens: 1
+                         Number of cards: 40
+2022:08:10-16:42:57 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1052
+                         After race filter: 1052
+                         After attribute filer: 1052
+2022:08:10-16:42:57 noah STARTING TO MAKE SCREENS
+                         Number of screens: 1
+                         Number of cards: 40
+2022:08:10-16:42:58 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1052
+                         After race filter: 1052
+                         After attribute filer: 1052
+2022:08:10-16:42:58 noah STARTING TO MAKE SCREENS
+                         Number of screens: 1
+                         Number of cards: 40
+2022:08:10-16:42:58 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1052
+                         After race filter: 1052
+                         After attribute filer: 1052
+2022:08:10-16:42:58 noah STARTING TO MAKE SCREENS
+                         Number of screens: 1
+                         Number of cards: 40
+2022:08:10-16:42:58 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1052
+                         After race filter: 1052
+                         After attribute filer: 1052
+2022:08:10-16:42:58 noah STARTING TO MAKE SCREENS
+                         Number of screens: 1
+                         Number of cards: 40
+2022:08:10-16:42:58 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1052
+                         After race filter: 1052
+                         After attribute filer: 1052
+2022:08:10-16:42:58 noah STARTING TO MAKE SCREENS
+                         Number of screens: 1
+                         Number of cards: 40
+2022:08:10-16:42:59 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1052
+                         After race filter: 1052
+                         After attribute filer: 1052
+2022:08:10-16:42:59 noah STARTING TO MAKE SCREENS
+                         Number of screens: 1
+                         Number of cards: 40
+2022:08:10-16:42:59 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1052
+                         After race filter: 1052
+                         After attribute filer: 1052
+2022:08:10-16:42:59 noah STARTING TO MAKE SCREENS
+                         Number of screens: 1
+                         Number of cards: 40
+2022:08:10-16:42:59 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1052
+                         After race filter: 1052
+                         After attribute filer: 1052
+2022:08:10-16:42:59 noah STARTING TO MAKE SCREENS
+                         Number of screens: 1
+                         Number of cards: 40
+#########################START PROGAM#########################
+2022:08:15-15:47:22 noah (4) ban lists loaded!
+                         (11919) total cards loaded!
+                         (8) different formats found! [Duel Links, TCG, OCG, GOAT, OCG GOAT, Stairway, GX, Speed Duel]
+2022:08:15-15:47:26 noah FILTERING CARDS:
+                         After format filter: 11919
+                         After stats filter: 11919
+                         After race filter: 11919
+                         After attribute filer: 11919
+2022:08:15-15:47:26 noah STARTING TO MAKE SCREENS
+                         Number of screens: 171
+                         Number of cards: 11919
+#########################START PROGAM#########################
+2022:09:07-19:34:02 noah (4) ban lists loaded!
+                         (11919) total cards loaded!
+                         (8) different formats found! [Duel Links, TCG, OCG, GOAT, OCG GOAT, Stairway, GX, Speed Duel]
+2022:09:07-19:34:12 noah FILTERING CARDS:
+                         After format filter: 1199
+                         After stats filter: 1199
+                         After race filter: 1199
+                         After attribute filer: 1199
+2022:09:07-19:34:12 noah STARTING TO MAKE SCREENS
+                         Number of screens: 18
+                         Number of cards: 1199
+#########################START PROGAM#########################
+2022:09:13-07:40:41 noah (4) ban lists loaded!
+                         (11919) total cards loaded!
+                         (8) different formats found! [Duel Links, TCG, OCG, GOAT, OCG GOAT, Stairway, GX, Speed Duel]
+2022:09:13-07:40:56 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1052
+                         After race filter: 1052
+                         After attribute filer: 1052
+2022:09:13-07:40:56 noah STARTING TO MAKE SCREENS
+                         Number of screens: 16
+                         Number of cards: 1052
+2022:09:13-08:20:47 noah FILTERING CARDS:
+                         After format filter: 1199
+                         After stats filter: 1199
+                         After race filter: 1199
+                         After attribute filer: 1199
+2022:09:13-08:20:47 noah STARTING TO MAKE SCREENS
+                         Number of screens: 18
+                         Number of cards: 1199
+#########################START PROGAM#########################
+2022:11:25-18:58:25 noah (4) ban lists loaded!
+                         (11919) total cards loaded!
+                         (8) different formats found! [Duel Links, TCG, OCG, GOAT, OCG GOAT, Stairway, GX, Speed Duel]
+2022:11:25-18:58:48 noah FILTERING CARDS:
+                         After format filter: 1199
+                         After stats filter: 1199
+                         After race filter: 1199
+                         After attribute filer: 1199
+2022:11:25-18:58:48 noah STARTING TO MAKE SCREENS
+                         Number of screens: 18
+                         Number of cards: 1199
+#########################START PROGAM#########################
+2022:11:25-19:59:09 noah (4) ban lists loaded!
+                         (11919) total cards loaded!
+                         (8) different formats found! [Duel Links, TCG, OCG, GOAT, OCG GOAT, Stairway, GX, Speed Duel]
+2022:11:25-19:59:18 noah FILTERING CARDS:
+                         After format filter: 1199
+                         After stats filter: 1199
+                         After race filter: 1199
+                         After attribute filer: 1199
+2022:11:25-19:59:18 noah STARTING TO MAKE SCREENS
+                         Number of screens: 18
+                         Number of cards: 1199
+#########################START PROGAM#########################
+2022:11:29-11:45:13 noah (4) ban lists loaded!
+                         (11919) total cards loaded!
+                         (8) different formats found! [Duel Links, TCG, OCG, GOAT, OCG GOAT, Stairway, GX, Speed Duel]
+2022:11:29-11:45:21 noah RANDOMIZING, WITH FOLLOWING VALUES:
+                         main:TextBox:numDecksValue:1
+                         main:Button:numDecks:
+                         main:TextBox:defValue:1000
+                         main:DropDown:defCompare:
+                         main:Button:defLabel:
+                         main:TextBox:atkValue:1000
+                         main:DropDown:atkCompare:
+                         main:Button:atkLabel:
+                         main:TextBox:ritualCountValue:
+                         main:Button:ritualCount:
+                         main:TextBox:fusionCountValue:
+                         main:Button:fusionCount:
+                         main:TextBox:effectCountValue:
+                         main:Button:effectCount:
+                         main:TextBox:normalCountValue:
+                         main:Button:normalCount:
+                         main:TextBox:spellCountValue:
+                         main:Button:spellCount:
+                         main:TextBox:trapCountValue:
+                         main:Button:trapCount:
+                         main:Slider:multRitual:0.0
+                         main:Slider:multFusion:0.0
+                         main:Slider:multEffect:0.0
+                         main:Slider:multNormal:0.0
+                         main:Slider:multSpell:0.0
+                         main:Slider:multTrap:0.0
+                         main:DropDown:setCards:
+                         main:DropDown:banList:GX Year 1
+                         main:DropDown:format:GX
+                         main:DropDown:monsterAttribute:
+                         main:DropDown:monsterType:
+                         main:Button:viewAllCards:
+                         main:Button:clearAll:
+                         main:Button:Randomize:
+2022:11:29-11:45:21 noah FILTERING CARDS:
+                         After format filter: 1199
+                         After stats filter: 1199
+                         After race filter: 1199
+                         After attribute filer: 1199
+2022:11:29-11:45:21 noah STARTING TO MAKE SCREENS
+                         Number of screens: 0
+                         Number of cards: 0
+2022:11:29-11:45:24 noah FILTERING CARDS:
+                         After format filter: 1199
+                         After stats filter: 1199
+                         After race filter: 1199
+                         After attribute filer: 1199
+2022:11:29-11:45:24 noah STARTING TO MAKE SCREENS
+                         Number of screens: 18
+                         Number of cards: 1199
+#########################START PROGAM#########################
+2022:11:29-12:29:49 noah (4) ban lists loaded!
+                         (11919) total cards loaded!
+                         (8) different formats found! [Duel Links, TCG, OCG, GOAT, OCG GOAT, Stairway, GX, Speed Duel]
+2022:11:29-12:29:57 noah FILTERING CARDS:
+                         After format filter: 1199
+                         After stats filter: 1199
+                         After race filter: 1199
+                         After attribute filer: 1199
+2022:11:29-12:29:57 noah STARTING TO MAKE SCREENS
+                         Number of screens: 18
+                         Number of cards: 1199
+#########################START PROGAM#########################
+2022:11:29-12:45:09 noah (4) ban lists loaded!
+                         (11919) total cards loaded!
+                         (8) different formats found! [Duel Links, TCG, OCG, GOAT, OCG GOAT, Stairway, GX, Speed Duel]
+2022:11:29-12:45:18 noah FILTERING CARDS:
+                         After format filter: 1199
+                         After stats filter: 1199
+                         After race filter: 1199
+                         After attribute filer: 1199
+2022:11:29-12:45:18 noah STARTING TO MAKE SCREENS
+                         Number of screens: 18
+                         Number of cards: 1199
+#########################START PROGAM#########################
+2023:05:01-10:10:32 noah (4) ban lists loaded!
+                         (11919) total cards loaded!
+                         (8) different formats found! [Duel Links, TCG, OCG, GOAT, OCG GOAT, Stairway, GX, Speed Duel]
+2023:05:01-10:10:52 noah FILTERING CARDS:
+                         After format filter: 1687
+                         After stats filter: 1687
+                         After race filter: 719
+                         After attribute filer: 670
+2023:05:01-10:10:52 noah STARTING TO MAKE SCREENS
+                         Number of screens: 10
+                         Number of cards: 670

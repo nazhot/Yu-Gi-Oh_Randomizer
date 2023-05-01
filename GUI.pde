@@ -8,7 +8,7 @@ Screen mainScreen; //starting screen with all the options for you to change
 Screen cardScreen; //screen that shows the deck generated based on your options
 Screen viewAllCardsScreen; //screen that shows ALL cards available with the options selected
 Controller controller; //the overall controller, which holds all of the screens
-
+    
 JSONArray allCardsJSON;   //JSONArray that holds all of the cards in yugioh
 ArrayList<Card> allCards; //ArrayList holding all of the card objects
 
@@ -56,7 +56,7 @@ void setup() {
   size(1200, 700);
   addToLog(gLogName, "#########################START PROGAM#########################", "%a");
   textFont(createFont("Yu-Gi-Oh! Matrix Regular Small Caps 2.ttf", 30)); // 8
-
+  println(CENTER);
   imageFolder = dataPath("") + "/CardImagesJPG/";
   imageExtension = ".jpg";
   
@@ -70,13 +70,9 @@ void setup() {
   cardScreen = new Screen(this, "0w", "0h", "1w", "1h");
   viewAllCardsScreen = new Screen(this, "0w", "0h", "1w", "1h");
 
-
-
   mainScreen.setName("main");
   cardScreen.setName("card");
 
-
-  
   loadBanLists();
   
 
@@ -99,7 +95,7 @@ void setup() {
     .setName("Randomize")
     .setLabel("Randomize")
     .setTextSize(30)
-    .setRounding(10)
+    .setRounding(10.0)
     .setFillColor(#fde68a)
     .setHoverColor(#ff8b53)
     .setStrokeWeight(1)
@@ -112,7 +108,7 @@ void setup() {
     .setShapeMode(CENTER)
     .setLabel("Clear All")
     .setTextSize(30)
-    .setRounding(10)
+    .setRounding(10.0)
     .setFillColor(#fde68a)
     .setHoverColor(#ff8b53)
     .setStrokeWeight(1)
@@ -124,7 +120,7 @@ void setup() {
     .setName("viewAllCards")
     .setLabel("View All Cards")
     .setTextSize(30)
-    .setRounding(10)
+    .setRounding(10.0)
     .setFillColor(#fde68a)
     .setHoverColor(#ff8b53)
     .setStrokeWeight(1)
@@ -139,11 +135,11 @@ void setup() {
     .setLabel("Monster Type(s): ")
     .setName("monsterType")
     .setDrawOrder(drawOrder--)
-    .setRounding(5)
+    .setRounding(5.0)
     .setTextSize(15)
     .addEntries(monsterTypes)
-    .setEntryHeight(20)
-    .setEntryWidth(80)
+    .setEntryHeight("20a")
+    .setEntryWidth("80a")
     .setMultiSelect(true)
     .addSelectAll()
     .setEntryHorizontalOrientation(CENTER)
@@ -158,11 +154,11 @@ void setup() {
     .setLabel("Monster Attribute(s): ")
     .setName("monsterAttribute")
     .setDrawOrder(drawOrder--)
-    .setRounding(5)
+    .setRounding(5.0)
     .setTextSize(15)
     .addEntries(monsterAttributes)
-    .setEntryHeight(20)
-    .setEntryWidth(80)
+    .setEntryHeight("20a")
+    .setEntryWidth("80a")
     .setMultiSelect(true)
     .addSelectAll()
     .setEntryHorizontalOrientation(CENTER)
@@ -176,11 +172,11 @@ void setup() {
     .setLabel("Format: ")
     .setName("format")
     .setDrawOrder(drawOrder--)
-    .setRounding(5)
+    .setRounding(5.0)
     .setTextSize(15)
     .addEntries(formats)
-    .setEntryHeight(20)
-    .setEntryWidth(80)
+    .setEntryHeight("20a")
+    .setEntryWidth("80a")
     .setEntryHorizontalOrientation(CENTER)
     .setFillColor(#fde68a)
     .setSelectedColor(#ff8b53)
@@ -192,11 +188,11 @@ void setup() {
     .setLabel("Ban List: ")
     .setName("banList")
     .setDrawOrder(drawOrder--)
-    .setRounding(5)
+    .setRounding(5.0)
     .setTextSize(15)
     .addEntries(banLists)
-    .setEntryHeight(20)
-    .setEntryWidth(80)
+    .setEntryHeight("20a")
+    .setEntryWidth("80a")
     .setEntryHorizontalOrientation(CENTER)
     .setFillColor(#fde68a)
     .setSelectedColor(#ff8b53)
@@ -208,11 +204,11 @@ void setup() {
     .setLabel("Set Cards: ")
     .setName("setCards")
     .setDrawOrder(drawOrder--)
-    .setRounding(5)
+    .setRounding(5.0)
     .setTextSize(15)
     .addEntries(setCards)
-    .setEntryHeight(20)
-    .setEntryWidth(80)
+    .setEntryHeight("20a")
+    .setEntryWidth("80a")
     .setEntryHorizontalOrientation(CENTER)
     .setFillColor(#fde68a)
     .setSelectedColor(#ff8b53)
@@ -325,7 +321,7 @@ void setup() {
     .setName("trapCount")
     .setLabel("Trap Count:")
     .setAsLabel(true)
-    .setRounding(5)
+    .setRounding(5.0)
     .setFillColor(#fde68a)
     .setTextSize(25)
     .setDrawOrder(drawOrder--)
@@ -335,10 +331,10 @@ void setup() {
   mainScreen.addComponent(new TextBox(this, horizontalMargin + labelWidth + buttonColumn * (rowThreeWidth + horizontalGap), rowThreeY, textBoxWidth, 30)
     .setName("trapCountValue")
     .setValue("")
-    .setRounding(5)
+    .setRounding(5.0)
     .setFillColor(#fde68a)
     .setHoverColor(#ff8b53)
-    .setRounding(5)
+    .setRounding(5.0)
     .setTextSize(30)
     .setHorizontalOrientation(CENTER)
     .setDrawOrder(drawOrder--)
@@ -351,7 +347,7 @@ void setup() {
     .setName("spellCount")
     .setLabel("Spell Count:")
     .setAsLabel(true)
-    .setRounding(5)
+    .setRounding(5.0)
     .setFillColor(#fde68a)
     .setTextSize(25)
     .setDrawOrder(drawOrder--)
@@ -361,10 +357,9 @@ void setup() {
   mainScreen.addComponent(new TextBox(this, horizontalMargin + labelWidth + buttonColumn * (rowThreeWidth + horizontalGap), rowThreeY, textBoxWidth, 30)
     .setName("spellCountValue")
     .setValue("")
-    .setRounding(5)
+    .setRounding(5.0)
     .setFillColor(#fde68a)
     .setHoverColor(#ff8b53)
-    .setRounding(5)
     .setTextSize(30)
     .setHorizontalOrientation(CENTER)
     .setDrawOrder(drawOrder--)
@@ -377,7 +372,7 @@ void setup() {
     .setName("normalCount")
     .setLabel("Normal Count:")
     .setAsLabel(true)
-    .setRounding(5)
+    .setRounding(5.0)
     .setFillColor(#fde68a)
     .setTextSize(25)
     .setDrawOrder(drawOrder--)
@@ -387,10 +382,9 @@ void setup() {
   mainScreen.addComponent(new TextBox(this, horizontalMargin + labelWidth + buttonColumn * (rowThreeWidth + horizontalGap), rowThreeY, textBoxWidth, 30)
     .setName("normalCountValue")
     .setValue("")
-    .setRounding(5)
+    .setRounding(5.0)
     .setFillColor(#fde68a)
     .setHoverColor(#ff8b53)
-    .setRounding(5)
     .setTextSize(30)
     .setHorizontalOrientation(CENTER)
     .setDrawOrder(drawOrder--)
@@ -403,7 +397,7 @@ void setup() {
     .setName("effectCount")
     .setLabel("Effect Count:")
     .setAsLabel(true)
-    .setRounding(5)
+    .setRounding(5.0)
     .setFillColor(#fde68a)
     .setTextSize(25)
     .setDrawOrder(drawOrder--)
@@ -413,10 +407,9 @@ void setup() {
   mainScreen.addComponent(new TextBox(this, horizontalMargin + labelWidth + buttonColumn * (rowThreeWidth + horizontalGap), rowThreeY, textBoxWidth, 30)
     .setName("effectCountValue")
     .setValue("")
-    .setRounding(5)
+    .setRounding(5.0)
     .setFillColor(#fde68a)
     .setHoverColor(#ff8b53)
-    .setRounding(5)
     .setTextSize(30)
     .setHorizontalOrientation(CENTER)
     .setDrawOrder(drawOrder--)
@@ -429,7 +422,7 @@ void setup() {
     .setName("fusionCount")
     .setLabel("Fusion Count:")
     .setAsLabel(true)
-    .setRounding(5)
+    .setRounding(5.0)
     .setFillColor(#fde68a)
     .setTextSize(25)
     .setDrawOrder(drawOrder--)
@@ -439,10 +432,9 @@ void setup() {
   mainScreen.addComponent(new TextBox(this, horizontalMargin + labelWidth + buttonColumn * (rowThreeWidth + horizontalGap), rowThreeY, textBoxWidth, 30)
     .setName("fusionCountValue")
     .setValue("")
-    .setRounding(5)
+    .setRounding(5.0)
     .setFillColor(#fde68a)
     .setHoverColor(#ff8b53)
-    .setRounding(5)
     .setTextSize(30)
     .setHorizontalOrientation(CENTER)
     .setDrawOrder(drawOrder--)
@@ -455,7 +447,7 @@ void setup() {
     .setName("ritualCount")
     .setLabel("Ritual Count:")
     .setAsLabel(true)
-    .setRounding(5)
+    .setRounding(5.0)
     .setFillColor(#fde68a)
     .setTextSize(25)
     .setDrawOrder(drawOrder--)
@@ -465,10 +457,9 @@ void setup() {
   mainScreen.addComponent(new TextBox(this, horizontalMargin + labelWidth + buttonColumn * (rowThreeWidth + horizontalGap), rowThreeY, textBoxWidth, 30)
     .setName("ritualCountValue")
     .setValue("")
-    .setRounding(5)
+    .setRounding(5.0)
     .setFillColor(#fde68a)
     .setHoverColor(#ff8b53)
-    .setRounding(5)
     .setTextSize(30)
     .setHorizontalOrientation(CENTER)
     .setDrawOrder(drawOrder--)
@@ -481,7 +472,7 @@ void setup() {
     .setLabel("ATK")
     .setAsLabel(true)
     .setDrawOrder(drawOrder--)
-    .setRounding(5)
+    .setRounding(5.0)
     .setFillColor(#fde68a)
     .setTextSize(25)
     .setTextScalar(gTextScalar)
@@ -490,7 +481,7 @@ void setup() {
   mainScreen.addComponent(new DropDown(this, 75, 280, 70, 30)
     .setName("atkCompare")
     .addEntries(comparisons)
-    .setRounding(5)
+    .setRounding(5.0)
     .setDrawOrder(drawOrder--)
     .setTitleHorizontalOrientation(CENTER)
     .setEntryHorizontalOrientation(CENTER)
@@ -503,11 +494,10 @@ void setup() {
 
   mainScreen.addComponent(new TextBox(this, 145, 280, 120, 30)
     .setName("atkValue")
-    .setRounding(5)
+    .setRounding(5.0)
     .setDrawOrder(drawOrder--)
     .setFillColor(#fde68a)
     .setHoverColor(#ff8b53)
-    .setRounding(5)
     .setValue("1000")
     .setTextSize(30)
     .setHorizontalOrientation(CENTER)
@@ -519,7 +509,7 @@ void setup() {
     .setLabel("DEF")
     .setAsLabel(true)
     .setDrawOrder(drawOrder--)
-    .setRounding(5)
+    .setRounding(5.0)
     .setFillColor(#fde68a)
     .setTextSize(25)
     .setTextScalar(gTextScalar)
@@ -528,7 +518,7 @@ void setup() {
   mainScreen.addComponent(new DropDown(this, 340, 280, 70, 30)
     .setName("defCompare")
     .addEntries(comparisons)
-    .setRounding(5)
+    .setRounding(5.0)
     .setDrawOrder(drawOrder--)
     .setTitleHorizontalOrientation(CENTER)
     .setEntryHorizontalOrientation(CENTER)
@@ -541,11 +531,10 @@ void setup() {
 
   mainScreen.addComponent(new TextBox(this, 410, 280, 120, 30)
     .setName("defValue")
-    .setRounding(5)
+    .setRounding(5.0)
     .setDrawOrder(drawOrder--)
     .setFillColor(#fde68a)
     .setHoverColor(#ff8b53)
-    .setRounding(5)
     .setValue("1000")
     .setTextSize(30)
     .setHorizontalOrientation(CENTER)
@@ -555,7 +544,7 @@ void setup() {
   mainScreen.addComponent(new Button(this, 535, 280, 120, 30)
     .setName("numDecks")
     .setLabel("Num. Decks:")
-    .setRounding(5)
+    .setRounding(5.0)
     .setDrawOrder(drawOrder--)
     .setFillColor(#fde68a)
     .setAsLabel(true)
@@ -565,11 +554,10 @@ void setup() {
 
   mainScreen.addComponent(new TextBox(this, 655, 280, 40, 30)
     .setName("numDecksValue")
-    .setRounding(5)
+    .setRounding(5.0)
     .setDrawOrder(drawOrder--)
     .setFillColor(#fde68a)
     .setHoverColor(#ff8b53)
-    .setRounding(5)
     .setValue("1")
     .setTextSize(30)
     .setHorizontalOrientation(CENTER)
@@ -583,7 +571,7 @@ void setup() {
     .setName("Back")
     .setLabel("Back")
     .setTextSize(10)
-    .setRounding(10)
+    .setRounding(10.0)
     .setFillColor(#fde68a)
     .setHoverColor(#ff8b53)
     .setTextScalar(gTextScalar)
@@ -608,7 +596,7 @@ void setup() {
     .setName("Back")
     .setLabel("Back")
     .setTextSize(10)
-    .setRounding(10)
+    .setRounding(10.0)
     .setFillColor(#fde68a)
     .setHoverColor(#ff8b53)
     .setTextScalar(gTextScalar)
@@ -669,9 +657,11 @@ void draw() {
 
 
 void mousePressed() {
-  String test = controller.checkClick();
-  if (test.length() > 0) {
-    addToLog(gLogName, test, gLogFormat);
+  JSONObject temp = controller.checkClick();
+  if (temp!= null){
+  String test = temp.getString("Screen") + ":" + temp.getString("Type") + ":" + temp.getString("Name");
+  println(test);
+    //addToLog(gLogName, test, gLogFormat);
     if (test.equals("main:Button:Randomize")) { //MAKE DECKS SETUP
       ArrayList<String> randomValues = controller.getValues();
       Screen cardScreen = controller.getScreen("card");
@@ -724,6 +714,8 @@ void mousePressed() {
       controller.setCurrentScreen("main");
     } else if (test.equals("viewAllCards:Button:Back")) {
       controller.setCurrentScreen("main");
+    } else if (test.contains("Back")){
+      controller.setCurrentScreen("main");
     } else if (test.equals("main:Button:viewAllCards")) { //VIEW ALL CARDS SETUP
       ImageGridCollection gridTemp = (ImageGridCollection) controller.getScreen("viewAllCards").getComponent("cards");
       gridTemp.clearScreen();
@@ -747,8 +739,8 @@ void mousePressed() {
       controller.setCurrentScreen("viewAllCards");
     } else if (test.equals("main:Button:clearAll")) { //CLEAR ALL
       controller.getCurrentScreen().reset();
-    } else if (test.split(":")[0].equals("card") && test.split(":")[2].contains("deck")) {
-      int deckNumber = int(test.split(":")[2].substring(4, test.split(":")[2].length()));
+    } else if (temp.getString("Screen").equals("card") && temp.getString("Name").contains("deck")) {
+      int deckNumber = int(temp.getString("Screen").substring(4, temp.getString("Name").length()));
       ImageGridCollection tempGrid = (ImageGridCollection) controller.getCurrentScreen().getComponent("cards");
       tempGrid.setIndex(deckNumber);
       int index = 0;
