@@ -740,7 +740,7 @@ void mousePressed() {
     } else if (test.equals("main:Button:clearAll")) { //CLEAR ALL
       controller.getCurrentScreen().reset();
     } else if (temp.getString("Screen").equals("card") && temp.getString("Name").contains("deck")) {
-      int deckNumber = int(temp.getString("Screen").substring(4, temp.getString("Name").length()));
+      int deckNumber = int(temp.getString("Name").substring(4, temp.getString("Name").length()));
       ImageGridCollection tempGrid = (ImageGridCollection) controller.getCurrentScreen().getComponent("cards");
       tempGrid.setIndex(deckNumber);
       int index = 0;

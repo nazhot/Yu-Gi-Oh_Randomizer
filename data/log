@@ -1224,3 +1224,244 @@
 2023:05:01-18:51:16 noah (4) ban lists loaded!
                          (11919) total cards loaded!
                          (8) different formats found! [Duel Links, TCG, OCG, GOAT, OCG GOAT, Stairway, GX, Speed Duel]
+2023:05:01-20:06:38 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1044
+                         After race filter: 1044
+                         After attribute filer: 487
+2023:05:01-20:06:38 noah STARTING TO MAKE SCREENS
+                         Number of screens: 7
+                         Number of cards: 487
+2023:05:01-20:08:39 noah RANDOMIZING, WITH FOLLOWING VALUES:
+                         main:TextBox:numDecksValue:5
+                         main:Button:numDecks:
+                         main:TextBox:defValue:1000
+                         main:DropDown:defCompare:
+                         main:Button:defLabel:
+                         main:TextBox:atkValue:100
+                         main:DropDown:atkCompare:>=
+                         main:Button:atkLabel:
+                         main:TextBox:ritualCountValue:
+                         main:Button:ritualCount:
+                         main:TextBox:fusionCountValue:
+                         main:Button:fusionCount:
+                         main:TextBox:effectCountValue:
+                         main:Button:effectCount:
+                         main:TextBox:normalCountValue:15
+                         main:Button:normalCount:
+                         main:TextBox:spellCountValue:15
+                         main:Button:spellCount:
+                         main:TextBox:trapCountValue:10
+                         main:Button:trapCount:
+                         main:Slider:multRitual:0.0
+                         main:Slider:multFusion:0.0
+                         main:Slider:multEffect:0.0
+                         main:Slider:multNormal:0.45402297
+                         main:Slider:multSpell:0.5574713
+                         main:Slider:multTrap:0.38505748
+                         main:DropDown:setCards:
+                         main:DropDown:banList:Stairway
+                         main:DropDown:format:Stairway
+                         main:DropDown:monsterAttribute:DARK
+                         main:DropDown:monsterType:Aqua,Beast,Beast-Warrior,Cyberse,Dinosaur,Divine-Beast,Dragon,Fairy,Fiend,Fish,Insect,Machine,Plant,Psychic,Pyro,Reptile,Rock,Sea Serpent,Spellcaster,Thunder,Warrior,Winged Beast,Wyrm,Zombie
+                         main:Button:viewAllCards:
+                         main:Button:clearAll:
+                         main:Button:Randomize:
+2023:05:01-20:08:39 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1044
+                         After race filter: 1044
+                         After attribute filer: 487
+2023:05:01-20:08:39 noah STARTING TO MAKE SCREENS
+                         Number of screens: 1
+                         Number of cards: 40
+2023:05:01-20:08:39 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1044
+                         After race filter: 1044
+                         After attribute filer: 487
+2023:05:01-20:08:39 noah STARTING TO MAKE SCREENS
+                         Number of screens: 1
+                         Number of cards: 40
+2023:05:01-20:08:39 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1044
+                         After race filter: 1044
+                         After attribute filer: 487
+2023:05:01-20:08:39 noah STARTING TO MAKE SCREENS
+                         Number of screens: 1
+                         Number of cards: 40
+2023:05:01-20:08:40 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1044
+                         After race filter: 1044
+                         After attribute filer: 487
+2023:05:01-20:08:40 noah STARTING TO MAKE SCREENS
+                         Number of screens: 1
+                         Number of cards: 40
+2023:05:01-20:08:40 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1044
+                         After race filter: 1044
+                         After attribute filer: 487
+2023:05:01-20:08:40 noah STARTING TO MAKE SCREENS
+                         Number of screens: 1
+                         Number of cards: 40
+#########################START PROGAM#########################
+2023:05:01-20:09:39 noah (4) ban lists loaded!
+                         (11919) total cards loaded!
+                         (8) different formats found! [Duel Links, TCG, OCG, GOAT, OCG GOAT, Stairway, GX, Speed Duel]
+2023:05:01-20:10:17 noah RANDOMIZING, WITH FOLLOWING VALUES:
+                         main:TextBox:numDecksValue:5
+                         main:Button:numDecks:
+                         main:TextBox:defValue:1000
+                         main:DropDown:defCompare:
+                         main:Button:defLabel:
+                         main:TextBox:atkValue:100
+                         main:DropDown:atkCompare:>=
+                         main:Button:atkLabel:
+                         main:TextBox:ritualCountValue:
+                         main:Button:ritualCount:
+                         main:TextBox:fusionCountValue:
+                         main:Button:fusionCount:
+                         main:TextBox:effectCountValue:
+                         main:Button:effectCount:
+                         main:TextBox:normalCountValue:15
+                         main:Button:normalCount:
+                         main:TextBox:spellCountValue:15
+                         main:Button:spellCount:
+                         main:TextBox:trapCountValue:10
+                         main:Button:trapCount:
+                         main:Slider:multRitual:0.0
+                         main:Slider:multFusion:0.0
+                         main:Slider:multEffect:0.5344828
+                         main:Slider:multNormal:0.5344828
+                         main:Slider:multSpell:0.4597701
+                         main:Slider:multTrap:0.51724136
+                         main:DropDown:setCards:
+                         main:DropDown:banList:Stairway
+                         main:DropDown:format:Stairway
+                         main:DropDown:monsterAttribute:DARK
+                         main:DropDown:monsterType:Aqua,Beast,Beast-Warrior,Cyberse,Dinosaur,Divine-Beast,Dragon,Fairy,Fiend,Fish,Insect,Machine,Plant,Psychic,Pyro,Reptile,Rock,Sea Serpent,Spellcaster,Thunder,Warrior,Winged Beast,Wyrm,Zombie
+                         main:Button:viewAllCards:
+                         main:Button:clearAll:
+                         main:Button:Randomize:
+2023:05:01-20:10:17 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1044
+                         After race filter: 1044
+                         After attribute filer: 487
+2023:05:01-20:10:17 noah STARTING TO MAKE SCREENS
+                         Number of screens: 1
+                         Number of cards: 40
+2023:05:01-20:10:17 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1044
+                         After race filter: 1044
+                         After attribute filer: 487
+2023:05:01-20:10:18 noah STARTING TO MAKE SCREENS
+                         Number of screens: 1
+                         Number of cards: 40
+2023:05:01-20:10:18 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1044
+                         After race filter: 1044
+                         After attribute filer: 487
+2023:05:01-20:10:18 noah STARTING TO MAKE SCREENS
+                         Number of screens: 1
+                         Number of cards: 40
+2023:05:01-20:10:19 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1044
+                         After race filter: 1044
+                         After attribute filer: 487
+2023:05:01-20:10:19 noah STARTING TO MAKE SCREENS
+                         Number of screens: 1
+                         Number of cards: 40
+2023:05:01-20:10:19 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1044
+                         After race filter: 1044
+                         After attribute filer: 487
+2023:05:01-20:10:19 noah STARTING TO MAKE SCREENS
+                         Number of screens: 1
+                         Number of cards: 40
+#########################START PROGAM#########################
+2023:05:01-20:15:30 noah (4) ban lists loaded!
+                         (11919) total cards loaded!
+                         (8) different formats found! [Duel Links, TCG, OCG, GOAT, OCG GOAT, Stairway, GX, Speed Duel]
+2023:05:01-20:16:03 noah RANDOMIZING, WITH FOLLOWING VALUES:
+                         main:TextBox:numDecksValue:5
+                         main:Button:numDecks:
+                         main:TextBox:defValue:1000
+                         main:DropDown:defCompare:
+                         main:Button:defLabel:
+                         main:TextBox:atkValue:100
+                         main:DropDown:atkCompare:>=
+                         main:Button:atkLabel:
+                         main:TextBox:ritualCountValue:
+                         main:Button:ritualCount:
+                         main:TextBox:fusionCountValue:
+                         main:Button:fusionCount:
+                         main:TextBox:effectCountValue:
+                         main:Button:effectCount:
+                         main:TextBox:normalCountValue:15
+                         main:Button:normalCount:
+                         main:TextBox:spellCountValue:15
+                         main:Button:spellCount:
+                         main:TextBox:trapCountValue:10
+                         main:Button:trapCount:
+                         main:Slider:multRitual:0.0
+                         main:Slider:multFusion:0.0
+                         main:Slider:multEffect:0.4827586
+                         main:Slider:multNormal:0.5
+                         main:Slider:multSpell:0.5
+                         main:Slider:multTrap:0.45402297
+                         main:DropDown:setCards:
+                         main:DropDown:banList:Stairway
+                         main:DropDown:format:Stairway
+                         main:DropDown:monsterAttribute:DARK
+                         main:DropDown:monsterType:Aqua,Beast,Beast-Warrior,Cyberse,Dinosaur,Divine-Beast,Dragon,Fairy,Fiend,Fish,Insect,Machine,Plant,Psychic,Pyro,Reptile,Rock,Sea Serpent,Spellcaster,Thunder,Warrior,Winged Beast,Wyrm,Zombie
+                         main:Button:viewAllCards:
+                         main:Button:clearAll:
+                         main:Button:Randomize:
+2023:05:01-20:16:03 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1044
+                         After race filter: 1044
+                         After attribute filer: 487
+2023:05:01-20:16:03 noah STARTING TO MAKE SCREENS
+                         Number of screens: 1
+                         Number of cards: 40
+2023:05:01-20:16:04 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1044
+                         After race filter: 1044
+                         After attribute filer: 487
+2023:05:01-20:16:04 noah STARTING TO MAKE SCREENS
+                         Number of screens: 1
+                         Number of cards: 40
+2023:05:01-20:16:04 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1044
+                         After race filter: 1044
+                         After attribute filer: 487
+2023:05:01-20:16:04 noah STARTING TO MAKE SCREENS
+                         Number of screens: 1
+                         Number of cards: 40
+2023:05:01-20:16:05 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1044
+                         After race filter: 1044
+                         After attribute filer: 487
+2023:05:01-20:16:05 noah STARTING TO MAKE SCREENS
+                         Number of screens: 1
+                         Number of cards: 40
+2023:05:01-20:16:05 noah FILTERING CARDS:
+                         After format filter: 1052
+                         After stats filter: 1044
+                         After race filter: 1044
+                         After attribute filer: 487
+2023:05:01-20:16:05 noah STARTING TO MAKE SCREENS
+                         Number of screens: 1
+                         Number of cards: 40
