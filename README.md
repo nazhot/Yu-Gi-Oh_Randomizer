@@ -24,11 +24,15 @@ This Processing program was made after a friend and I began getting into the tra
 
 The initial need that had to be addressed was the difficulty in viewing cards within this format. All we had were websites that had the card list in an all text table, with hyperlinks to be able to view cards and their descriptions. Using card data from the [YGoProDeck Api](https://ygoprodeck.com/api-guide/), I created a program that would allow you to filter by monster type/attribute, as well as by format and ban list. Running it would give you a multi-page image grid of all of the matching cards, allowing you to look at a glance for their stats/descriptions.
 
+<p align="center">
 <img src="./.github/resources/randomizerAllCardsScreen.jpg">
+</p>
 
 As our needs evolved, we also wanted the option for decks to be generated for us, to allow for less competitive duels, and to see how well we could just make things work. With that, I expanded the program to let you set parameters such as the number of spells/traps/monsters, how often a type of card should try and fill as many copies of itself as possible, and atk/def limits. Running the randomizer generates deck(s) for you (depending on how many you told it to), and takes you to a screen where you can look at all of the card images for each deck to take your pick. It would also download all of the ydk's so that you can duel in your favorite online simulator.
 
+<p align="center">
 <img src="./.github/resources/randomizerRandomScreen.jpg">
+</p>
 
 ## ⭐️ Current Version
 v0.0.1
